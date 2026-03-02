@@ -11,12 +11,15 @@ config_version=5
 [application]
 
 config/name="rjvel-bad-ideas-game-jam-2026"
+run/main_scene="uid://b4yqj8vx2kkxm"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
+Constants="*res://scripts/autoloads/constants.gd"
 EventBus="*res://scripts/autoloads/event_bus.gd"
+SceneLoader="*res://scripts/autoloads/scene_loader.gd"
 
 [physics]
 
