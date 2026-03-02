@@ -57,6 +57,29 @@ signal level_loaded(level_name: String)
 ## @param scene_path: String - Path to the scene
 signal scene_transition_requested(scene_path: String)
 
+# ============================================================================
+# MUSIC EVENTS
+# ============================================================================
+
+## Emitted when music should transition to a new track
+## @param track_name: String - Name of the music track (from Constants.MUSIC)
+## @param crossfade_duration: float - How long to crossfade between tracks (seconds, default 1.0)
+signal music_transition_requested(track_name: String, crossfade_duration: float)
+
+## Emitted when music should stop
+## @param fade_duration: float - How long to fade out (seconds, default 1.0)
+signal music_stop_requested(fade_duration: float)
+
+## Emitted when music should be paused
+signal music_pause_requested()
+
+## Emitted when music should be resumed
+signal music_resume_requested()
+
+## Emitted when music volume should change
+## @param volume: float - Volume multiplier (0.0 to 1.0)
+signal music_volume_changed(volume: float)
+
 
 # ============================================================================
 # LIFECYCLE

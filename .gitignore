@@ -18,3 +18,7 @@ mono_crash.*.json
 
 # vscode
 .vscode/
+
+# other
+.env.local
+*.local

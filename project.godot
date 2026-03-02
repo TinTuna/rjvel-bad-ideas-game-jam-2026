@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Constants="*res://scripts/autoloads/constants.gd"
 EventBus="*res://scripts/autoloads/event_bus.gd"
 SceneLoader="*res://scripts/autoloads/scene_loader.gd"
+MusicManager="*res://scripts/autoloads/music_manager.gd"
 
 [physics]
 

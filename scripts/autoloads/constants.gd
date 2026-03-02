@@ -17,18 +17,34 @@ extends Node
 const SCENES := {
 	# UI Scenes
 	"MAIN_MENU": "uid://b4yqj8vx2kkxm",
-	"PAUSE_MENU": "",
-	"SETTINGS": "",
-	"GAME_OVER": "",
 	
 	# Level Scenes
-	# "LEVEL_01": "",
-	# "LEVEL_02": "",
-	# "LEVEL_03": "",
 	
 	# Special Scenes
 	# "CREDITS": "",
-	# "TUTORIAL": "",
+}
+
+
+# ============================================================================
+# MUSIC REGISTRY (using UIDs)
+# ============================================================================
+
+## Dictionary of music tracks
+## Format: "TRACK_NAME": "uid://track_uid_here"
+const MUSIC := {
+	# Menu Music
+	"MAIN_MENU": "",
+	
+	# Game Music
+	"GAME_BASE": "",
+	"GAME_ACTION": "",
+}
+
+## Audio bus names
+const AUDIO_BUSES := {
+	"MASTER": "Master",
+	"MUSIC": "Music",
+	"SFX": "SFX",
 }
 
 
@@ -37,7 +53,7 @@ const SCENES := {
 # ============================================================================
 
 # ============================================================================
-# HELPER METHODS
+# HELPER METHODS - SCENES
 # ============================================================================
 
 ## Get a scene UID by name
@@ -70,6 +86,39 @@ func get_all_scene_names() -> Array[String]:
 
 
 # ============================================================================
+# HELPER METHODS - MUSIC
+# ============================================================================
+
+## Get a music track UID by name
+## @param track_name: String - The track name (e.g., "LEVEL_01")
+## @return String - The UID of the track, or empty string if not found
+func get_music(track_name: String) -> String:
+	if MUSIC.has(track_name):
+		if MUSIC[track_name].is_empty():
+			push_warning("[Constants] Music '%s' has no UID assigned yet" % track_name)
+		return MUSIC[track_name]
+	else:
+		push_error("[Constants] Music track '%s' not found" % track_name)
+		return ""
+
+
+## Check if a music track exists
+## @param track_name: String - The track name to check
+## @return bool - True if the track exists
+func has_music(track_name: String) -> bool:
+	return MUSIC.has(track_name) and not MUSIC[track_name].is_empty()
+
+
+## Get all music track names
+## @return Array[String] - Array of track names
+func get_all_music_tracks() -> Array[String]:
+	var tracks: Array[String] = []
+	for key in MUSIC.keys():
+		tracks.append(key)
+	return tracks
+
+
+# ============================================================================
 # LIFECYCLE
 # ============================================================================
 
@@ -77,10 +126,19 @@ func _ready() -> void:
 	print("[Constants] Initialized")
 	
 	# Validate that all scenes have UIDs assigned
-	var missing_uids: Array[String] = []
+	var missing_scene_uids: Array[String] = []
 	for scene_name in SCENES:
 		if SCENES[scene_name].is_empty():
-			missing_uids.append(scene_name)
+			missing_scene_uids.append(scene_name)
 	
-	if missing_uids.size() > 0:
-		push_warning("[Constants] The following scenes are missing UIDs: %s" % str(missing_uids))
+	if missing_scene_uids.size() > 0:
+		push_warning("[Constants] The following scenes are missing UIDs: %s" % str(missing_scene_uids))
+	
+	# Validate that music tracks have UIDs assigned
+	var missing_music_uids: Array[String] = []
+	for track_name in MUSIC:
+		if MUSIC[track_name].is_empty():
+			missing_music_uids.append(track_name)
+	
+	if missing_music_uids.size() > 0:
+		push_warning("[Constants] The following music tracks are missing UIDs: %s" % str(missing_music_uids))
