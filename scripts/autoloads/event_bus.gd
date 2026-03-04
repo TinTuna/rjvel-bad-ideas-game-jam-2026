@@ -29,20 +29,6 @@ signal game_ended()
 # PLAYER EVENTS
 # ============================================================================
 
-## Emitted when the player takes damage
-## @param damage: int - Amount of damage taken
-signal player_damaged(damage: int)
-
-## Emitted when the player dies
-signal player_died()
-
-## Emitted when the player respawns
-signal player_respawned()
-
-## Emitted when player health changes
-## @param current_health: int - Current health value
-## @param max_health: int - Maximum health value
-signal player_health_changed(current_health: int, max_health: int)
 
 
 # ============================================================================
@@ -56,6 +42,30 @@ signal level_loaded(level_name: String)
 ## Emitted when transitioning to a new scene
 ## @param scene_path: String - Path to the scene
 signal scene_transition_requested(scene_path: String)
+
+# ============================================================================
+# TIME/CALENDAR EVENTS
+# ============================================================================
+
+## Emitted every game hour
+## @param hour: int - Current hour (0-23)
+signal time_hour_changed(hour: int)
+
+## Emitted when a new day starts
+## @param day_of_week: int - Day of week (0-6, 0=Monday)
+## @param total_days: int - Total days elapsed since game start
+signal time_day_changed(day_of_week: int, total_days: int)
+
+## Emitted when dusk begins (10 PM / 22:00)
+signal time_dusk_started()
+
+## Emitted when dawn begins (4 AM / 04:00)
+signal time_dawn_started()
+
+## Emitted when transitioning between day/night periods
+## @param is_night: bool - True if now nighttime (22:00-04:00)
+signal time_period_changed(is_night: bool)
+
 
 # ============================================================================
 # MUSIC EVENTS
