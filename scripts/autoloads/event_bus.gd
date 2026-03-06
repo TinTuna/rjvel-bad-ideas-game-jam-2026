@@ -29,6 +29,21 @@ signal game_ended()
 # PLAYER EVENTS
 # ============================================================================
 
+## Emitted when player stress level changes
+## @param new_stress: int - New stress level (0-3)
+signal player_stress_changed(new_stress: int)
+
+## Emitted when player loses stress (touched by human)
+## @param amount: int - Amount of stress lost (typically 1)
+signal player_stress_lost(amount: int)
+
+## Emitted when player stress is fully restored (rested in Cat Box)
+signal player_stress_restored()
+
+## Emitted when a new day/level starts
+## @param day_number: int - Day of week (0-6, 0=Monday)
+signal day_started(day_number: int)
+
 
 
 # ============================================================================
@@ -44,27 +59,10 @@ signal level_loaded(level_name: String)
 signal scene_transition_requested(scene_path: String)
 
 # ============================================================================
-# TIME/CALENDAR EVENTS
+# DAY EVENTS (Discrete Day System)
 # ============================================================================
-
-## Emitted every game hour
-## @param hour: int - Current hour (0-23)
-signal time_hour_changed(hour: int)
-
-## Emitted when a new day starts
-## @param day_of_week: int - Day of week (0-6, 0=Monday)
-## @param total_days: int - Total days elapsed since game start
-signal time_day_changed(day_of_week: int, total_days: int)
-
-## Emitted when dusk begins (10 PM / 22:00)
-signal time_dusk_started()
-
-## Emitted when dawn begins (4 AM / 04:00)
-signal time_dawn_started()
-
-## Emitted when transitioning between day/night periods
-## @param is_night: bool - True if now nighttime (22:00-04:00)
-signal time_period_changed(is_night: bool)
+# Note: day_started signal is defined in PLAYER EVENTS section above
+# Each day is a discrete level, no real-time hour/minute progression
 
 
 # ============================================================================

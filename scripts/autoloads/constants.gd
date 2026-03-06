@@ -19,6 +19,7 @@ const SCENES := {
     "MAIN_MENU": "uid://b4yqj8vx2kkxm",
     
     # Level Scenes
+    "TEST_LEVEL": "uid://5w8lf4uqeh2m",
     
     # Special Scenes
     # "CREDITS": "",
@@ -53,29 +54,22 @@ const AUDIO_BUSES := {
 # ============================================================================
 
 # ============================================================================
-# TIME SYSTEM CONSTANTS
+# DAY SYSTEM CONSTANTS
 # ============================================================================
 
-## Time progression configuration
-## 1 real second = 4 game minutes (1 day = 6 real minutes)
-const TIME := {
-    "SECONDS_PER_GAME_MINUTE": 0.25,  # 1 real second = 4 game minutes
-    "MINUTES_PER_HOUR": 60,
-    "HOURS_PER_DAY": 24,
-    "DAYS_PER_WEEK": 7,
-    "DUSK_HOUR": 22,  # 10 PM - Night begins
-    "DAWN_HOUR": 4,   # 4 AM - Day begins
-}
+## Total number of days in the game (6 days = Mon-Sat, Tutorial + 5 levels)
+const TOTAL_DAYS: int = 6
 
 ## Day of week names (0-6)
+## Maps day index to day name for display
 const DAY_NAMES := {
-    0: "Monday",
-    1: "Tuesday",
-    2: "Wednesday",
-    3: "Thursday",
-    4: "Friday",
-    5: "Saturday",
-    6: "Sunday",
+    0: "Monday",      # Tutorial day
+    1: "Tuesday",     # Day 2
+    2: "Wednesday",   # Day 3
+    3: "Thursday",    # Day 4
+    4: "Friday",      # Day 5
+    5: "Saturday",    # Day 6
+    6: "Sunday",      # Extra/unused
 }
 
 # ============================================================================

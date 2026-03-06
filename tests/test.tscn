@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://5w8lf4uqeh2m"]
+[gd_scene format=3 uid="uid://d1rty8b8d5w2j"]
 
 [ext_resource type="Script" uid="uid://dfhqj5uwt1myh" path="res://tests/test.gd" id="1_yggfj"]
-[ext_resource type="PackedScene" uid="uid://d25vdnwh7ugoy" path="res://scenes/entities/cat.tscn" id="2_eig8f"]
-[ext_resource type="PackedScene" uid="uid://bdu85yghtyw1n" path="res://scenes/entities/treat.tscn" id="3_7517i"]
+[ext_resource type="PackedScene" path="res://scenes/entities/cat.tscn" id="2_eig8f"]
+[ext_resource type="PackedScene" path="res://scenes/entities/treat.tscn" id="3_7517i"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="4_ry45r"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yggfj"]
 normal = Vector2(0, 1)
@@ -26,3 +27,5 @@ position = Vector2(946, 599)
 
 [node name="Cat" parent="." unique_id=1078620886 instance=ExtResource("2_eig8f")]
 position = Vector2(193, 392)
+
+[node name="HUD" parent="." unique_id=1587450405 instance=ExtResource("4_ry45r")]
