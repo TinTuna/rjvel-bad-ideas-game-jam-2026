@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d25vdnwh7ugoy"]
+
+[ext_resource type="Texture2D" uid="uid://b8oyhfxruwk1r" path="res://assets/sprites/characters/cat/cat.png" id="1_3jpsh"]
+[ext_resource type="Script" uid="uid://cbg3k4sd2xrh4" path="res://scripts/entities/cat.gd" id="1_oqat7"]
+[ext_resource type="Texture2D" uid="uid://bmwy3pd1k0fuc" path="res://assets/sprites/characters/cat/cat_jump.png" id="3_owwv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jpsh"]
+size = Vector2(116, 85)
+
+[node name="Cat" type="CharacterBody2D" unique_id=1078620886]
+script = ExtResource("1_oqat7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=490098153]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_3jpsh")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=493435977]
+texture = ExtResource("1_3jpsh")
+
+[node name="JumpSprite" type="Sprite2D" parent="." unique_id=1393882636]
+visible = false
+texture = ExtResource("3_owwv0")

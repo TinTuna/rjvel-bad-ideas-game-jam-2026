@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://5w8lf4uqeh2m"]
+
+[ext_resource type="Script" uid="uid://dfhqj5uwt1myh" path="res://tests/test.gd" id="1_yggfj"]
+[ext_resource type="PackedScene" uid="uid://d25vdnwh7ugoy" path="res://scenes/entities/cat.tscn" id="2_eig8f"]
+[ext_resource type="PackedScene" uid="uid://bdu85yghtyw1n" path="res://scenes/entities/treat.tscn" id="3_7517i"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yggfj"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eig8f"]
+
+[node name="Test" type="Node2D" unique_id=176675200]
+script = ExtResource("1_yggfj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=561058578]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1009641446]
+shape = SubResource("WorldBoundaryShape2D_yggfj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1711511127]
+position = Vector2(-2, 649)
+shape = SubResource("WorldBoundaryShape2D_eig8f")
+
+[node name="Treat" parent="." unique_id=150818051 instance=ExtResource("3_7517i")]
+position = Vector2(946, 599)
+
+[node name="Cat" parent="." unique_id=1078620886 instance=ExtResource("2_eig8f")]
+position = Vector2(193, 392)
