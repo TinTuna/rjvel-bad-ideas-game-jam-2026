@@ -1,31 +1,83 @@
 [gd_scene format=3 uid="uid://d1rty8b8d5w2j"]
 
 [ext_resource type="Script" uid="uid://dfhqj5uwt1myh" path="res://tests/test.gd" id="1_yggfj"]
-[ext_resource type="PackedScene" path="res://scenes/entities/cat.tscn" id="2_eig8f"]
-[ext_resource type="PackedScene" path="res://scenes/entities/treat.tscn" id="3_7517i"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="4_ry45r"]
+[ext_resource type="PackedScene" uid="uid://d25vdnwh7ugoy" path="res://scenes/entities/cat.tscn" id="2_eig8f"]
+[ext_resource type="Texture2D" uid="uid://bfts6vt4jopru" path="res://assets/sprites/environment/house.png" id="2_mm0ke"]
+[ext_resource type="PackedScene" uid="uid://bdu85yghtyw1n" path="res://scenes/entities/treat.tscn" id="3_7517i"]
+[ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="4_ry45r"]
+[ext_resource type="Script" uid="uid://cm24k76aypjk2" path="res://scripts/systems/navigation/navigation_graph.gd" id="5_uofsi"]
+[ext_resource type="PackedScene" uid="uid://c3v8yqj2wl0qt" path="res://scenes/systems/navigation/navigation_point.tscn" id="6_jenrn"]
+[ext_resource type="PackedScene" uid="uid://b8k7mqh2wvn0y" path="res://scenes/entities/family_members/mother.tscn" id="7_jenrn"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yggfj"]
 normal = Vector2(0, 1)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eig8f"]
-
 [node name="Test" type="Node2D" unique_id=176675200]
 script = ExtResource("1_yggfj")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=561058578]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2068904775]
+texture = ExtResource("2_mm0ke")
+centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1009641446]
+[node name="WorldBounds" type="StaticBody2D" parent="." unique_id=561058578]
+
+[node name="Top" type="CollisionShape2D" parent="WorldBounds" unique_id=1009641446]
+position = Vector2(0, 3)
 shape = SubResource("WorldBoundaryShape2D_yggfj")
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1711511127]
-position = Vector2(-2, 649)
-shape = SubResource("WorldBoundaryShape2D_eig8f")
+[node name="Bottom" type="CollisionShape2D" parent="WorldBounds" unique_id=2108088620]
+position = Vector2(0, 1036)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_yggfj")
+metadata/_edit_lock_ = true
 
 [node name="Treat" parent="." unique_id=150818051 instance=ExtResource("3_7517i")]
+visible = false
 position = Vector2(946, 599)
 
 [node name="Cat" parent="." unique_id=1078620886 instance=ExtResource("2_eig8f")]
 position = Vector2(193, 392)
 
+[node name="Camera2D" type="Camera2D" parent="Cat" unique_id=404039550]
+offset = Vector2(0, -150)
+position_smoothing_enabled = true
+
 [node name="HUD" parent="." unique_id=1587450405 instance=ExtResource("4_ry45r")]
+visible = false
+
+[node name="NavigationGraph" type="Node2D" parent="." unique_id=1133468239]
+script = ExtResource("5_uofsi")
+
+[node name="Living_Room" parent="NavigationGraph" unique_id=962736779 instance=ExtResource("6_jenrn")]
+position = Vector2(305, 989)
+point_type = 1
+connections = Array[NodePath]([NodePath("../Ground_To_First_Stairs")])
+metadata/_edit_lock_ = true
+
+[node name="Kitchen" parent="NavigationGraph" unique_id=1482635549 instance=ExtResource("6_jenrn")]
+position = Vector2(1765, 989)
+point_type = 2
+connections = Array[NodePath]([NodePath("../Ground_To_First_Stairs")])
+metadata/_edit_lock_ = true
+
+[node name="Ground_To_First_Stairs" parent="NavigationGraph" unique_id=1851204972 instance=ExtResource("6_jenrn")]
+position = Vector2(1328, 989)
+point_type = 3
+connections = Array[NodePath]([NodePath("../Living_Room"), NodePath("../Kitchen"), NodePath("../First_To_Ground_Stairs")])
+metadata/_edit_lock_ = true
+
+[node name="First_To_Ground_Stairs" parent="NavigationGraph" unique_id=1213853838 instance=ExtResource("6_jenrn")]
+position = Vector2(753, 637)
+point_type = 3
+connections = Array[NodePath]([NodePath("../Ground_To_First_Stairs"), NodePath("../First_Bedroom")])
+metadata/_edit_lock_ = true
+
+[node name="First_Bedroom" parent="NavigationGraph" unique_id=889766224 instance=ExtResource("6_jenrn")]
+position = Vector2(1765, 637)
+point_type = 2
+connections = Array[NodePath]([NodePath("../First_To_Ground_Stairs")])
+metadata/_edit_lock_ = true
+
+[node name="Mother" parent="." unique_id=1078002835 instance=ExtResource("7_jenrn")]
+position = Vector2(302, 987)

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dmrp7gyqtfsdl"]
+
+[ext_resource type="Script" uid="uid://dplxp6p2q28q" path="res://tests/test_navigation.gd" id="1_test_nav"]
+[ext_resource type="Script" uid="uid://cm24k76aypjk2" path="res://scripts/systems/navigation/navigation_graph.gd" id="2_nav_graph"]
+[ext_resource type="PackedScene" uid="uid://b8k7mqh2wvn0y" path="res://scenes/entities/family_members/mother.tscn" id="3_mother"]
+[ext_resource type="PackedScene" uid="uid://c3v8yqj2wl0qt" path="res://scenes/systems/navigation/navigation_point.tscn" id="4_nav_point"]
+
+[node name="TestNavigation" type="Node2D" unique_id=271178218]
+script = ExtResource("1_test_nav")
+
+[node name="NavigationGraph" type="Node2D" parent="." unique_id=1061265107]
+script = ExtResource("2_nav_graph")
+
+[node name="point_a" parent="NavigationGraph" unique_id=1172460774 instance=ExtResource("4_nav_point")]
+position = Vector2(200, 300)
+connections = Array[NodePath]([NodePath("../point_b"), NodePath("../point_c")])
+
+[node name="point_b" parent="NavigationGraph" unique_id=741465702 instance=ExtResource("4_nav_point")]
+position = Vector2(600, 300)
+connections = Array[NodePath]([NodePath("../point_a"), NodePath("../point_c")])
+
+[node name="point_c" parent="NavigationGraph" unique_id=35224417 instance=ExtResource("4_nav_point")]
+position = Vector2(400, 500)
+connections = Array[NodePath]([NodePath("../point_a"), NodePath("../point_b")])
+
+[node name="Mother" parent="." unique_id=1022816511 instance=ExtResource("3_mother")]
+position = Vector2(200, 300)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=857171610]
+position = Vector2(400, 350)

@@ -19,7 +19,7 @@ const SCENES := {
     "MAIN_MENU": "uid://b4yqj8vx2kkxm",
     
     # Level Scenes
-    "TEST_LEVEL": "uid://5w8lf4uqeh2m",
+    "TEST_LEVEL": "uid://d1rty8b8d5w2j",
     
     # Special Scenes
     # "CREDITS": "",
@@ -70,6 +70,16 @@ const DAY_NAMES := {
     4: "Friday",      # Day 5
     5: "Saturday",    # Day 6
     6: "Sunday",      # Extra/unused
+}
+
+# ============================================================================
+# NPC NAVIGATION CONSTANTS
+# ============================================================================
+
+## Default patrol routes for family members
+## Format: "NPC_NAME": [array of navigation point names]
+const NPC_PATROL_ROUTES := {
+    "MOTHER": ["Living_Room", "Ground_Floor_Stairs", "First_Floor_StairsTop", "First_Bedroom", "First_Floor_StairsTop", "Ground_Floor_Stairs", "Kitchen", "Ground_Floor_Stairs"],
 }
 
 # ============================================================================
