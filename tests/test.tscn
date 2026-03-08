@@ -50,34 +50,34 @@ visible = false
 script = ExtResource("5_uofsi")
 
 [node name="Living_Room" parent="NavigationGraph" unique_id=962736779 instance=ExtResource("6_jenrn")]
-position = Vector2(305, 989)
+position = Vector2(305, 1035)
 point_type = 1
 connections = Array[NodePath]([NodePath("../Ground_To_First_Stairs")])
 metadata/_edit_lock_ = true
 
 [node name="Kitchen" parent="NavigationGraph" unique_id=1482635549 instance=ExtResource("6_jenrn")]
-position = Vector2(1765, 989)
+position = Vector2(1765, 1035)
 point_type = 2
 connections = Array[NodePath]([NodePath("../Ground_To_First_Stairs")])
 metadata/_edit_lock_ = true
 
 [node name="Ground_To_First_Stairs" parent="NavigationGraph" unique_id=1851204972 instance=ExtResource("6_jenrn")]
-position = Vector2(1328, 989)
+position = Vector2(1295, 1035)
 point_type = 3
 connections = Array[NodePath]([NodePath("../Living_Room"), NodePath("../Kitchen"), NodePath("../First_To_Ground_Stairs")])
 metadata/_edit_lock_ = true
 
 [node name="First_To_Ground_Stairs" parent="NavigationGraph" unique_id=1213853838 instance=ExtResource("6_jenrn")]
-position = Vector2(753, 637)
+position = Vector2(821, 689)
 point_type = 3
 connections = Array[NodePath]([NodePath("../Ground_To_First_Stairs"), NodePath("../First_Bedroom")])
 metadata/_edit_lock_ = true
 
 [node name="First_Bedroom" parent="NavigationGraph" unique_id=889766224 instance=ExtResource("6_jenrn")]
-position = Vector2(1765, 637)
+position = Vector2(1765, 689)
 point_type = 2
 connections = Array[NodePath]([NodePath("../First_To_Ground_Stairs")])
 metadata/_edit_lock_ = true
 
 [node name="Mother" parent="." unique_id=1078002835 instance=ExtResource("7_jenrn")]
-position = Vector2(302, 987)
+position = Vector2(302, 1035)

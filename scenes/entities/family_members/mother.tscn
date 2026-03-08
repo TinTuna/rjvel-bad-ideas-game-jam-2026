@@ -1,9 +1,71 @@
 [gd_scene format=3 uid="uid://b8k7mqh2wvn0y"]
 
 [ext_resource type="Script" uid="uid://dn5op50cmqiow" path="res://scripts/entities/ai/mother.gd" id="1_mother"]
+[ext_resource type="Texture2D" uid="uid://c3jy7h264wbjj" path="res://assets/sprites/characters/mother/standing_away.png" id="2_niwe8"]
+[ext_resource type="Texture2D" uid="uid://px60jdvc742r" path="res://assets/sprites/characters/mother/sitting.png" id="3_8fri3"]
+[ext_resource type="Texture2D" uid="uid://cegcg8u54fqox" path="res://assets/sprites/characters/mother/standing.png" id="4_a56yy"]
+[ext_resource type="Texture2D" uid="uid://cox3w3qsel55e" path="res://assets/sprites/characters/mother/walking.png" id="5_4s62v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mother"]
 size = Vector2(40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phtog"]
+atlas = ExtResource("2_niwe8")
+region = Rect2(0, 0, 200, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfs0x"]
+atlas = ExtResource("3_8fri3")
+region = Rect2(0, 0, 200, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7auuq"]
+atlas = ExtResource("4_a56yy")
+region = Rect2(0, 0, 200, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siey0"]
+atlas = ExtResource("5_4s62v")
+region = Rect2(0, 0, 200, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwaf1"]
+atlas = ExtResource("5_4s62v")
+region = Rect2(200, 0, 200, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vu8lt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phtog")
+}],
+"loop": true,
+"name": &"interacting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfs0x")
+}],
+"loop": true,
+"name": &"sitting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7auuq")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siey0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwaf1")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
 
 [node name="Mother" type="CharacterBody2D" unique_id=1538733336]
 collision_layer = 0
@@ -13,12 +75,13 @@ script = ExtResource("1_mother")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=858058414]
 shape = SubResource("RectangleShape2D_mother")
 
-[node name="Sprite" type="ColorRect" parent="." unique_id=1024672870]
-offset_left = -20.0
-offset_top = -30.0
-offset_right = 20.0
-offset_bottom = 30.0
-color = Color(0.6, 0.3, 0.3, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2080563004]
+position = Vector2(0, -112.5)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_vu8lt")
+animation = &"walking"
+frame = 1
+frame_progress = 0.21284518
 
 [node name="Label" type="Label" parent="." unique_id=349667500]
 offset_left = -30.0

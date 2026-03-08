@@ -19,6 +19,12 @@ extends CharacterBody2D
 @export var debug_draw: bool = true
 
 # ============================================================================
+# NODES
+# ============================================================================
+
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+# ============================================================================
 # STATE
 # ============================================================================
 
@@ -81,6 +87,7 @@ func _physics_process(delta: float) -> void:
 				continue_patrol()
 	
 	move_and_slide()
+	update_animation()
 	
 	if debug_draw:
 		queue_redraw()
@@ -248,6 +255,34 @@ func on_cat_touched(cat: Node2D) -> void:
 	EventBus.player_stress_lost.emit(1)
 	
 	# Add animation
+
+
+# ============================================================================
+# ANIMATION
+# ============================================================================
+
+func update_animation() -> void:
+	if not animated_sprite:
+		return
+	
+	match current_state:
+		State.IDLE:
+			animated_sprite.play("standing")
+		
+		State.MOVING_TO_TARGET:
+			animated_sprite.play("walking")
+			# Flip sprite based on horizontal movement direction
+			if velocity.x != 0:
+				animated_sprite.flip_h = velocity.x < 0
+		
+		State.WAITING:
+			animated_sprite.play("standing")
+		
+		State.INTERACTING_SITTING:
+			animated_sprite.play("sitting")
+		
+		State.INTERACTING_STANDING:
+			animated_sprite.play("interacting")
 
 
 # ============================================================================
