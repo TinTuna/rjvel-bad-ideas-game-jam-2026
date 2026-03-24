@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://14y7r3dw0f6c"]
+
+[ext_resource type="Texture2D" uid="uid://cdgr0t3vobhbu" path="res://assets/sprites/environment/Living Room/boxie_s_home_cropped.png" id="1_6qeuk"]
+[ext_resource type="Script" uid="uid://cs07miver514s" path="res://scripts/entities/box.gd" id="1_84kud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84kud"]
+size = Vector2(581, 423)
+
+[node name="Box" type="Area2D" unique_id=1788498224]
+script = ExtResource("1_84kud")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2057102172]
+texture = ExtResource("1_6qeuk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1901921784]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_84kud")

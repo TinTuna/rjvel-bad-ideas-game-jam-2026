@@ -52,6 +52,13 @@ signal cat_jumped()
 ## @param None
 signal cat_pushed_back()
 
+## Emitted when player enters Cat Box
+## @param None
+signal player_entered_box()
+
+## Emitted when player leaves Cat Box
+## @param None
+signal player_left_box()
 
 # ============================================================================
 # LEVEL/SCENE EVENTS
