@@ -10,6 +10,7 @@ size = Vector2(116, 85)
 [node name="Cat" type="CharacterBody2D" unique_id=1078620886]
 scale = Vector2(2, 2)
 script = ExtResource("1_oqat7")
+JUMP_SPEED = -700.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=490098153]
 position = Vector2(0, -42.5)

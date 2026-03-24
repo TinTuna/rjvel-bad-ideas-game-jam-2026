@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const JUMP_SPEED: float = -500
-const MOVEMENT_SPEED: float = 500
-const ACCELERATION: float = 40
+@export var JUMP_SPEED: float = -500
+@export var MOVEMENT_SPEED: float = 500
+@export var ACCELERATION: float = 40
 @onready var sprite: Sprite2D = $Sprite
 @onready var jump_sprite: Sprite2D = $JumpSprite
 

@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://be5205iv01b54" path="res://assets/sprites/environment/Entry/stairs.png" id="36_est"]
 [ext_resource type="Texture2D" uid="uid://cqav5tkked88o" path="res://assets/sprites/environment/Entry/table.png" id="37_etb"]
 [ext_resource type="Texture2D" uid="uid://cw02gjmv5vnyq" path="res://assets/sprites/environment/Entry/picture frames.png" id="38_epf"]
+[ext_resource type="Texture2D" uid="uid://ga5fwkjgujd2" path="res://assets/sprites/environment/Room_divider.png" id="39_divider"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_floor"]
 normal = Vector2(0, 1)
@@ -91,6 +92,12 @@ centered = false
 texture = ExtResource("19_km")
 centered = false
 
+[node name="Divider_Kitchen_LivingRoom" type="Sprite2D" parent="."]
+position = Vector2(1795, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("39_divider")
+centered = false
+
 [node name="LivingRoom" type="Node2D" parent="." unique_id=1465782268]
 position = Vector2(1920, 0)
 scale = Vector2(0.5, 0.5)
@@ -145,6 +152,12 @@ centered = false
 
 [node name="Vase" type="Sprite2D" parent="LivingRoom" unique_id=1795565281]
 texture = ExtResource("32_lv")
+centered = false
+
+[node name="Divider_LivingRoom_Entry" type="Sprite2D" parent="."]
+position = Vector2(3715, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("39_divider")
 centered = false
 
 [node name="Entry" type="Node2D" parent="." unique_id=861521772]
