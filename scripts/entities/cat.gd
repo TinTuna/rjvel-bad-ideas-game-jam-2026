@@ -3,8 +3,9 @@ extends CharacterBody2D
 @export var JUMP_SPEED: float = -500
 @export var MOVEMENT_SPEED: float = 500
 @export var ACCELERATION: float = 40
-@onready var sprite: Sprite2D = $Sprite
-@onready var jump_sprite: Sprite2D = $JumpSprite
+@onready var sprite: Sprite2D = $Area/Sprite
+@onready var jump_sprite: Sprite2D = $Area/JumpSprite
+@onready var area: Area2D = $Area
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,3 +32,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0.0, ACCELERATION)
 		
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("interact") and area.has_overlapping_areas():
+		var object_to_interact = area.get_overlapping_areas()[0]
+		if object_to_interact is Interactable:
+			object_to_interact.interact()

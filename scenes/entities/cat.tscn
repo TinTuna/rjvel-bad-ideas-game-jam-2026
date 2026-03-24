@@ -12,15 +12,21 @@ scale = Vector2(2, 2)
 script = ExtResource("1_oqat7")
 JUMP_SPEED = -700.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=490098153]
-position = Vector2(0, -42.5)
-shape = SubResource("RectangleShape2D_3jpsh")
+[node name="Area" type="Area2D" parent="." unique_id=214211046]
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=493435977]
+[node name="Sprite" type="Sprite2D" parent="Area" unique_id=493435977]
 position = Vector2(0, -42.5)
 texture = ExtResource("1_3jpsh")
 
-[node name="JumpSprite" type="Sprite2D" parent="." unique_id=1393882636]
+[node name="JumpSprite" type="Sprite2D" parent="Area" unique_id=1393882636]
 visible = false
 position = Vector2(0, -42.5)
 texture = ExtResource("3_owwv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area" unique_id=1996569274]
+position = Vector2(0, -42.5)
+shape = SubResource("RectangleShape2D_3jpsh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=490098153]
+position = Vector2(0, -42.5)
+shape = SubResource("RectangleShape2D_3jpsh")
