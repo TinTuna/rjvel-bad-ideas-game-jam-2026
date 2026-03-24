@@ -80,7 +80,7 @@ const DAY_NAMES := {
 ## Default patrol routes for family members
 ## Format: "NPC_NAME": [array of navigation point names]
 const NPC_PATROL_ROUTES := {
-    "MOTHER": ["Kitchen", "Living_Room", "Entry", "Living_Room"],
+    "MOTHER": ["Entry"],
 }
 
 # ============================================================================
