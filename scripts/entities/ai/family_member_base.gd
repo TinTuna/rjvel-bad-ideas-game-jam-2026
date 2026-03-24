@@ -264,7 +264,6 @@ func _on_area_body_entered(body: Node2D) -> void:
 
 func on_cat_touched(cat: Node2D) -> void:
 	print("Cat touched!")
-	EventBus.player_stress_lost.emit(1)
 	cat.push_back(global_position)
 
 

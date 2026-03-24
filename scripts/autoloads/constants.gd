@@ -17,11 +17,16 @@ extends Node
 const SCENES := {
     # UI Scenes
     "MAIN_MENU": "uid://b4yqj8vx2kkxm",
-    
+
+    # Cutscene / Flow Scenes
+    "INTRO":     "uid://ckibki5wxkbmj",
+    "OUTRO":     "uid://bpaibl03r5m3y",
+    "DAY_RECAP": "uid://dyw6fdsolwcim",
+
     # Level Scenes
     "TEST_LEVEL": "uid://d1rty8b8d5w2j",
-    "LEVEL_0": "res://scenes/levels/level_0.tscn",
-    
+    "LEVEL_0": "uid://b0t4qvl2dtmwh",
+
     # Special Scenes
     # "CREDITS": "",
 }

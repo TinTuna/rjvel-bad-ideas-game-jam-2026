@@ -29,17 +29,6 @@ signal game_ended()
 # PLAYER EVENTS
 # ============================================================================
 
-## Emitted when player stress level changes
-## @param new_stress: int - New stress level (0-3)
-signal player_stress_changed(new_stress: int)
-
-## Emitted when player loses stress (touched by human)
-## @param amount: int - Amount of stress lost (typically 1)
-signal player_stress_lost(amount: int)
-
-## Emitted when player stress is fully restored (rested in Cat Box)
-signal player_stress_restored()
-
 ## Emitted when a new day/level starts
 ## @param day_number: int - Day of week (0-6, 0=Monday)
 signal day_started(day_number: int)

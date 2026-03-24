@@ -1,10 +1,10 @@
 extends Control
 
 func _on_play_button_pressed() -> void:
-    if Constants.has_scene("TEST_LEVEL"):
-        SceneLoader.load_scene(Constants.SCENES.TEST_LEVEL)
+    if Constants.has_scene("INTRO"):
+        SceneLoader.load_scene(Constants.SCENES.INTRO)
     else:
-        push_warning("[MainMenu] LEVEL_01 scene not configured in Constants")
+        push_warning("[MainMenu] INTRO scene not configured in Constants")
 
 
 func _on_settings_button_pressed() -> void:
