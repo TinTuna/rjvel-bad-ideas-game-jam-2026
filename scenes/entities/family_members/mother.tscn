@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cegcg8u54fqox" path="res://assets/sprites/characters/mother/standing.png" id="4_a56yy"]
 [ext_resource type="Texture2D" uid="uid://cox3w3qsel55e" path="res://assets/sprites/characters/mother/walking.png" id="5_4s62v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mother"]
-size = Vector2(40, 60)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_phtog"]
 atlas = ExtResource("2_niwe8")
 region = Rect2(0, 0, 200, 300)
@@ -67,13 +64,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mother"]
+size = Vector2(164, 693)
+
 [node name="Mother" type="CharacterBody2D" unique_id=1538733336]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_mother")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=858058414]
-shape = SubResource("RectangleShape2D_mother")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2080563004]
 position = Vector2(0, -375)
@@ -96,4 +93,5 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1218637782]
+position = Vector2(-31, -316.5)
 shape = SubResource("RectangleShape2D_mother")

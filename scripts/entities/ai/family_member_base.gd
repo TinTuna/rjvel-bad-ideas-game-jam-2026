@@ -56,17 +56,22 @@ var wait_timer: float = 0.0
 func _ready() -> void:
 	add_to_group("family_members")
 	current_floor = starting_floor
-	
+
+	# Wire Area2D to detect the cat
+	var area: Area2D = $Area2D
+	area.collision_mask = 1
+	area.body_entered.connect(_on_area_body_entered)
+
 	# Find navigation graph
 	await get_tree().process_frame  # Wait for graph to initialize
 	navigation_graph = get_tree().get_first_node_in_group("navigation_graph")
-	
+
 	if not navigation_graph:
 		push_error("[%s] No NavigationGraph found!" % character_name)
 		return
-	
+
 	print("[%s] Initialized on floor %d" % [character_name, current_floor])
-	
+
 	# Start patrol if enabled
 	if auto_start_patrol and patrol_points.size() > 0:
 		call_deferred("start_patrol")
@@ -247,14 +252,15 @@ func continue_patrol() -> void:
 # INTERACTION
 # ============================================================================
 
+func _on_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("cat"):
+		on_cat_touched(body)
+
+
 func on_cat_touched(cat: Node2D) -> void:
-	# Called when cat collides with this NPC
 	print("Cat touched!")
-	
-	# Reduce cat stress
 	EventBus.player_stress_lost.emit(1)
-	
-	# Add animation
+	cat.push_back(global_position)
 
 
 # ============================================================================

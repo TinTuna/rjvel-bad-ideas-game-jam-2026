@@ -19,11 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://c506jmqby23nx" path="res://assets/sprites/environment/Living Room/wall and floor.png" id="20_lw"]
 [ext_resource type="Texture2D" uid="uid://d4iadhjbfld8q" path="res://assets/sprites/environment/Living Room/couch.png" id="21_lco"]
 [ext_resource type="Texture2D" uid="uid://dh11871o2yuc" path="res://assets/sprites/environment/Living Room/coffee table.png" id="22_lct"]
+[ext_resource type="PackedScene" path="res://scenes/entities/glass.tscn" id="23_3kux2"]
 [ext_resource type="Texture2D" uid="uid://bo4qi3seuuq2q" path="res://assets/sprites/environment/Living Room/bookshelf.png" id="23_lbs"]
 [ext_resource type="Texture2D" uid="uid://cdgr0t3vobhbu" path="res://assets/sprites/environment/Living Room/boxie_s_home_cropped.png" id="24_3kux2"]
 [ext_resource type="Texture2D" uid="uid://bf7wc1leibvhi" path="res://assets/sprites/environment/Living Room/lamp.png" id="24_ll"]
 [ext_resource type="Texture2D" uid="uid://bh01718pmlvnc" path="res://assets/sprites/environment/Living Room/window.png" id="25_lwin"]
-[ext_resource type="Texture2D" uid="uid://pl8ml38ci1j1" path="res://assets/sprites/environment/Living Room/glass.png" id="26_lg"]
 [ext_resource type="Texture2D" uid="uid://1bnstdux1v2c" path="res://assets/sprites/environment/Living Room/books and bags.png" id="28_lbb"]
 [ext_resource type="Texture2D" uid="uid://17666aoee7vj" path="res://assets/sprites/environment/Living Room/books.png" id="29_lbk"]
 [ext_resource type="Texture2D" uid="uid://clni7gkp6ma4s" path="res://assets/sprites/environment/Living Room/photo 1.png" id="30_lp1"]
@@ -203,9 +203,8 @@ position = Vector2(1516, 1650)
 shape = SubResource("RectangleShape2D_gngue")
 one_way_collision = true
 
-[node name="Glass" type="Sprite2D" parent="LivingRoom" unique_id=1136052465]
-texture = ExtResource("26_lg")
-centered = false
+[node name="Area2D" parent="LivingRoom" unique_id=2087202024 instance=ExtResource("23_3kux2")]
+position = Vector2(1854, 1506)
 
 [node name="BoxiesHome" type="Sprite2D" parent="LivingRoom" unique_id=1863341082]
 position = Vector2(2314, 1540)
