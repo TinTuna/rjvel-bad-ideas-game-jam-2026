@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="4_ry45r"]
 [ext_resource type="Script" uid="uid://cm24k76aypjk2" path="res://scripts/systems/navigation/navigation_graph.gd" id="5_uofsi"]
 [ext_resource type="PackedScene" uid="uid://c3v8yqj2wl0qt" path="res://scenes/systems/navigation/navigation_point.tscn" id="6_jenrn"]
-[ext_resource type="PackedScene" uid="uid://b8k7mqh2wvn0y" path="res://scenes/entities/family_members/mother.tscn" id="7_jenrn"]
-[ext_resource type="PackedScene" uid="uid://ck5e5srygdii4" path="res://scenes/entities/glass.tscn" id="9_ymr3d"]
+[ext_resource type="PackedScene" path="res://scenes/entities/glass.tscn" id="9_ymr3d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yggfj"]
 normal = Vector2(0, 1)
@@ -74,9 +73,6 @@ position = Vector2(1765, 689)
 point_type = 2
 connections = Array[NodePath]([NodePath("../First_To_Ground_Stairs")])
 metadata/_edit_lock_ = true
-
-[node name="Mother" parent="." unique_id=1078002835 instance=ExtResource("7_jenrn")]
-position = Vector2(302, 1035)
 
 [node name="Glass" parent="." unique_id=2087202024 instance=ExtResource("9_ymr3d")]
 position = Vector2(535, 921)
