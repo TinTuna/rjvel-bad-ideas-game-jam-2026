@@ -213,6 +213,11 @@ func arrive_at_destination() -> void:
 	on_destination_reached()
 
 
+## Override in subclasses to react to level-specific events
+func react_to_event(_event_name: String) -> void:
+	pass
+
+
 ## Override this in subclasses for custom behavior
 func on_destination_reached() -> void:
 	# If patrolling, wait then continue

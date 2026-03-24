@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c506jmqby23nx" path="res://assets/sprites/environment/Living Room/wall and floor.png" id="20_lw"]
 [ext_resource type="Texture2D" uid="uid://d4iadhjbfld8q" path="res://assets/sprites/environment/Living Room/couch.png" id="21_lco"]
 [ext_resource type="Texture2D" uid="uid://dh11871o2yuc" path="res://assets/sprites/environment/Living Room/coffee table.png" id="22_lct"]
-[ext_resource type="PackedScene" path="res://scenes/entities/glass.tscn" id="23_3kux2"]
+[ext_resource type="PackedScene" uid="uid://ds7y6trsqucaq" path="res://scenes/entities/glass.tscn" id="23_3kux2"]
 [ext_resource type="Texture2D" uid="uid://bo4qi3seuuq2q" path="res://assets/sprites/environment/Living Room/bookshelf.png" id="23_lbs"]
 [ext_resource type="Texture2D" uid="uid://cdgr0t3vobhbu" path="res://assets/sprites/environment/Living Room/boxie_s_home_cropped.png" id="24_3kux2"]
 [ext_resource type="Texture2D" uid="uid://bf7wc1leibvhi" path="res://assets/sprites/environment/Living Room/lamp.png" id="24_ll"]
@@ -36,6 +36,8 @@
 [ext_resource type="Texture2D" uid="uid://cqav5tkked88o" path="res://assets/sprites/environment/Entry/table.png" id="37_etb"]
 [ext_resource type="Texture2D" uid="uid://cw02gjmv5vnyq" path="res://assets/sprites/environment/Entry/picture frames.png" id="38_epf"]
 [ext_resource type="Texture2D" uid="uid://ga5fwkjgujd2" path="res://assets/sprites/environment/Room_divider.png" id="39_divider"]
+[ext_resource type="Script" uid="uid://byy1rhnseo0p" path="res://scripts/systems/window_hint.gd" id="40_whscript"]
+[ext_resource type="Script" uid="uid://b6ffmtyygvy4l" path="res://scripts/systems/game_camera.gd" id="41_gamecam"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kux2"]
 size = Vector2(772, 84)
@@ -57,6 +59,9 @@ size = Vector2(20, 4000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwall"]
 size = Vector2(20, 4000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whtrigger"]
+size = Vector2(310, 40)
 
 [node name="Level_0" type="Node2D" unique_id=949364802]
 script = ExtResource("1_script")
@@ -203,7 +208,7 @@ position = Vector2(1516, 1650)
 shape = SubResource("RectangleShape2D_gngue")
 one_way_collision = true
 
-[node name="Area2D" parent="LivingRoom" unique_id=2087202024 instance=ExtResource("23_3kux2")]
+[node name="Glass" parent="LivingRoom" unique_id=2087202024 instance=ExtResource("23_3kux2")]
 position = Vector2(1854, 1506)
 
 [node name="BoxiesHome" type="Sprite2D" parent="LivingRoom" unique_id=1863341082]
@@ -267,9 +272,9 @@ shape = SubResource("RectangleShape2D_rwall")
 [node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("2_cat")]
 position = Vector2(3168, 980)
 
-[node name="Camera2D" type="Camera2D" parent="Cat" unique_id=699608536]
-offset = Vector2(0, -350)
-position_smoothing_enabled = true
+[node name="GameCamera" type="Camera2D" parent="." unique_id=917904922]
+position = Vector2(3168, 630)
+script = ExtResource("41_gamecam")
 
 [node name="NavigationGraph" type="Node2D" parent="." unique_id=533732458]
 script = ExtResource("5_navgraph")
@@ -290,3 +295,37 @@ connections = Array[NodePath]([NodePath("../Living_Room")])
 position = Vector2(4800, 1000)
 
 [node name="HUD" parent="." unique_id=412729266 instance=ExtResource("4_hud")]
+
+[node name="WindowHint" type="Node2D" parent="." unique_id=644859951]
+visible = false
+script = ExtResource("40_whscript")
+
+[node name="Trigger" type="Area2D" parent="WindowHint" unique_id=615112889]
+position = Vector2(3056, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindowHint/Trigger" unique_id=340919285]
+position = Vector2(11, 4)
+shape = SubResource("RectangleShape2D_whtrigger")
+
+[node name="CinematicCamera" type="Camera2D" parent="WindowHint" unique_id=1851023669]
+position = Vector2(3056, 275)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+
+[node name="HintOverlay" type="CanvasLayer" parent="." unique_id=1707851468]
+
+[node name="HintLabel" type="Label" parent="HintOverlay" unique_id=1485911852]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -40.0
+offset_right = 300.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Psst! Come outside and play!"
+horizontal_alignment = 1

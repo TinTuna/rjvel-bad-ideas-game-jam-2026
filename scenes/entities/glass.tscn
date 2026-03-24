@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ck5e5srygdii4"]
+[gd_scene format=3 uid="uid://ds7y6trsqucaq"]
 
 [ext_resource type="Script" uid="uid://dw4ium0oukgpx" path="res://scripts/entities/glass.gd" id="1_8lmwj"]
 [ext_resource type="Texture2D" uid="uid://pl8ml38ci1j1" path="res://assets/sprites/environment/Living Room/glass.png" id="2_tt2js"]
@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la146"]
 size = Vector2(177, 220)
 
-[node name="Area2D" type="Area2D" unique_id=2087202024]
+[node name="Glass" type="Area2D" unique_id=2087202024]
 script = ExtResource("1_8lmwj")
 
 [node name="Glass" type="Sprite2D" parent="." unique_id=1336008858]
