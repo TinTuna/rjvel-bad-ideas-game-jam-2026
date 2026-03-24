@@ -60,6 +60,14 @@ signal player_entered_box()
 ## @param None
 signal player_left_box()
 
+## Emitted when player picks up item
+## @param None
+signal player_picked_up_item(item: Node2D)
+
+## Emitted when player puts down item
+## @param None
+signal player_put_down_item(item: Node2D)
+
 # ============================================================================
 # LEVEL/SCENE EVENTS
 # ============================================================================
