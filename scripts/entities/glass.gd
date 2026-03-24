@@ -1,6 +1,6 @@
 extends Interactable
 
-@onready var glass: Sprite2D = $Glass
+@onready var glass: Sprite2D = $Sprite
 
 var is_down: bool = false
 
