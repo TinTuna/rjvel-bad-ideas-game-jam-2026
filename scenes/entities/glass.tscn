@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ck5e5srygdii4"]
+
+[ext_resource type="Script" uid="uid://dw4ium0oukgpx" path="res://scripts/entities/glass.gd" id="1_8lmwj"]
+[ext_resource type="Texture2D" uid="uid://dl61uixvsbo6w" path="res://assets/sprites/environment/glass.png" id="2_tt2js"]
+[ext_resource type="Texture2D" uid="uid://dn12ormshepij" path="res://assets/sprites/environment/glass_down.png" id="3_la146"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la146"]
+size = Vector2(57, 81)
+
+[node name="Area2D" type="Area2D" unique_id=2087202024]
+script = ExtResource("1_8lmwj")
+
+[node name="Glass" type="Sprite2D" parent="." unique_id=1336008858]
+texture = ExtResource("2_tt2js")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1664219156]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_la146")
+
+[node name="GlassDown" type="Sprite2D" parent="." unique_id=2128395554]
+visible = false
+texture = ExtResource("3_la146")
