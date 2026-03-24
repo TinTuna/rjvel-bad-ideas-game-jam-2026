@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var treat: Node2D = $Treat
 @onready var nav_graph: NavigationGraph = $NavigationGraph
 @onready var glass: Area2D = $Glass
 
@@ -15,7 +14,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and treat.has_overlapping_bodies():
-		treat.interact()
 	if Input.is_action_just_pressed("interact") and glass.has_overlapping_bodies():
 		glass.interact()

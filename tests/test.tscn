@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dfhqj5uwt1myh" path="res://tests/test.gd" id="1_yggfj"]
 [ext_resource type="PackedScene" uid="uid://d25vdnwh7ugoy" path="res://scenes/entities/cat.tscn" id="2_eig8f"]
 [ext_resource type="Texture2D" uid="uid://bfts6vt4jopru" path="res://assets/sprites/environment/house.png" id="2_mm0ke"]
-[ext_resource type="PackedScene" uid="uid://bdu85yghtyw1n" path="res://scenes/entities/treat.tscn" id="3_7517i"]
 [ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="4_ry45r"]
 [ext_resource type="Script" uid="uid://cm24k76aypjk2" path="res://scripts/systems/navigation/navigation_graph.gd" id="5_uofsi"]
 [ext_resource type="PackedScene" uid="uid://c3v8yqj2wl0qt" path="res://scenes/systems/navigation/navigation_point.tscn" id="6_jenrn"]
@@ -32,13 +31,6 @@ position = Vector2(0, 1036)
 rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_yggfj")
 metadata/_edit_lock_ = true
-
-[node name="Treat" parent="." unique_id=150818051 instance=ExtResource("3_7517i")]
-visible = false
-position = Vector2(946, 599)
-
-[node name="Glass" parent="." unique_id=2087202024 instance=ExtResource("9_ymr3d")]
-position = Vector2(595, 995)
 
 [node name="Cat" parent="." unique_id=1078620886 instance=ExtResource("2_eig8f")]
 position = Vector2(121, 983)
@@ -85,3 +77,6 @@ metadata/_edit_lock_ = true
 
 [node name="Mother" parent="." unique_id=1078002835 instance=ExtResource("7_jenrn")]
 position = Vector2(302, 1035)
+
+[node name="Glass" parent="." unique_id=2087202024 instance=ExtResource("9_ymr3d")]
+position = Vector2(535, 921)

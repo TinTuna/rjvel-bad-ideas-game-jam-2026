@@ -64,6 +64,11 @@ signal scene_transition_requested(scene_path: String)
 # Note: day_started signal is defined in PLAYER EVENTS section above
 # Each day is a discrete level, no real-time hour/minute progression
 
+## Emitted on day 1 when the glass is knocked down
+signal glass_knocked_down()
+
+## Emitted on day 1 when the glass is back up
+signal glass_reset()
 
 # ============================================================================
 # MUSIC EVENTS
