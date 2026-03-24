@@ -44,7 +44,11 @@ signal player_stress_restored()
 ## @param day_number: int - Day of week (0-6, 0=Monday)
 signal day_started(day_number: int)
 
+## Emitted when player enters Cat Box
+signal player_entered_box()
 
+## Emitted when player leaves Cat Box
+signal player_left_box()
 
 # ============================================================================
 # LEVEL/SCENE EVENTS
