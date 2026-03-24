@@ -1,6 +1,6 @@
 extends Interactable
 
-@onready var glass: Sprite2D = $Sprite
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var is_down: bool = false
 
@@ -16,12 +16,10 @@ func _process(delta: float) -> void:
 
 func interact() -> void:
 	if is_down == false:
-		glass.rotation = -80
-		glass.position.y += 60
 		is_down = true
+		animation_player.play("knock_glass_to_floor")
 		EventBus.glass_knocked_down.emit()
 
 func glass_reset() -> void:
 	is_down = false
-	glass.rotation = 0
-	glass.position.y -= 60
+	animation_player.play_backwards("knock_glass_to_floor")

@@ -85,8 +85,6 @@ func reset() -> void:
 
 func _connect_events() -> void:
 	EventBus.glass_knocked_down.connect(_on_glass_knocked_down)
-	EventBus.player_stress_lost.connect(_on_player_stress_lost)
-	EventBus.player_stress_restored.connect(_on_player_stress_restored)
 	EventBus.day_started.connect(_on_day_started)
 	EventBus.cat_jumped.connect(_on_cat_jumped)
 	EventBus.cat_pushed_back.connect(_on_cat_pushed_back)
@@ -94,15 +92,6 @@ func _connect_events() -> void:
 
 func _on_glass_knocked_down() -> void:
 	increment("glasses_knocked_over")
-
-
-func _on_player_stress_lost(_amount: int) -> void:
-	increment("times_caught")
-
-
-func _on_player_stress_restored() -> void:
-	increment("times_rested")
-
 
 func _on_day_started(_day_number: int) -> void:
 	increment("days_completed")

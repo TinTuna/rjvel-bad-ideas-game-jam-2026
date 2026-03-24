@@ -37,30 +37,6 @@ text = "MONDAY"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="StressMeter" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TopRow" unique_id=1544054642]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 10
-alignment = 2
-
-[node name="StressBolt1" type="ColorRect" parent="MarginContainer/VBoxContainer/TopRow/StressMeter" unique_id=1355338047]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-color = Color(1, 1, 0, 1)
-
-[node name="StressBolt2" type="ColorRect" parent="MarginContainer/VBoxContainer/TopRow/StressMeter" unique_id=1611833788]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-color = Color(1, 1, 0, 1)
-
-[node name="StressBolt3" type="ColorRect" parent="MarginContainer/VBoxContainer/TopRow/StressMeter" unique_id=1380583305]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-color = Color(1, 1, 0, 1)
-
 [node name="BottomSpacer" type="Control" parent="MarginContainer/VBoxContainer" unique_id=632065242]
 layout_mode = 2
 size_flags_vertical = 3
