@@ -31,6 +31,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_SPEED
 			sprite.hide()
 			jump_sprite.show()
+			EventBus.cat_jumped.emit()
 
 		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 			var new_velocity = velocity.x + ACCELERATION * Input.get_axis("move_left", "move_right")
@@ -56,3 +57,4 @@ func push_back(source_position: Vector2) -> void:
 	_push_timer = PUSH_DURATION
 	sprite.hide()
 	jump_sprite.show()
+	EventBus.cat_pushed_back.emit()

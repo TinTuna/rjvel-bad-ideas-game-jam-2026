@@ -44,6 +44,13 @@ signal player_stress_restored()
 ## @param day_number: int - Day of week (0-6, 0=Monday)
 signal day_started(day_number: int)
 
+## Emitted when the cat jumps
+## @param None
+signal cat_jumped()
+
+## Emitted when the cat is pushed back by an NPC
+## @param None
+signal cat_pushed_back()
 
 
 # ============================================================================

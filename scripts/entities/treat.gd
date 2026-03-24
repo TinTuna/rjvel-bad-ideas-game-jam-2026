@@ -11,5 +11,6 @@ func _process(delta: float) -> void:
 
 func interact() -> void:
 	print("Ate treat!")
+	StatsTracker.increment("treats_eaten")
 	set_process(false)
 	queue_free()
