@@ -3,31 +3,50 @@ extends CharacterBody2D
 @export var JUMP_SPEED: float = -500
 @export var MOVEMENT_SPEED: float = 500
 @export var ACCELERATION: float = 40
+@export var PUSH_SPEED: float = 600.0
+@export var PUSH_DURATION: float = 0.4
+
 @onready var sprite: Sprite2D = $Sprite
 @onready var jump_sprite: Sprite2D = $JumpSprite
 
-# Called when the node enters the scene tree for the first time.
+var _push_timer: float = 0.0
+
 func _ready() -> void:
-	pass # Replace with function body.
+	add_to_group("cat")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	velocity.y += ProjectSettings.get_setting("physics/2d/default_gravity") * delta
-	
-	if jump_sprite.visible and is_on_floor():
-		jump_sprite.hide()
-		sprite.show()
-	
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		velocity.y = JUMP_SPEED
-		sprite.hide()
-		jump_sprite.show()
-	
-	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-		var new_velocity = velocity.x + ACCELERATION * Input.get_axis("move_left","move_right")
-		velocity.x = clamp(new_velocity, -MOVEMENT_SPEED, MOVEMENT_SPEED)
-	elif velocity.x != 0:
-		velocity.x = move_toward(velocity.x, 0.0, ACCELERATION)
-		
+
+	if _push_timer > 0.0:
+		_push_timer -= delta
+	else:
+		if jump_sprite.visible and is_on_floor():
+			jump_sprite.hide()
+			sprite.show()
+
+		if is_on_floor() and Input.is_action_just_pressed("jump"):
+			velocity.y = JUMP_SPEED
+			sprite.hide()
+			jump_sprite.show()
+
+		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+			var new_velocity = velocity.x + ACCELERATION * Input.get_axis("move_left", "move_right")
+			velocity.x = clamp(new_velocity, -MOVEMENT_SPEED, MOVEMENT_SPEED)
+		elif velocity.x != 0:
+			velocity.x = move_toward(velocity.x, 0.0, ACCELERATION)
+
 	move_and_slide()
+
+
+## Called by an NPC when it touches the cat.
+## Launches the cat away from the NPC's position with a small upward jump.
+func push_back(source_position: Vector2) -> void:
+	var direction := signf(global_position.x - source_position.x)
+	if direction == 0.0:
+		direction = 1.0
+	velocity.x = direction * PUSH_SPEED
+	velocity.y = JUMP_SPEED
+	_push_timer = PUSH_DURATION
+	sprite.hide()
+	jump_sprite.show()
