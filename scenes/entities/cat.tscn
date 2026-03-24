@@ -8,15 +8,18 @@
 size = Vector2(116, 85)
 
 [node name="Cat" type="CharacterBody2D" unique_id=1078620886]
+scale = Vector2(2, 2)
 script = ExtResource("1_oqat7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=490098153]
-position = Vector2(0, -0.5)
+position = Vector2(0, -42.5)
 shape = SubResource("RectangleShape2D_3jpsh")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=493435977]
+position = Vector2(0, -42.5)
 texture = ExtResource("1_3jpsh")
 
 [node name="JumpSprite" type="Sprite2D" parent="." unique_id=1393882636]
 visible = false
+position = Vector2(0, -42.5)
 texture = ExtResource("3_owwv0")

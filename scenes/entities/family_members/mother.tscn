@@ -76,8 +76,8 @@ script = ExtResource("1_mother")
 shape = SubResource("RectangleShape2D_mother")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2080563004]
-position = Vector2(0, -112.5)
-scale = Vector2(0.75, 0.75)
+position = Vector2(0, -375)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_vu8lt")
 animation = &"walking"
 frame = 1

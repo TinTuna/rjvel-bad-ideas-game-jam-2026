@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://cfrqw8duyb8vk"]
 
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_x6y7k"]
+[ext_resource type="Script" uid="uid://de1epljrl3pb4" path="res://scripts/ui/hud.gd" id="1_x6y7k"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=1746633838]
 layer = 100
 script = ExtResource("1_x6y7k")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=192124400]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,14 +18,14 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=642367483]
 layout_mode = 2
 
-[node name="TopRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="TopRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1310876823]
 layout_mode = 2
 alignment = 1
 
-[node name="DayLabel" type="Label" parent="MarginContainer/VBoxContainer/TopRow"]
+[node name="DayLabel" type="Label" parent="MarginContainer/VBoxContainer/TopRow" unique_id=54020182]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -32,34 +33,34 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 28
 text = "MONDAY"
 
-[node name="CenterSpacer" type="Control" parent="MarginContainer/VBoxContainer/TopRow"]
+[node name="CenterSpacer" type="Control" parent="MarginContainer/VBoxContainer/TopRow" unique_id=650015928]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="StressMeter" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TopRow"]
+[node name="StressMeter" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TopRow" unique_id=1544054642]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="StressBolt1" type="ColorRect" parent="MarginContainer/VBoxContainer/TopRow/StressMeter"]
+[node name="StressBolt1" type="ColorRect" parent="MarginContainer/VBoxContainer/TopRow/StressMeter" unique_id=1355338047]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(1, 1, 0, 1)
 
-[node name="StressBolt2" type="ColorRect" parent="MarginContainer/VBoxContainer/TopRow/StressMeter"]
+[node name="StressBolt2" type="ColorRect" parent="MarginContainer/VBoxContainer/TopRow/StressMeter" unique_id=1611833788]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(1, 1, 0, 1)
 
-[node name="StressBolt3" type="ColorRect" parent="MarginContainer/VBoxContainer/TopRow/StressMeter"]
+[node name="StressBolt3" type="ColorRect" parent="MarginContainer/VBoxContainer/TopRow/StressMeter" unique_id=1380583305]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(1, 1, 0, 1)
 
-[node name="BottomSpacer" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="BottomSpacer" type="Control" parent="MarginContainer/VBoxContainer" unique_id=632065242]
 layout_mode = 2
 size_flags_vertical = 3

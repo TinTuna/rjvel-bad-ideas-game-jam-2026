@@ -20,6 +20,7 @@ const SCENES := {
     
     # Level Scenes
     "TEST_LEVEL": "uid://d1rty8b8d5w2j",
+    "LEVEL_0": "res://scenes/levels/level_0.tscn",
     
     # Special Scenes
     # "CREDITS": "",
@@ -79,7 +80,7 @@ const DAY_NAMES := {
 ## Default patrol routes for family members
 ## Format: "NPC_NAME": [array of navigation point names]
 const NPC_PATROL_ROUTES := {
-    "MOTHER": ["Living_Room", "Ground_Floor_Stairs", "First_Floor_StairsTop", "First_Bedroom", "First_Floor_StairsTop", "Ground_Floor_Stairs", "Kitchen", "Ground_Floor_Stairs"],
+    "MOTHER": ["Kitchen", "Living_Room", "Entry", "Living_Room"],
 }
 
 # ============================================================================
