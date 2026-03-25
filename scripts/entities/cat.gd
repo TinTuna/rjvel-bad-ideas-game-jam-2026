@@ -4,9 +4,8 @@ extends CharacterBody2D
 @export var MOVEMENT_SPEED: float = 500
 @export var ACCELERATION: float = 40
 
-@onready var sprite: Sprite2D = $Area/Sprite
-@onready var jump_sprite: Sprite2D = $Area/JumpSprite
-@onready var area: Area2D = $Area
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 @export var PUSH_SPEED: float = 600.0
 @export var PUSH_DURATION: float = 0.4
@@ -14,58 +13,99 @@ extends CharacterBody2D
 var _push_timer: float = 0.0
 var _is_movement_disabled: bool = false
 
+enum AnimState { IDLE, WALK, JUMP }
+var _anim_state: AnimState = AnimState.IDLE
+
 func _ready() -> void:
-	add_to_group("cat")
-	EventBus.player_entered_box.connect(hide_in_box)
-	EventBus.player_left_box.connect(leave_box)
+    add_to_group("cat")
+    EventBus.player_entered_box.connect(hide_in_box)
+    EventBus.player_left_box.connect(leave_box)
 
 
 func _physics_process(delta: float) -> void:
-	velocity.y += ProjectSettings.get_setting("physics/2d/default_gravity") * delta
+    velocity.y += ProjectSettings.get_setting("physics/2d/default_gravity") * delta
 
-	if _push_timer > 0.0:
-		_push_timer -= delta
-	else:
-		if jump_sprite.visible and is_on_floor():
-			jump_sprite.hide()
-			sprite.show()
+    if _push_timer > 0.0:
+        _push_timer -= delta
+    else:
+        if _is_movement_disabled == false and is_on_floor() and Input.is_action_just_pressed("jump"):
+            velocity.y = JUMP_SPEED
+            EventBus.cat_jumped.emit()
 
-		if _is_movement_disabled == false and is_on_floor() and Input.is_action_just_pressed("jump"):
-			velocity.y = JUMP_SPEED
-			sprite.hide()
-			jump_sprite.show()
-			EventBus.cat_jumped.emit()
+        if _is_movement_disabled == false and (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
+            var new_velocity = velocity.x + ACCELERATION * Input.get_axis("move_left", "move_right")
+            velocity.x = clamp(new_velocity, -MOVEMENT_SPEED, MOVEMENT_SPEED)
+        elif velocity.x != 0:
+            velocity.x = move_toward(velocity.x, 0.0, ACCELERATION)
 
-		if _is_movement_disabled == false and (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
-			var new_velocity = velocity.x + ACCELERATION * Input.get_axis("move_left", "move_right")
-			velocity.x = clamp(new_velocity, -MOVEMENT_SPEED, MOVEMENT_SPEED)
-		elif velocity.x != 0:
-			velocity.x = move_toward(velocity.x, 0.0, ACCELERATION)
+    move_and_slide()
+    _update_animation()
 
-	move_and_slide()
-	
-	if _is_movement_disabled == false and Input.is_action_just_pressed("interact") and area.has_overlapping_areas():
-		var object_to_interact = area.get_overlapping_areas()[0]
-		if object_to_interact is Interactable:
-			object_to_interact.interact()
+    if _is_movement_disabled == false and Input.is_action_just_pressed("interact"):
+        var space_state := get_world_2d().direct_space_state
+        var params := PhysicsShapeQueryParameters2D.new()
+        params.shape = collision_shape.shape
+        params.transform = collision_shape.global_transform
+        params.collide_with_areas = true
+        params.collide_with_bodies = false
+        for result in space_state.intersect_shape(params):
+            if result["collider"] is Interactable:
+                result["collider"].interact()
+                break
+
+
+func _update_animation() -> void:
+    var new_state: AnimState
+
+    if not is_on_floor():
+        new_state = AnimState.JUMP
+    elif abs(velocity.x) > 10.0:
+        new_state = AnimState.WALK
+    else:
+        new_state = AnimState.IDLE
+
+    # Flip sprite based on movement direction (default animation faces left)
+    if velocity.x > 0.0:
+        animated_sprite.flip_h = true
+    elif velocity.x < 0.0:
+        animated_sprite.flip_h = false
+
+    if new_state == _anim_state:
+        return
+
+    _anim_state = new_state
+    var capsule := collision_shape.shape as CapsuleShape2D
+    match _anim_state:
+        AnimState.WALK:
+            animated_sprite.play("walk")
+            animated_sprite.scale = Vector2(1.0, 1.0)
+            animated_sprite.position.y = -34.0
+            capsule.height = 85.0
+        AnimState.IDLE:
+            animated_sprite.play("idle")
+            animated_sprite.scale = Vector2(0.65, 0.65)
+            animated_sprite.position.y = -35.0
+            capsule.height = 40.0
+        AnimState.JUMP:
+            # animated_sprite.play("jump")
+            pass
+
 
 ## Called by an NPC when it touches the cat.
 ## Launches the cat away from the NPC's position with a small upward jump.
 func push_back(source_position: Vector2) -> void:
-	var direction := signf(global_position.x - source_position.x)
-	if direction == 0.0:
-		direction = 1.0
-	velocity.x = direction * PUSH_SPEED
-	velocity.y = JUMP_SPEED
-	_push_timer = PUSH_DURATION
-	sprite.hide()
-	jump_sprite.show()
-	EventBus.cat_pushed_back.emit()
+    var direction := signf(global_position.x - source_position.x)
+    if direction == 0.0:
+        direction = 1.0
+    velocity.x = direction * PUSH_SPEED
+    velocity.y = JUMP_SPEED
+    _push_timer = PUSH_DURATION
+    EventBus.cat_pushed_back.emit()
 
 func hide_in_box() -> void:
-	area.hide()
-	_is_movement_disabled = true
+    animated_sprite.hide()
+    _is_movement_disabled = true
 
 func leave_box() -> void:
-	area.show()
-	_is_movement_disabled = false
+    animated_sprite.show()
+    _is_movement_disabled = false
