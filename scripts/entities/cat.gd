@@ -103,8 +103,9 @@ func _update_animation() -> void:
             animated_sprite.position.y = -35.0
             capsule.height = 40.0
         AnimState.JUMP:
-            # animated_sprite.play("jump")
-            pass
+            animated_sprite.play("jump_up")
+            animated_sprite.scale = Vector2(0.20, 0.20)
+            animated_sprite.position.y = -35.0
         AnimState.JUMP_DOWN:
             animated_sprite.play("jump_down")
             animated_sprite.scale = Vector2(0.20, 0.20)

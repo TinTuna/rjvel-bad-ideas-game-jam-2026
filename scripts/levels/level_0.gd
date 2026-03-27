@@ -5,8 +5,11 @@ extends Node2D
 ## This is the first playable level (tutorial day).
 
 @onready var nav_graph: NavigationGraph = $NavigationGraph
+@onready var level_end_trigger: Area2D = $LevelEndTrigger
 
 func _ready() -> void:
+    level_end_trigger.body_entered.connect(_on_level_end_triggered)
+
     await get_tree().process_frame
     nav_graph.print_graph_info()
 
@@ -15,3 +18,9 @@ func _ready() -> void:
         EventBus.glass_knocked_down.connect(mother.react_to_event.bind("glass_knocked_down"))
     else:
         push_error("[Level0] Mother NPC not found — glass_knocked_down signal not connected")
+
+
+func _on_level_end_triggered(body: Node2D) -> void:
+    if body.is_in_group("cat"):
+        EventBus.day_started.emit(1)
+        SceneLoader.load_scene(Constants.SCENES["DAY_RECAP"])

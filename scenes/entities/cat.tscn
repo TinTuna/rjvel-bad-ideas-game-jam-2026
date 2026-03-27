@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b3tt7jose35qk" path="res://assets/sprites/characters/cat/cat_idle_frames_sm.png" id="2_owwv0"]
 [ext_resource type="Texture2D" uid="uid://bblmfl4vp5t1g" path="res://assets/sprites/characters/cat/cat_walk_spritesheet.png" id="3_g454m"]
 [ext_resource type="Texture2D" uid="uid://d21yhn3o2pub8" path="res://assets/sprites/characters/cat/jump_down.png" id="3_mhpg0"]
+[ext_resource type="Texture2D" uid="uid://dc2w5s7wqffhe" path="res://assets/sprites/characters/cat/jump_up.png" id="4_mhpg0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g454m"]
 radius = 20.0
@@ -401,6 +402,10 @@ region = Rect2(588, 1026, 98, 114)
 atlas = ExtResource("3_mhpg0")
 region = Rect2(0, 0, 388, 529)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1orb1"]
+atlas = ExtResource("4_mhpg0")
+region = Rect2(0, 0, 529, 388)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ihi7n"]
 atlas = ExtResource("3_g454m")
 region = Rect2(0, 0, 102, 68)
@@ -731,7 +736,10 @@ animations = [{
 "name": &"jump_down",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1orb1")
+}],
 "loop": true,
 "name": &"jump_up",
 "speed": 5.0
@@ -771,14 +779,16 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_g454m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=559013231]
-position = Vector2(0.4, -35)
+position = Vector2(0, -27)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_ctms4")
-animation = &"idle"
+animation = &"jump_up"
 
 [node name="InteractPrompt" type="Label" parent="." unique_id=100000001]
 visible = false
-position = Vector2(-100.0, -80.0)
-size = Vector2(200.0, 20.0)
+offset_left = -100.0
+offset_top = -80.0
+offset_right = 100.0
+offset_bottom = -57.0
 text = "Press E to interact"
 horizontal_alignment = 1
