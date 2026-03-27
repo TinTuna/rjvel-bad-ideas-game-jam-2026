@@ -13,7 +13,7 @@ extends CharacterBody2D
 var _push_timer: float = 0.0
 var _is_movement_disabled: bool = false
 
-enum AnimState { IDLE, WALK, JUMP }
+enum AnimState { IDLE, WALK, JUMP, JUMP_DOWN }
 var _anim_state: AnimState = AnimState.IDLE
 
 func _ready() -> void:
@@ -58,7 +58,7 @@ func _update_animation() -> void:
     var new_state: AnimState
 
     if not is_on_floor():
-        new_state = AnimState.JUMP
+        new_state = AnimState.JUMP_DOWN if velocity.y > 0.0 else AnimState.JUMP
     elif abs(velocity.x) > 10.0:
         new_state = AnimState.WALK
     else:
@@ -89,6 +89,10 @@ func _update_animation() -> void:
         AnimState.JUMP:
             # animated_sprite.play("jump")
             pass
+        AnimState.JUMP_DOWN:
+            animated_sprite.play("jump_down")
+            animated_sprite.scale = Vector2(0.20, 0.20)
+            animated_sprite.position.y = -35.0
 
 
 ## Called by an NPC when it touches the cat.
