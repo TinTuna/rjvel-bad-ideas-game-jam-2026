@@ -122,6 +122,25 @@ func push_back(source_position: Vector2) -> void:
     _push_timer = PUSH_DURATION
     EventBus.cat_pushed_back.emit()
 
+func play_walk_animation(face_right: bool) -> void:
+    animated_sprite.flip_h = face_right
+    animated_sprite.play("walk")
+    animated_sprite.scale = Vector2(1.0, 1.0)
+    animated_sprite.position.y = -34.0
+    _anim_state = AnimState.WALK
+
+func take_control() -> void:
+    _is_movement_disabled = true
+    velocity = Vector2.ZERO
+    collision_layer = 0
+    set_physics_process(false)
+
+func release_control() -> void:
+    _is_movement_disabled = false
+    velocity = Vector2.ZERO
+    collision_layer = 1
+    set_physics_process(true)
+
 func hide_in_box() -> void:
     animated_sprite.hide()
     _is_movement_disabled = true

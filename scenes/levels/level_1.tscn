@@ -58,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://bonpcg4d0dxeu" path="res://assets/sprites/environment/Boys_ Room/hamper.png" id="72_brhamper"]
 [ext_resource type="Texture2D" uid="uid://ti2i81eqtla8" path="res://assets/sprites/environment/Boys_ Room/football.png" id="73_brfoot"]
 [ext_resource type="Texture2D" uid="uid://bqmurm70nfjec" path="res://assets/sprites/environment/Boys_ Room/jim_s masterpieces.png" id="74_brart"]
+[ext_resource type="PackedScene" uid="uid://dno7pa2pbino4" path="res://scenes/entities/stair_interactable.tscn" id="80_stair"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbbed"]
 size = Vector2(64, 476)
@@ -286,6 +287,7 @@ texture = ExtResource("33_ebg")
 centered = false
 
 [node name="Stairs" type="Sprite2D" parent="Entry" unique_id=1047729307]
+z_index = 2
 texture = ExtResource("36_est")
 centered = false
 
@@ -486,9 +488,38 @@ position = Vector2(2130, -1084)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_4gp5p")
 
+[node name="StairsBottomWaypoint" type="Marker2D" parent="." unique_id=400000005]
+position = Vector2(2655, -102)
+
+[node name="StairsTopWaypoint" type="Marker2D" parent="." unique_id=400000006]
+position = Vector2(2655, -102)
+
+[node name="LandingSpot" type="Marker2D" parent="." unique_id=400000003]
+position = Vector2(2311, -103)
+
+[node name="EntrySpot" type="Marker2D" parent="." unique_id=400000004]
+position = Vector2(4312, 1000)
+
+[node name="StairsBottom" parent="." unique_id=400000001 node_paths=PackedStringArray("stairs_marker", "destination_marker") instance=ExtResource("80_stair")]
+position = Vector2(4409, 904)
+stairs_marker = NodePath("../StairsBottomWaypoint")
+destination_marker = NodePath("../LandingSpot")
+leg2_duration = 1.0
+starting_z_index = 1
+destination_z_index = 3
+
+[node name="StairsTop" parent="." unique_id=400000002 node_paths=PackedStringArray("stairs_marker", "destination_marker") instance=ExtResource("80_stair")]
+position = Vector2(2311, -176)
+stairs_marker = NodePath("../StairsTopWaypoint")
+destination_marker = NodePath("../EntrySpot")
+leg1_duration = 1.0
+leg2_duration = 2.0
+face_right = true
+starting_z_index = 0
+
 [node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("2_cat")]
 z_index = 2
-position = Vector2(2354, 933.9999)
+position = Vector2(2138.0002, -132.99988)
 
 [node name="GameCamera" type="Camera2D" parent="." unique_id=917904922]
 position = Vector2(2023, -450)

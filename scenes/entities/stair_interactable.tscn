@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dno7pa2pbino4"]
+
+[ext_resource type="Script" uid="uid://qb1jg0u0ywuy" path="res://scripts/entities/stair_interactable.gd" id="1_stair"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stair"]
+size = Vector2(150, 150)
+
+[node name="StairInteractable" type="Area2D" unique_id=300000001]
+script = ExtResource("1_stair")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300000002]
+shape = SubResource("RectangleShape2D_stair")
