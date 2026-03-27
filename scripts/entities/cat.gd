@@ -31,6 +31,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+    var pre_input_vx := velocity.x
     velocity.y += ProjectSettings.get_setting("physics/2d/default_gravity") * delta
 
     if _push_timer > 0.0:
@@ -55,7 +56,7 @@ func _physics_process(delta: float) -> void:
             _drop_timer = DROP_THROUGH_DURATION
 
     move_and_slide()
-    _update_animation()
+    _update_animation(pre_input_vx)
 
     if _is_movement_disabled == false and Input.is_action_just_pressed("interact"):
         var space_state := get_world_2d().direct_space_state
@@ -70,12 +71,12 @@ func _physics_process(delta: float) -> void:
                 break
 
 
-func _update_animation() -> void:
+func _update_animation(pre_input_vx: float) -> void:
     var new_state: AnimState
 
     if not is_on_floor():
         new_state = AnimState.JUMP_DOWN if velocity.y > 0.0 else AnimState.JUMP
-    elif abs(velocity.x) > 10.0:
+    elif abs(pre_input_vx) > 10.0:
         new_state = AnimState.WALK
     else:
         new_state = AnimState.IDLE
@@ -90,18 +91,15 @@ func _update_animation() -> void:
         return
 
     _anim_state = new_state
-    var capsule := collision_shape.shape as CapsuleShape2D
     match _anim_state:
         AnimState.WALK:
             animated_sprite.play("walk")
             animated_sprite.scale = Vector2(1.0, 1.0)
             animated_sprite.position.y = -34.0
-            capsule.height = 85.0
         AnimState.IDLE:
             animated_sprite.play("idle")
             animated_sprite.scale = Vector2(0.65, 0.65)
             animated_sprite.position.y = -35.0
-            capsule.height = 40.0
         AnimState.JUMP:
             animated_sprite.play("jump_up")
             animated_sprite.scale = Vector2(0.20, 0.20)
