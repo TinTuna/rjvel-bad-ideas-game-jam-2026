@@ -775,3 +775,10 @@ position = Vector2(0.4, -35)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_ctms4")
 animation = &"idle"
+
+[node name="InteractPrompt" type="Label" parent="." unique_id=100000001]
+visible = false
+position = Vector2(-100.0, -80.0)
+size = Vector2(200.0, 20.0)
+text = "Press E to interact"
+horizontal_alignment = 1

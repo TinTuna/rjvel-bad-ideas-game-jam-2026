@@ -6,12 +6,17 @@ extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var interact_prompt: Label = $InteractPrompt
 
 @export var PUSH_SPEED: float = 600.0
 @export var PUSH_DURATION: float = 0.4
 
 var _push_timer: float = 0.0
 var _is_movement_disabled: bool = false
+var _nearby_interactable_count: int = 0
+
+const DROP_THROUGH_DURATION: float = 0.3
+var _drop_timer: float = 0.0
 
 enum AnimState { IDLE, WALK, JUMP, JUMP_DOWN }
 var _anim_state: AnimState = AnimState.IDLE
@@ -20,6 +25,9 @@ func _ready() -> void:
     add_to_group("cat")
     EventBus.player_entered_box.connect(hide_in_box)
     EventBus.player_left_box.connect(leave_box)
+    EventBus.cat_near_interactable.connect(_on_cat_near_interactable)
+    EventBus.cat_left_interactable.connect(_on_cat_left_interactable)
+    set_collision_mask_value(2, true)
 
 
 func _physics_process(delta: float) -> void:
@@ -37,6 +45,14 @@ func _physics_process(delta: float) -> void:
             velocity.x = clamp(new_velocity, -MOVEMENT_SPEED, MOVEMENT_SPEED)
         elif velocity.x != 0:
             velocity.x = move_toward(velocity.x, 0.0, ACCELERATION)
+
+    if _drop_timer > 0.0:
+        _drop_timer -= delta
+        set_collision_mask_value(2, false)
+    else:
+        set_collision_mask_value(2, true)
+        if _is_movement_disabled == false and is_on_floor() and Input.is_action_just_pressed("move_down"):
+            _drop_timer = DROP_THROUGH_DURATION
 
     move_and_slide()
     _update_animation()
@@ -102,14 +118,32 @@ func push_back(source_position: Vector2) -> void:
     if direction == 0.0:
         direction = 1.0
     velocity.x = direction * PUSH_SPEED
-    velocity.y = JUMP_SPEED
+    if is_on_floor():
+        velocity.y = JUMP_SPEED
     _push_timer = PUSH_DURATION
     EventBus.cat_pushed_back.emit()
 
 func hide_in_box() -> void:
     animated_sprite.hide()
     _is_movement_disabled = true
+    collision_layer = 0
 
 func leave_box() -> void:
     animated_sprite.show()
     _is_movement_disabled = false
+    collision_layer = 1
+
+func show_interact_prompt() -> void:
+    interact_prompt.show()
+
+func hide_interact_prompt() -> void:
+    interact_prompt.hide()
+
+func _on_cat_near_interactable() -> void:
+    _nearby_interactable_count += 1
+    show_interact_prompt()
+
+func _on_cat_left_interactable() -> void:
+    _nearby_interactable_count = max(0, _nearby_interactable_count - 1)
+    if _nearby_interactable_count == 0:
+        hide_interact_prompt()

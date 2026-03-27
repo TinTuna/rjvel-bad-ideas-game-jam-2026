@@ -41,6 +41,12 @@ signal cat_jumped()
 ## @param None
 signal cat_pushed_back()
 
+## Emitted when the cat enters an interactable's area
+signal cat_near_interactable()
+
+## Emitted when the cat leaves an interactable's area
+signal cat_left_interactable()
+
 ## Emitted when player enters Cat Box
 ## @param None
 signal player_entered_box()
