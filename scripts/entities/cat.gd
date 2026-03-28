@@ -11,6 +11,8 @@ extends CharacterBody2D
 @export var PUSH_SPEED: float = 600.0
 @export var PUSH_DURATION: float = 0.4
 
+@onready var item_container: Node2D = $ItemContainer
+
 var _push_timer: float = 0.0
 var _is_movement_disabled: bool = false
 
@@ -18,6 +20,8 @@ func _ready() -> void:
 	add_to_group("cat")
 	EventBus.player_entered_box.connect(hide_in_box)
 	EventBus.player_left_box.connect(leave_box)
+	EventBus.player_picked_up_item.connect(pick_up_item)
+	EventBus.player_put_down_item.connect(put_down_item)
 
 
 func _physics_process(delta: float) -> void:
@@ -52,6 +56,8 @@ func _physics_process(delta: float) -> void:
 ## Called by an NPC when it touches the cat.
 ## Launches the cat away from the NPC's position with a small upward jump.
 func push_back(source_position: Vector2) -> void:
+	if _is_movement_disabled:
+		return
 	var direction := signf(global_position.x - source_position.x)
 	if direction == 0.0:
 		direction = 1.0
@@ -69,3 +75,12 @@ func hide_in_box() -> void:
 func leave_box() -> void:
 	area.show()
 	_is_movement_disabled = false
+
+func pick_up_item(item: Node2D) -> void:
+	item.reparent(item_container)
+	item.position.x = 50
+	item.position.y = -80
+
+func put_down_item(item: Node2D) -> void:
+	item.reparent(self.get_parent())
+	

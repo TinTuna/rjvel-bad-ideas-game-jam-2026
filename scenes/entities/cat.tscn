@@ -30,3 +30,5 @@ shape = SubResource("RectangleShape2D_3jpsh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=490098153]
 position = Vector2(0, -42.5)
 shape = SubResource("RectangleShape2D_3jpsh")
+
+[node name="ItemContainer" type="Node2D" parent="." unique_id=814342065]
