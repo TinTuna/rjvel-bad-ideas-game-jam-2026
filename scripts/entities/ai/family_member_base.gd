@@ -23,6 +23,7 @@ extends CharacterBody2D
 # ============================================================================
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _interaction_area: Area2D = $Area2D
 
 # ============================================================================
 # STATE
@@ -193,8 +194,9 @@ func process_movement(delta: float) -> void:
 		velocity = direction * movement_speed
 	else:
 		# Reached waypoint
+		_on_waypoint_reached(current_path[current_path_index], current_path_index)
 		current_path_index += 1
-		
+
 		if current_path_index >= current_path.size():
 			arrive_at_destination()
 		else:
@@ -211,6 +213,36 @@ func arrive_at_destination() -> void:
 	print("[%s] Arrived at destination" % character_name)
 	
 	on_destination_reached()
+
+
+func _on_waypoint_reached(waypoint: Dictionary, waypoint_index: int) -> void:
+	var wname: String = waypoint["name"]
+	var has_next: bool = waypoint_index + 1 < current_path.size()
+	var next_name: String = current_path[waypoint_index + 1]["name"] if has_next else ""
+
+	var new_z: int = z_index
+	var on_stairs: bool
+	if wname == "Landing" and next_name == "Stairs_top":
+		new_z = 0  # Leaving landing, starting descent
+		on_stairs = true
+	elif wname == "Entry" and next_name == "Stairs_bottom":
+		new_z = 1  # Leaving entry, starting ascent
+		on_stairs = true
+	elif wname == "Stairs_bottom" and next_name == "Entry":
+		new_z = 3  # Finished descending, back on ground floor
+		on_stairs = false
+	elif wname == "Stairs_top" and next_name == "Landing":
+		new_z = 3  # Finished ascending, back on landing
+		on_stairs = false
+	else:
+		return
+
+	_interaction_area.monitoring = not on_stairs
+	_interaction_area.monitorable = not on_stairs
+	print("[%s] Reached '%s' → next '%s' → z_index %d -> %d | collision %s" % [
+		character_name, wname, next_name, z_index, new_z, "OFF" if on_stairs else "ON"
+	])
+	z_index = new_z
 
 
 ## Override in subclasses to react to level-specific events

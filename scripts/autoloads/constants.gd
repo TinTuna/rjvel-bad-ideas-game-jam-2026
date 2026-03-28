@@ -26,6 +26,7 @@ const SCENES := {
     # Level Scenes
     "TEST_LEVEL": "uid://d1rty8b8d5w2j",
     "LEVEL_0": "uid://b0t4qvl2dtmwh",
+    "LEVEL_1": "uid://cbuvoblyq65vv",
 
     # Special Scenes
     # "CREDITS": "",
