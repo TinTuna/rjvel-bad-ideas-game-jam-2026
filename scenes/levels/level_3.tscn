@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bf7wc1leibvhi" path="res://assets/sprites/environment/Living Room/lamp.png" id="21_pphix"]
 [ext_resource type="Texture2D" uid="uid://d4iadhjbfld8q" path="res://assets/sprites/environment/Living Room/couch.png" id="22_avbao"]
 [ext_resource type="Texture2D" uid="uid://dh11871o2yuc" path="res://assets/sprites/environment/Living Room/coffee table.png" id="23_7xqdk"]
-[ext_resource type="PackedScene" uid="uid://ds7y6trsqucaq" path="res://scenes/entities/day_0/glass.tscn" id="24_s13ht"]
+[ext_resource type="PackedScene" uid="uid://c6r65x0apfe6r" path="res://scenes/entities/day_3/phone.tscn" id="25_apiyn"]
 [ext_resource type="PackedScene" uid="uid://14y7r3dw0f6c" path="res://scenes/entities/box.tscn" id="25_getng"]
 [ext_resource type="Texture2D" uid="uid://cu6mnpqcffmd7" path="res://assets/sprites/environment/Living Room/vase.png" id="26_ooiqn"]
 [ext_resource type="Texture2D" uid="uid://d106ilucbulae" path="res://assets/sprites/environment/Entry/entry background.png" id="27_kirlg"]
@@ -149,6 +149,7 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Chair1/StaticBody2D" unique_id=1803232899]
 position = Vector2(2368.5, 1584)
 shape = SubResource("RectangleShape2D_x63fv")
+one_way_collision = true
 
 [node name="Chair2" type="Sprite2D" parent="Kitchen" unique_id=996936663]
 texture = ExtResource("9_k1q4s")
@@ -159,6 +160,7 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Chair2/StaticBody2D" unique_id=1248456863]
 position = Vector2(3361.5, 1585)
 shape = SubResource("RectangleShape2D_bnt33")
+one_way_collision = true
 
 [node name="Mug" type="Sprite2D" parent="Kitchen" unique_id=1372587775]
 texture = ExtResource("10_n37he")
@@ -282,15 +284,15 @@ position = Vector2(1516, 1650)
 shape = SubResource("RectangleShape2D_gngue")
 one_way_collision = true
 
-[node name="Glass" parent="LivingRoom" unique_id=2087202024 instance=ExtResource("24_s13ht")]
-position = Vector2(1854, 1506)
-
 [node name="Box" parent="LivingRoom" unique_id=1788498224 instance=ExtResource("25_getng")]
 position = Vector2(2542, 1762)
 
 [node name="Vase" type="Sprite2D" parent="LivingRoom" unique_id=1795565281]
 texture = ExtResource("26_ooiqn")
 centered = false
+
+[node name="Phone" parent="LivingRoom" unique_id=552859118 instance=ExtResource("25_apiyn")]
+position = Vector2(644, 1868)
 
 [node name="Divider_LivingRoom_Entry" type="Sprite2D" parent="." unique_id=2072471901]
 z_index = 6

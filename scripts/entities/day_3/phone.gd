@@ -23,4 +23,4 @@ func interact() -> void:
 
 
 func _on_timer_timeout() -> void:
-    EventBus.pizza_delivered.emit
+    EventBus.pizza_delivered.emit()

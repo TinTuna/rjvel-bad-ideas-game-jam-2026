@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d87k0lb4q6fx"]
+
+[ext_resource type="Texture2D" uid="uid://dfid4f0xdtjr4" path="res://assets/sprites/environment/Living Room/pizza box.png" id="1_m8n8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljw1b"]
+size = Vector2(338, 43)
+
+[node name="Pizza" type="RigidBody2D" unique_id=232690085]
+collision_layer = 3
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=787222937]
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("1_m8n8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1970543442]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ljw1b")
