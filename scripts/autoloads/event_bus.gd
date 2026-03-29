@@ -125,4 +125,4 @@ signal music_volume_changed(volume: float)
 # ============================================================================
 
 func _ready() -> void:
-	print("[EventBus] Initialized")
+    print("[EventBus] Initialized")

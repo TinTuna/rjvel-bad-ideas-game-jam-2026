@@ -544,6 +544,10 @@ starting_z_index = 0
 [node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("53_l8gpt")]
 z_index = 2
 position = Vector2(2138.0002, -132.99988)
+MOVEMENT_SPEED = null
+ACCELERATION = null
+PUSH_SPEED = null
+PUSH_DURATION = null
 
 [node name="GameCamera" type="Camera2D" parent="." unique_id=917904922]
 position = Vector2(2023, -450)
