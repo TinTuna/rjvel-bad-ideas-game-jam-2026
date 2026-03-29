@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="4_ry45r"]
 [ext_resource type="Script" uid="uid://cm24k76aypjk2" path="res://scripts/systems/navigation/navigation_graph.gd" id="5_uofsi"]
 [ext_resource type="PackedScene" uid="uid://c3v8yqj2wl0qt" path="res://scenes/systems/navigation/navigation_point.tscn" id="6_jenrn"]
-[ext_resource type="PackedScene" path="res://scenes/entities/glass.tscn" id="9_ymr3d"]
+[ext_resource type="PackedScene" uid="uid://ds7y6trsqucaq" path="res://scenes/entities/day_0/glass.tscn" id="9_ymr3d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yggfj"]
 normal = Vector2(0, 1)

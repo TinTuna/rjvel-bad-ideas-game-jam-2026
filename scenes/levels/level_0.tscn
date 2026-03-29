@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c506jmqby23nx" path="res://assets/sprites/environment/Living Room/wall and floor.png" id="20_lw"]
 [ext_resource type="Texture2D" uid="uid://d4iadhjbfld8q" path="res://assets/sprites/environment/Living Room/couch.png" id="21_lco"]
 [ext_resource type="Texture2D" uid="uid://dh11871o2yuc" path="res://assets/sprites/environment/Living Room/coffee table.png" id="22_lct"]
-[ext_resource type="PackedScene" uid="uid://ds7y6trsqucaq" path="res://scenes/entities/glass.tscn" id="23_3kux2"]
+[ext_resource type="PackedScene" uid="uid://ds7y6trsqucaq" path="res://scenes/entities/day_0/glass.tscn" id="23_3kux2"]
 [ext_resource type="Texture2D" uid="uid://bo4qi3seuuq2q" path="res://assets/sprites/environment/Living Room/bookshelf.png" id="23_lbs"]
 [ext_resource type="PackedScene" uid="uid://14y7r3dw0f6c" path="res://scenes/entities/box.tscn" id="24_gngue"]
 [ext_resource type="Texture2D" uid="uid://bf7wc1leibvhi" path="res://assets/sprites/environment/Living Room/lamp.png" id="24_ll"]
@@ -66,11 +66,11 @@ size = Vector2(20, 4000)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lt8ga"]
 size = Vector2(9, 6112)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_whtrigger"]
-size = Vector2(310, 40)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_levelend"]
 size = Vector2(200, 2500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whtrigger"]
+size = Vector2(310, 40)
 
 [node name="Level_0" type="Node2D" unique_id=949364802]
 script = ExtResource("1_script")
@@ -305,7 +305,6 @@ shape = SubResource("RectangleShape2D_lt8ga")
 
 [node name="LevelEndTrigger" type="Area2D" parent="." unique_id=200000001]
 position = Vector2(5670, 500)
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger" unique_id=200000002]
 shape = SubResource("RectangleShape2D_levelend")

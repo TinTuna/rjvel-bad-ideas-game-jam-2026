@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cr64jwfjc7m4"]
 
-[ext_resource type="Script" uid="uid://b52mw3hbw0o46" path="res://scripts/entities/box_under_bed.gd" id="1_fombc"]
+[ext_resource type="Script" uid="uid://b52mw3hbw0o46" path="res://scripts/entities/day_1/box_under_bed.gd" id="1_fombc"]
 [ext_resource type="Texture2D" uid="uid://da2ygufw4ptt1" path="res://assets/sprites/environment/Mum_s Bedroom/box under bed.png" id="2_88mcs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pp3ra"]

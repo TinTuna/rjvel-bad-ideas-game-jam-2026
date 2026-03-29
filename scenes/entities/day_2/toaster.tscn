@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cu0820t6nyfgb"]
 
-[ext_resource type="Script" uid="uid://ca37s3lfla3ji" path="res://scripts/entities/toaster.gd" id="1_p80ia"]
+[ext_resource type="Script" uid="uid://ca37s3lfla3ji" path="res://scripts/entities/day_2/toaster.gd" id="1_p80ia"]
 [ext_resource type="Texture2D" uid="uid://c7augj8shy30l" path="res://assets/sprites/environment/Kitchen/toaster OFF.png" id="2_8wp56"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2nch"]
