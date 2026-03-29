@@ -94,7 +94,7 @@ size = Vector2(9, 6112)
 size = Vector2(310, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y73h4"]
-size = Vector2(222.875, 520)
+size = Vector2(582.4375, 354.5)
 
 [node name="Level_2" type="Node2D" unique_id=-2094967295]
 script = ExtResource("1_852cy")
@@ -603,7 +603,8 @@ text = "Psst! Come outside and play!"
 horizontal_alignment = 1
 
 [node name="LevelEndTrigger" type="Area2D" parent="." unique_id=895254676]
+position = Vector2(-4272, -347)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger" unique_id=510100194]
-position = Vector2(5651.4375, 819)
+position = Vector2(5757.7813, 709.75)
 shape = SubResource("RectangleShape2D_y73h4")
