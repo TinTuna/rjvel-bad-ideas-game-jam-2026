@@ -6,10 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://d21yhn3o2pub8" path="res://assets/sprites/characters/cat/jump_down.png" id="3_mhpg0"]
 [ext_resource type="Texture2D" uid="uid://dc2w5s7wqffhe" path="res://assets/sprites/characters/cat/jump_up.png" id="4_mhpg0"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g454m"]
-radius = 20.0
-height = 40.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_owwv0"]
 atlas = ExtResource("2_owwv0")
 region = Rect2(0, 0, 98, 114)
@@ -768,19 +764,17 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhpg0"]
+size = Vector2(70.40001, 51.800007)
+
 [node name="Cat" type="CharacterBody2D" unique_id=1078620886]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_oqat7")
 JUMP_SPEED = -700.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=490098153]
-position = Vector2(0, -42.5)
-shape = SubResource("RectangleShape2D_3jpsh")
-
 [node name="ItemContainer" type="Node2D" parent="." unique_id=814342065]
 position = Vector2(0, -20)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_g454m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=559013231]
 position = Vector2(0, -27)
@@ -796,3 +790,8 @@ offset_right = 100.0
 offset_bottom = -57.0
 text = "Press E to interact"
 horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1545550514]
+position = Vector2(-1.2000015, -24.899996)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_mhpg0")

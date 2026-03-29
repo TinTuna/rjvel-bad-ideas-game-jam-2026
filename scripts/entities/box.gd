@@ -1,5 +1,7 @@
 extends Interactable
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 var is_cat_inside: bool = false
 var is_cat_interacting: bool = false
 
@@ -11,11 +13,13 @@ func _process(delta: float) -> void:
 	if is_cat_interacting and is_cat_inside == false and Input.is_action_pressed("interact"):
 		is_cat_inside = true
 		EventBus.player_entered_box.emit()
+		animation_player.play("box_shake")
 	
 	if is_cat_interacting and is_cat_inside and Input.is_action_just_released("interact"):
 		is_cat_inside = false
 		is_cat_interacting = false
 		EventBus.player_left_box.emit()
+		animation_player.play("box_shake")
 
 
 func interact() -> void:
