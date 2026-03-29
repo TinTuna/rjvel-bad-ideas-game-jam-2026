@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cu0820t6nyfgb"]
+
+[ext_resource type="Script" uid="uid://ca37s3lfla3ji" path="res://scripts/entities/toaster.gd" id="1_p80ia"]
+[ext_resource type="Texture2D" uid="uid://c7augj8shy30l" path="res://assets/sprites/environment/Kitchen/toaster OFF.png" id="2_8wp56"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2nch"]
+size = Vector2(326, 199)
+
+[node name="Toaster" type="Area2D" unique_id=1809135083]
+script = ExtResource("1_p80ia")
+metadata/_custom_type_script = "uid://ckdebxl7oflen"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1333292547]
+texture = ExtResource("2_8wp56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1673675887]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_f2nch")
+
+[node name="Timer" type="Timer" parent="." unique_id=1205826171]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

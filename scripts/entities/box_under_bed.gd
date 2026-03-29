@@ -4,6 +4,7 @@ var _is_opened: bool = false
 
 const BOX_UNDER_BED_OPEN = preload("uid://csk57kw38ckb8")
 const KEY = preload("uid://c3lhfy4xcqrbt")
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -25,3 +26,4 @@ func interact() -> void:
 		bedroom.add_child(new_key)
 		new_key.position.x = 1750
 		new_key.position.y = 1950
+		collision_shape.set_deferred("disabled", true)

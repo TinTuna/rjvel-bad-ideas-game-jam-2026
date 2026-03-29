@@ -87,6 +87,15 @@ signal glass_knocked_down()
 ## Emitted on day 0 when the glass is back up
 signal glass_reset()
 
+## Emitted on day 2 when the toaster is burnt and smoking
+signal toaster_burnt()
+
+## Emitted on day 2 when the toaster is reset
+signal toaster_reset()
+
+## Emitted on day 2 when the kitchen window is open
+signal window_open()
+
 # ============================================================================
 # MUSIC EVENTS
 # ============================================================================
