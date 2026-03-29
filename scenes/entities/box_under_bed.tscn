@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cr64jwfjc7m4"]
+
+[ext_resource type="Script" uid="uid://b52mw3hbw0o46" path="res://scripts/entities/box_under_bed.gd" id="1_fombc"]
+[ext_resource type="Texture2D" uid="uid://da2ygufw4ptt1" path="res://assets/sprites/environment/Mum_s Bedroom/box under bed.png" id="2_88mcs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pp3ra"]
+size = Vector2(395, 145)
+
+[node name="BoxUnderBed" type="Area2D" unique_id=1454723028]
+script = ExtResource("1_fombc")
+metadata/_custom_type_script = "uid://ckdebxl7oflen"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1027357970]
+texture = ExtResource("2_88mcs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=179012871]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_pp3ra")

@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://cqav5tkked88o" path="res://assets/sprites/environment/Entry/table.png" id="37_etb"]
 [ext_resource type="Texture2D" uid="uid://cw02gjmv5vnyq" path="res://assets/sprites/environment/Entry/picture frames.png" id="38_epf"]
 [ext_resource type="Texture2D" uid="uid://ga5fwkjgujd2" path="res://assets/sprites/environment/Room_divider.png" id="39_divider"]
+[ext_resource type="PackedScene" uid="uid://cr64jwfjc7m4" path="res://scenes/entities/box_under_bed.tscn" id="39_y73h4"]
 [ext_resource type="Script" uid="uid://byy1rhnseo0p" path="res://scripts/systems/window_hint.gd" id="40_whscript"]
 [ext_resource type="Texture2D" uid="uid://yx3brfxerwrt" path="res://assets/sprites/environment/Upstairs corridor/floor.png" id="41_4gp5p"]
 [ext_resource type="Script" uid="uid://b6ffmtyygvy4l" path="res://scripts/systems/game_camera.gd" id="41_gamecam"]
@@ -47,7 +48,6 @@
 [ext_resource type="Texture2D" uid="uid://bu48hqrn6iogn" path="res://assets/sprites/environment/Mum_s Bedroom/lamp.png" id="54_mblamp"]
 [ext_resource type="Texture2D" uid="uid://433511kf3njh" path="res://assets/sprites/environment/Mum_s Bedroom/tabouret.png" id="55_mbtab"]
 [ext_resource type="Texture2D" uid="uid://bptw5miwkj02e" path="res://assets/sprites/environment/Mum_s Bedroom/photo.png" id="56_mbphoto"]
-[ext_resource type="Texture2D" uid="uid://da2ygufw4ptt1" path="res://assets/sprites/environment/Mum_s Bedroom/box under bed.png" id="57_mbbox"]
 [ext_resource type="Texture2D" uid="uid://bn0tgeddyhpk4" path="res://assets/sprites/environment/Upstairs corridor/wall and floor.png" id="60_ucwall"]
 [ext_resource type="Texture2D" uid="uid://b0m0gbythg8w5" path="res://assets/sprites/environment/Upstairs corridor/stairs.png" id="61_ucstairs"]
 [ext_resource type="Texture2D" uid="uid://dxgiv22mfsh3u" path="res://assets/sprites/environment/Upstairs corridor/door 1.png" id="62_ucdoor1"]
@@ -92,6 +92,9 @@ size = Vector2(9, 6112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whtrigger"]
 size = Vector2(310, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y73h4"]
+size = Vector2(222.875, 520)
 
 [node name="Level_1" type="Node2D" unique_id=-2094967295]
 script = ExtResource("1_script")
@@ -347,9 +350,8 @@ centered = false
 texture = ExtResource("56_mbphoto")
 centered = false
 
-[node name="BoxUnderBed" type="Sprite2D" parent="MumsBedroomRoom" unique_id=-2094967276]
-texture = ExtResource("57_mbbox")
-centered = false
+[node name="BoxUnderBed" parent="MumsBedroomRoom" unique_id=1454723028 instance=ExtResource("39_y73h4")]
+position = Vector2(1630, 1900)
 
 [node name="Divider_MumsBedroom_Landing" type="Sprite2D" parent="." unique_id=-2094967265]
 z_index = 6
@@ -599,3 +601,9 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Psst! Come outside and play!"
 horizontal_alignment = 1
+
+[node name="LevelEndTrigger" type="Area2D" parent="." unique_id=895254676]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger" unique_id=510100194]
+position = Vector2(5651.4375, 819)
+shape = SubResource("RectangleShape2D_y73h4")

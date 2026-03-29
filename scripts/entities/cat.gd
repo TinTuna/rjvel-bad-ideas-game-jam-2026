@@ -153,11 +153,15 @@ func hide_in_box() -> void:
 	animated_sprite.hide()
 	_is_movement_disabled = true
 	collision_layer = 0
+	if item_container.get_child_count() != 0:
+		item_container.get_child(0).hide()
 
 func leave_box() -> void:
 	animated_sprite.show()
 	_is_movement_disabled = false
 	collision_layer = 1
+	if item_container.get_child_count() != 0:
+		item_container.get_child(0).show()
 
 func pick_up_item(item: Node2D) -> void:
 	item.reparent(item_container)
