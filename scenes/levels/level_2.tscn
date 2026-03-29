@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://5d31cv7p7mqp" path="res://scripts/levels/level_2.gd" id="1_852cy"]
 [ext_resource type="Texture2D" uid="uid://dkar0tk8bhn4i" path="res://assets/sprites/environment/Kitchen/wall and floor.png" id="2_x63fv"]
 [ext_resource type="Texture2D" uid="uid://7vpo77wdl1q7" path="res://assets/sprites/environment/Kitchen/window 1.png" id="3_bnt33"]
-[ext_resource type="Texture2D" uid="uid://bdjkpr86kel5q" path="res://assets/sprites/environment/Kitchen/window 2.png" id="4_em1wd"]
 [ext_resource type="Texture2D" uid="uid://bk5cosvm3itn" path="res://assets/sprites/environment/Kitchen/counter.png" id="5_7to3y"]
 [ext_resource type="Texture2D" uid="uid://f5b3pcvhhb47" path="res://assets/sprites/environment/Kitchen/fridge.png" id="6_ywi5j"]
 [ext_resource type="Texture2D" uid="uid://mwff81vabvyo" path="res://assets/sprites/environment/Kitchen/door.png" id="7_nqmx1"]
@@ -13,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c6xewyedq6v2l" path="res://assets/sprites/environment/Kitchen/mug.png" id="11_g8c2j"]
 [ext_resource type="PackedScene" uid="uid://cu0820t6nyfgb" path="res://scenes/entities/toaster.tscn" id="12_852cy"]
 [ext_resource type="Texture2D" uid="uid://ga5fwkjgujd2" path="res://assets/sprites/environment/Room_divider.png" id="12_mghg3"]
+[ext_resource type="PackedScene" uid="uid://t435g5vxop5" path="res://scenes/entities/kitchen_window.tscn" id="12_x63fv"]
 [ext_resource type="Texture2D" uid="uid://c506jmqby23nx" path="res://assets/sprites/environment/Living Room/wall and floor.png" id="13_xlkqr"]
 [ext_resource type="Texture2D" uid="uid://bh01718pmlvnc" path="res://assets/sprites/environment/Living Room/window.png" id="14_lq6o5"]
 [ext_resource type="Texture2D" uid="uid://clni7gkp6ma4s" path="res://assets/sprites/environment/Living Room/photo 1.png" id="15_1p26v"]
@@ -59,6 +59,15 @@
 [ext_resource type="PackedScene" uid="uid://b8k7mqh2wvn0y" path="res://scenes/entities/family_members/mother.tscn" id="57_gvrkc"]
 [ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="58_eo4xs"]
 [ext_resource type="Script" uid="uid://byy1rhnseo0p" path="res://scripts/systems/window_hint.gd" id="59_dnjht"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_em1wd"]
+size = Vector2(1374, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x63fv"]
+size = Vector2(307, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnt33"]
+size = Vector2(309, 114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbbed"]
 size = Vector2(64, 476)
@@ -110,13 +119,15 @@ centered = false
 texture = ExtResource("3_bnt33")
 centered = false
 
-[node name="Window2" type="Sprite2D" parent="Kitchen" unique_id=615206392]
-texture = ExtResource("4_em1wd")
-centered = false
-
 [node name="Counter" type="Sprite2D" parent="Kitchen" unique_id=254552563]
 texture = ExtResource("5_7to3y")
 centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Counter" unique_id=1665139623]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Counter/StaticBody2D" unique_id=319787730]
+position = Vector2(795, 1252)
+shape = SubResource("RectangleShape2D_em1wd")
 
 [node name="Fridge" type="Sprite2D" parent="Kitchen" unique_id=1730990863]
 texture = ExtResource("6_ywi5j")
@@ -134,9 +145,21 @@ centered = false
 texture = ExtResource("9_ircvk")
 centered = false
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Chair1" unique_id=1450212695]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Chair1/StaticBody2D" unique_id=1803232899]
+position = Vector2(2368.5, 1584)
+shape = SubResource("RectangleShape2D_x63fv")
+
 [node name="Chair2" type="Sprite2D" parent="Kitchen" unique_id=996936663]
 texture = ExtResource("10_8gy8s")
 centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Chair2" unique_id=1958822185]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Chair2/StaticBody2D" unique_id=1248456863]
+position = Vector2(3361.5, 1585)
+shape = SubResource("RectangleShape2D_bnt33")
 
 [node name="Mug" type="Sprite2D" parent="Kitchen" unique_id=1372587775]
 texture = ExtResource("11_g8c2j")
@@ -144,6 +167,9 @@ centered = false
 
 [node name="Toaster" parent="Kitchen" unique_id=1809135083 instance=ExtResource("12_852cy")]
 position = Vector2(264, 1084)
+
+[node name="KitchenWindow" parent="Kitchen" unique_id=830257629 instance=ExtResource("12_x63fv")]
+position = Vector2(1918, 1078)
 
 [node name="Divider_Kitchen_LivingRoom" type="Sprite2D" parent="." unique_id=1769912328]
 z_index = 6
