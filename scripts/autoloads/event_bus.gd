@@ -96,6 +96,9 @@ signal toaster_reset()
 ## Emitted on day 2 when the kitchen window is open
 signal window_open()
 
+## Emitted on day 3 when pizza is delivered
+signal pizza_delivered()
+
 # ============================================================================
 # MUSIC EVENTS
 # ============================================================================

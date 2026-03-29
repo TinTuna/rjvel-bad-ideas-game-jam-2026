@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c6r65x0apfe6r"]
+
+[ext_resource type="Script" uid="uid://4bjp6jsyh7mm" path="res://scripts/entities/day_3/phone.gd" id="1_e4uf5"]
+[ext_resource type="Texture2D" uid="uid://d0io0ulk0xex7" path="res://assets/sprites/environment/Mum_s Bedroom/phone OFF.png" id="2_hsdyq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6ni4"]
+size = Vector2(105, 135)
+
+[node name="Phone" type="Area2D" unique_id=552859118]
+script = ExtResource("1_e4uf5")
+metadata/_custom_type_script = "uid://ckdebxl7oflen"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=726694989]
+texture = ExtResource("2_hsdyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1823647163]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_y6ni4")
+
+[node name="Timer" type="Timer" parent="." unique_id=510550634]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
