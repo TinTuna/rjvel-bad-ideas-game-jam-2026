@@ -6,6 +6,8 @@ const TOASTER_ON = preload("uid://cevcrd8e3h2u6")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
+@export var is_interactable: bool = true
+
 var _is_on: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +19,7 @@ func _process(delta: float) -> void:
     pass
 
 func interact() -> void:
-    if _is_on == false:
+    if _is_on == false and is_interactable:
         _is_on = true
         timer.start()
         sprite.texture = TOASTER_ON

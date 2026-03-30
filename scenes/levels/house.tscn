@@ -37,7 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://bu48hqrn6iogn" path="res://assets/sprites/environment/Mum_s Bedroom/lamp.png" id="34_tha68"]
 [ext_resource type="Texture2D" uid="uid://433511kf3njh" path="res://assets/sprites/environment/Mum_s Bedroom/tabouret.png" id="35_w6ym2"]
 [ext_resource type="Texture2D" uid="uid://bptw5miwkj02e" path="res://assets/sprites/environment/Mum_s Bedroom/photo.png" id="36_73gfj"]
-[ext_resource type="PackedScene" uid="uid://cr64jwfjc7m4" path="res://scenes/entities/day_1/box_under_bed.tscn" id="37_4ly3b"]
 [ext_resource type="Texture2D" uid="uid://bn0tgeddyhpk4" path="res://assets/sprites/environment/Upstairs corridor/wall and floor.png" id="38_xrgyh"]
 [ext_resource type="Texture2D" uid="uid://yx3brfxerwrt" path="res://assets/sprites/environment/Upstairs corridor/floor.png" id="39_wixft"]
 [ext_resource type="Texture2D" uid="uid://b0m0gbythg8w5" path="res://assets/sprites/environment/Upstairs corridor/stairs.png" id="40_acdcm"]
@@ -455,9 +454,6 @@ one_way_collision = true
 [node name="Photo" type="Sprite2D" parent="MumsBedroomRoom" unique_id=422361660]
 texture = ExtResource("36_73gfj")
 centered = false
-
-[node name="BoxUnderBed" parent="MumsBedroomRoom" unique_id=1454723028 instance=ExtResource("37_4ly3b")]
-position = Vector2(1630, 1900)
 
 [node name="Landing" type="Node2D" parent="." unique_id=1877615913]
 position = Vector2(1063, -1080)

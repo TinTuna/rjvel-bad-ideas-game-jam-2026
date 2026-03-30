@@ -35,12 +35,12 @@ expand_mode = 1
 
 [node name="Phone" parent="House" unique_id=552859118 instance=ExtResource("25_apiyn")]
 z_index = 2
-position = Vector2(2242, 934)
+position = Vector2(-668, -424)
 scale = Vector2(0.5, 0.5)
 
 [node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("53_l8gpt")]
 z_index = 2
-position = Vector2(2138.0002, -132.99988)
+position = Vector2(484.00037, 967.9999)
 MOVEMENT_SPEED = null
 ACCELERATION = null
 PUSH_SPEED = null
@@ -92,8 +92,10 @@ position = Vector2(3948, -82)
 [node name="HUD" parent="." unique_id=412729266 instance=ExtResource("58_r74q2")]
 
 [node name="Toaster" parent="." unique_id=1809135083 instance=ExtResource("10_2bnyt")]
-position = Vector2(87, 960)
-rotation = 3.6075957
-scale = Vector2(0.25, 0.25)
+z_index = 1
+position = Vector2(122, 955.00006)
+rotation = 3.3754668
+scale = Vector2(0.5, 0.5)
 monitoring = false
 monitorable = false
+is_interactable = false
