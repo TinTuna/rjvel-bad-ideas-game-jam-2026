@@ -1,5 +1,10 @@
 extends Control
 
+
+func _ready() -> void:
+    MusicManager.play_intro_then_loop("BOX1_INTRO", "BOX1_MAIN")
+
+
 func _on_play_button_pressed() -> void:
     if Constants.has_scene("INTRO"):
         SceneLoader.load_scene(Constants.SCENES.INTRO)

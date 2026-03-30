@@ -278,6 +278,30 @@ func _crossfade_players(fade_out_player: AudioStreamPlayer, fade_in_player: Audi
 # PUBLIC API (for direct calls, not through EventBus)
 # ============================================================================
 
+## Play an intro track once, then seamlessly loop a follow-up track
+func play_intro_then_loop(intro_track: String, loop_track: String) -> void:
+	_load_music_stream(Constants.get_music(intro_track))
+	_load_music_stream(Constants.get_music(loop_track))
+
+	player_a.stream = music_cache[Constants.get_music(intro_track)]
+	player_a.volume_db = linear_to_db(master_volume)
+	player_a.play()
+	active_is_a = true
+	current_track = intro_track
+	is_playing = true
+	is_paused = false
+	print("[MusicManager] Playing intro: %s" % intro_track)
+
+	await player_a.finished
+
+	player_b.stream = music_cache[Constants.get_music(loop_track)]
+	player_b.volume_db = linear_to_db(master_volume)
+	player_b.play()
+	active_is_a = false
+	current_track = loop_track
+	print("[MusicManager] Switching to main: %s" % loop_track)
+
+
 ## Transition to a track directly
 func transition_to(track_name: String, crossfade_duration: float = DEFAULT_CROSSFADE_DURATION) -> void:
 	EventBus.music_transition_requested.emit(track_name, crossfade_duration)

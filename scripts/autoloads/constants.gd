@@ -44,10 +44,14 @@ const SCENES := {
 const MUSIC := {
     # Menu Music
     "MAIN_MENU": "",
-    
+
     # Game Music
     "GAME_BASE": "",
     "GAME_ACTION": "",
+
+    # Box 1 Music
+    "BOX1_INTRO": "uid://dykanqblaqgur",
+    "BOX1_MAIN":  "uid://djabkvcxp4s80",
 }
 
 ## Audio bus names
