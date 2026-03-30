@@ -16,6 +16,7 @@ func _ready() -> void:
     var mother: FamilyMemberBase = get_tree().get_first_node_in_group("mother")
     if mother:
         EventBus.glass_knocked_down.connect(mother.react_to_event.bind("glass_knocked_down"))
+        mother.speak_day_lines(0)
     else:
         push_error("[Level0] Mother NPC not found — glass_knocked_down signal not connected")
 

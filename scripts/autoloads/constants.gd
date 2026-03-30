@@ -39,6 +39,21 @@ const SCENES := {
 # MUSIC REGISTRY (using UIDs)
 # ============================================================================
 
+## Voiceover lines parsed from CSV at runtime
+## Structure: { "Mum": { "Day 0": [{ text, code }, ...], "Filler": [...] }, ... }
+var VOICEOVER_LINES: Dictionary = {}
+
+const VOICEOVER_CSV_PATH := "res://assets/audio/sfx/Voiceover/sounds.csv"
+
+## Maps CSV character name → folder name under Voiceover/
+const VOICEOVER_FOLDERS := {
+    "Mum":   "Mother",
+    "Girl":  "Girl",
+    "Twins": "Twins",
+    "Cat":   "Cat",
+}
+
+
 ## Dictionary of music tracks
 ## Format: "TRACK_NAME": "uid://track_uid_here"
 const MUSIC := {
@@ -132,6 +147,58 @@ func get_all_scene_names() -> Array[String]:
 # HELPER METHODS - MUSIC
 # ============================================================================
 
+## Get all voice lines for a character and context (e.g. "Mum", "Filler" or "Day 0")
+func get_voice_lines(character: String, context: String) -> Array:
+    return VOICEOVER_LINES.get(character, {}).get(context, [])
+
+
+## Build the res:// path for a voiceover audio file by character and code
+func get_voice_audio_path(character: String, code: String) -> String:
+    var folder: String = VOICEOVER_FOLDERS.get(character, character)
+    return "res://assets/audio/sfx/Voiceover/%s/%s.wav" % [folder, code]
+
+
+func _parse_voiceover_csv() -> void:
+    var file := FileAccess.open(VOICEOVER_CSV_PATH, FileAccess.READ)
+    if not file:
+        push_error("[Constants] Failed to open voiceover CSV: %s" % VOICEOVER_CSV_PATH)
+        return
+    file.get_line()  # skip header
+    while not file.eof_reached():
+        var line := file.get_line()
+        if line.strip_edges().is_empty():
+            continue
+        var parts := _csv_split(line)
+        if parts.size() < 4:
+            continue
+        var character := parts[0].strip_edges()
+        var text     := parts[1].strip_edges()
+        var context  := parts[2].strip_edges()
+        var code     := parts[3].strip_edges()
+        if not VOICEOVER_LINES.has(character):
+            VOICEOVER_LINES[character] = {}
+        if not VOICEOVER_LINES[character].has(context):
+            VOICEOVER_LINES[character][context] = []
+        VOICEOVER_LINES[character][context].append({"text": text, "code": code})
+    print("[Constants] Voiceover lines loaded for: %s" % str(VOICEOVER_LINES.keys()))
+
+
+func _csv_split(line: String) -> Array[String]:
+    var result: Array[String] = []
+    var current := ""
+    var in_quotes := false
+    for ch in line:
+        if ch == '"':
+            in_quotes = not in_quotes
+        elif ch == ',' and not in_quotes:
+            result.append(current)
+            current = ""
+        else:
+            current += ch
+    result.append(current)
+    return result
+
+
 ## Get a music track UID by name
 ## @param track_name: String - The track name (e.g., "LEVEL_01")
 ## @return String - The UID of the track, or empty string if not found
@@ -167,6 +234,7 @@ func get_all_music_tracks() -> Array[String]:
 
 func _ready() -> void:
     print("[Constants] Initialized")
+    _parse_voiceover_csv()
     
     # Validate that all scenes have UIDs assigned
     var missing_scene_uids: Array[String] = []
