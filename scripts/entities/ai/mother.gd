@@ -84,6 +84,13 @@ func speak_day_lines(day: int) -> void:
 # ============================================================================
 
 var _resetting_glass: bool = false
+var _playing_once_anim: bool = false
+
+
+func update_animation() -> void:
+    if _playing_once_anim:
+        return
+    super.update_animation()
 
 
 func on_cat_touched(cat: Node2D) -> void:
@@ -98,7 +105,8 @@ func react_to_event(event_name: String) -> void:
         var glass: Node2D = get_tree().get_first_node_in_group("glass")
         if glass:
             _resetting_glass = true
-            navigate_to_position(glass.global_position, current_floor)
+            var approach_x = glass.global_position.x + sign(global_position.x - glass.global_position.x) * 200.0
+            navigate_to_position(Vector2(approach_x, global_position.y), current_floor)
         else:
             push_error("[Mother] Could not find glass node to navigate to")
 
@@ -106,6 +114,10 @@ func react_to_event(event_name: String) -> void:
 func on_destination_reached() -> void:
     if _resetting_glass:
         _resetting_glass = false
+        _playing_once_anim = true
+        animated_sprite.play("interacting")
         EventBus.glass_reset.emit()
+        await animated_sprite.animation_finished
+        _playing_once_anim = false
 
     super.on_destination_reached()

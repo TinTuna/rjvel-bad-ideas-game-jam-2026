@@ -142,12 +142,25 @@ func connect_points_by_id(from_id: int, to_id: int, bidirectional: bool = true) 
 func find_path(from_pos: Vector2, from_floor: int, to_pos: Vector2, to_floor: int) -> Array[Dictionary]:
     var from_id = find_nearest_point_id(from_pos, from_floor)
     var to_id = find_nearest_point_id(to_pos, to_floor)
-    
+
     if from_id == -1 or to_id == -1:
         push_warning("[NavigationGraph] Could not find navigation points near positions")
         return []
-    
-    return find_path_by_ids(from_id, to_id)
+
+    var path = find_path_by_ids(from_id, to_id)
+
+    # Append the actual target position if it differs from the nearest nav node,
+    # so the NPC walks all the way to the destination rather than stopping at the
+    # closest graph node.
+    if to_pos.distance_to(point_positions[to_id]) > 5.0:
+        path.append({
+            "id": -1,
+            "position": to_pos,
+            "floor": to_floor,
+            "name": "target"
+        })
+
+    return path
 
 
 ## Find path between two named points

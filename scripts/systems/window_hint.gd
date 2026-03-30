@@ -20,41 +20,41 @@ var _cat: CharacterBody2D
 
 
 func _ready() -> void:
-	hint_label.visible = false
-	hint_label.text = hint_text
-	trigger.collision_mask = 1
-	trigger.body_entered.connect(_on_trigger_entered)
-	trigger.body_exited.connect(_on_trigger_exited)
+    hint_label.visible = false
+    hint_label.text = hint_text
+    trigger.collision_mask = 1
+    trigger.body_entered.connect(_on_trigger_entered)
+    trigger.body_exited.connect(_on_trigger_exited)
 
-	await get_tree().process_frame
-	_camera = get_tree().get_first_node_in_group("game_camera")
+    await get_tree().process_frame
+    _camera = get_tree().get_first_node_in_group("game_camera")
 
 
 func _on_trigger_entered(body: Node2D) -> void:
-	if _is_showing or not body.is_in_group("cat"):
-		return
-	_cat = body
-	_cat_in_trigger = true
+    if _is_showing or not body.is_in_group("cat"):
+        return
+    _cat = body
+    _cat_in_trigger = true
 
-	await get_tree().create_timer(trigger_delay).timeout
+    await get_tree().create_timer(trigger_delay).timeout
 
-	# Abort if the cat left the area or is still airborne after the delay.
-	if not _cat_in_trigger or not _cat.is_on_floor():
-		return
+    # Abort if the cat left the area or is still airborne after the delay.
+    if not _cat_in_trigger or not _cat.is_on_floor():
+        return
 
-	_is_showing = true
-	_camera.enter_cinematic($CinematicCamera.global_position, target_zoom, zoom_in_duration)
-	await get_tree().create_timer(zoom_in_duration).timeout
-	if _is_showing:
-		hint_label.visible = true
+    _is_showing = true
+    _camera.enter_cinematic($CinematicCamera.global_position, target_zoom, zoom_in_duration)
+    await get_tree().create_timer(zoom_in_duration).timeout
+    if _is_showing:
+        hint_label.visible = true
 
 
 func _on_trigger_exited(body: Node2D) -> void:
-	if not body.is_in_group("cat"):
-		return
-	_cat_in_trigger = false
-	if not _is_showing:
-		return
-	_is_showing = false
-	hint_label.visible = false
-	_camera.exit_cinematic(zoom_out_duration)
+    if not body.is_in_group("cat"):
+        return
+    _cat_in_trigger = false
+    if not _is_showing:
+        return
+    _is_showing = false
+    hint_label.visible = false
+    _camera.exit_cinematic(zoom_out_duration)
