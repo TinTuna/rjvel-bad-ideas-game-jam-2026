@@ -7,7 +7,7 @@ var _is_window_opened: bool = false
 func _ready() -> void:
     EventBus.window_open.connect(window_opened)
     level_end_trigger.body_entered.connect(_on_level_end_triggered)
-
+    Constants.current_day = 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

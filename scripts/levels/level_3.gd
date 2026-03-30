@@ -6,7 +6,7 @@ const PIZZA = preload("uid://d87k0lb4q6fx")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     EventBus.pizza_delivered.connect(pizza_delivery)
-
+    Constants.current_day = 3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

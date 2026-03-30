@@ -97,6 +97,7 @@ text = "Confirm"
 [node name="RestartButton" type="Button" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1608051259]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
+disabled = true
 text = "Restart day"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=449432152]

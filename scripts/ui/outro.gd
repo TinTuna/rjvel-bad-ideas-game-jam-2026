@@ -22,6 +22,7 @@ var _showing_stats: bool = false
 func _ready() -> void:
     slide_label.hide()
     _show_slide(0)
+    Constants.current_day = 0
 
 
 func _unhandled_input(event: InputEvent) -> void:

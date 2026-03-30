@@ -81,6 +81,9 @@ const AUDIO_BUSES := {
 # GAME CONSTANTS
 # ============================================================================
 
+## Current day 
+var current_day: int = 0
+
 ## ID of a cat voice pack 
 var voice_pack: int = 0
 
@@ -94,13 +97,8 @@ const VOICE_PACKS := {
     4: "T",
 }
 
-const MIAOS_NUMBER := {
-    0: 3, # "Jara"
-    1: 4, # "Jeis"
-    2: 3, # "Llamas"
-    3: 2, # "Vacados"
-    4: 0 # "Tuna"
-}
+## ID of a cat voice pack 
+var is_settings_initialised: bool = false
 
 # ============================================================================
 # DAY SYSTEM CONSTANTS

@@ -18,6 +18,8 @@ func _ready() -> void:
         EventBus.glass_knocked_down.connect(mother.react_to_event.bind("glass_knocked_down"))
     else:
         push_error("[Level1] Mother NPC not found — glass_knocked_down signal not connected")
+    
+    Constants.current_day = 1
 
 
 func _on_level_end_triggered(body: Node2D) -> void:
