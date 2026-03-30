@@ -315,7 +315,7 @@ func update_animation() -> void:
 			animated_sprite.play("walking")
 			# Flip sprite based on horizontal movement direction
 			if velocity.x != 0:
-				animated_sprite.flip_h = velocity.x < 0
+				animated_sprite.flip_h = velocity.x > 0
 		
 		State.WAITING:
 			animated_sprite.play("standing")

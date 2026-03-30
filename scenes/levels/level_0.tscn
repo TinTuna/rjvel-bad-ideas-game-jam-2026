@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b0t4qvl2dtmwh"]
 
 [ext_resource type="Script" uid="uid://b364fsl8wwril" path="res://scripts/levels/level_0.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://d3ggmjb0i8826" path="res://assets/sprites/environment/outside.png" id="2_6miux"]
 [ext_resource type="PackedScene" uid="uid://d25vdnwh7ugoy" path="res://scenes/entities/cat.tscn" id="2_cat"]
 [ext_resource type="PackedScene" uid="uid://b8k7mqh2wvn0y" path="res://scenes/entities/family_members/mother.tscn" id="3_mother"]
 [ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="4_hud"]
@@ -74,6 +75,28 @@ size = Vector2(310, 40)
 
 [node name="Level_0" type="Node2D" unique_id=949364802]
 script = ExtResource("1_script")
+
+[node name="Outside_right" type="Sprite2D" parent="." unique_id=1848987834]
+position = Vector2(6073, 540)
+texture = ExtResource("2_6miux")
+
+[node name="Outside_left" type="Sprite2D" parent="." unique_id=1557331569]
+position = Vector2(-311, 540)
+texture = ExtResource("2_6miux")
+
+[node name="Divider_Kitchen_Outside" type="Sprite2D" parent="." unique_id=569414257]
+z_index = 7
+position = Vector2(-135, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("39_divider")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Divider_Kitchen_Outside" unique_id=320192807]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Divider_Kitchen_Outside/StaticBody2D" unique_id=85268739]
+position = Vector2(242, 232)
+shape = SubResource("RectangleShape2D_xi6i6")
 
 [node name="Kitchen" type="Node2D" parent="." unique_id=183279515]
 scale = Vector2(0.5, 0.5)
@@ -255,6 +278,20 @@ collision_layer = 2
 position = Vector2(242, 232)
 shape = SubResource("RectangleShape2D_xi6i6")
 
+[node name="Divider_Entry_Outside" type="Sprite2D" parent="." unique_id=7095546]
+z_index = 7
+position = Vector2(5651, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("39_divider")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Divider_Entry_Outside" unique_id=151073047]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Divider_Entry_Outside/StaticBody2D" unique_id=1442140799]
+position = Vector2(242, 232)
+shape = SubResource("RectangleShape2D_xi6i6")
+
 [node name="Entry" type="Node2D" parent="." unique_id=861521772]
 position = Vector2(3840, 0)
 scale = Vector2(0.5, 0.5)
@@ -320,7 +357,7 @@ script = ExtResource("41_gamecam")
 script = ExtResource("5_navgraph")
 
 [node name="Kitchen" parent="NavigationGraph" unique_id=1829446312 instance=ExtResource("6_navpoint")]
-position = Vector2(960, 1000)
+position = Vector2(456, 1000)
 connections = Array[NodePath]([NodePath("../Living_Room")])
 
 [node name="Living_Room" parent="NavigationGraph" unique_id=1787618462 instance=ExtResource("6_navpoint")]
@@ -328,7 +365,7 @@ position = Vector2(2880, 1000)
 connections = Array[NodePath]([NodePath("../Kitchen"), NodePath("../Entry")])
 
 [node name="Entry" parent="NavigationGraph" unique_id=1135845908 instance=ExtResource("6_navpoint")]
-position = Vector2(4800, 1000)
+position = Vector2(5264, 1000)
 connections = Array[NodePath]([NodePath("../Living_Room")])
 
 [node name="Mother" parent="." unique_id=124666084 instance=ExtResource("3_mother")]

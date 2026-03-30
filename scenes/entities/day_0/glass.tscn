@@ -60,7 +60,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_la146"]
 resource_name = "knock_glass_to_floor"
-length = 0.5
 step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
