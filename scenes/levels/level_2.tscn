@@ -56,6 +56,7 @@ color_ramp = SubResource("Gradient_qsp8v")
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="House/Toaster" unique_id=1090149204]
 z_as_relative = false
 position = Vector2(1640, -1016)
+emitting = false
 amount = 500
 texture = ExtResource("4_qsp8v")
 lifetime = 5.0
