@@ -19,6 +19,11 @@ script = ExtResource("1_script")
 [node name="House" parent="." unique_id=509524014 instance=ExtResource("2_65guy")]
 upstairs_enabled = false
 
+[node name="Glass" parent="House" unique_id=2087202024 instance=ExtResource("23_3kux2")]
+z_index = 2
+position = Vector2(2551, 753)
+scale = Vector2(0.5, 0.5)
+
 [node name="LevelEndTrigger" type="Area2D" parent="." unique_id=200000001]
 position = Vector2(5670, 500)
 
@@ -53,7 +58,3 @@ z_index = 5
 position = Vector2(4800, 1000)
 
 [node name="HUD" parent="." unique_id=412729266 instance=ExtResource("4_hud")]
-
-[node name="Glass" parent="." unique_id=2087202024 instance=ExtResource("23_3kux2")]
-position = Vector2(2551, 753)
-scale = Vector2(0.5, 0.5)
