@@ -81,6 +81,27 @@ const AUDIO_BUSES := {
 # GAME CONSTANTS
 # ============================================================================
 
+## ID of a cat voice pack 
+var voice_pack: int = 0
+
+## Voice packs ID and corresponding letter code
+## Format: ID: "Letter"
+const VOICE_PACKS := {
+    0: "E",
+    1: "J",
+    2: "L",
+    3: "V",
+    4: "T",
+}
+
+const MIAOS_NUMBER := {
+    0: 3, # "Jara"
+    1: 4, # "Jeis"
+    2: 3, # "Llamas"
+    3: 2, # "Vacados"
+    4: 0 # "Tuna"
+}
+
 # ============================================================================
 # DAY SYSTEM CONSTANTS
 # ============================================================================
@@ -253,3 +274,6 @@ func _ready() -> void:
     
     if missing_music_uids.size() > 0:
         push_warning("[Constants] The following music tracks are missing UIDs: %s" % str(missing_music_uids))
+    
+    var rng = RandomNumberGenerator.new()
+    voice_pack = rng.randi_range(0, 3)
