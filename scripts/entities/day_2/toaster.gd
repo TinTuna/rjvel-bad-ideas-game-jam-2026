@@ -6,6 +6,8 @@ const TOASTER_ON = preload("uid://cevcrd8e3h2u6")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
+@export var is_interactable: bool = true
+
 var _is_on: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +19,7 @@ func _process(delta: float) -> void:
     pass
 
 func interact() -> void:
-    if _is_on == false:
+    if _is_on == false and is_interactable:
         _is_on = true
         timer.start()
         sprite.texture = TOASTER_ON
@@ -25,11 +27,15 @@ func interact() -> void:
 
 
 func _on_timer_timeout() -> void:
-    #TODO: start smoke + person opens window
+    #TODO: person opens window
     EventBus.toaster_burnt.emit()
+    $CPUParticles2D.emitting = true
+    await get_tree().create_timer(5.0).timeout
+    $CPUParticles2D2.emitting = true
 
 func reset() -> void:
     sprite.texture = TOASTER_OFF
     _is_on = false
-    #TODO: stop smoke
+    $CPUParticles2D.emitting = false
+    $CPUParticles2D2.emitting = false
     collision_shape.set_deferred("disabled", false)

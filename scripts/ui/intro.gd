@@ -21,6 +21,7 @@ var _current_slide: int = 0
 
 func _ready() -> void:
     _show_slide(0)
+    MusicManager.play_intro_then_loop("BOX1_INTRO", "BOX1_MAIN")
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -16,7 +16,8 @@ _data = [Vector2(0, 0.49438208), 0.0, 0.0, 0, 0, Vector2(0.30851066, 1), 0.49288
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_qsp8v"]
-colors = PackedColorArray(0, 0, 0, 0.85882354, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.5308642, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.7529412, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y73h4"]
 size = Vector2(582.4375, 354.5)
@@ -42,11 +43,9 @@ texture = ExtResource("4_qsp8v")
 lifetime = 3.5
 randomness = 0.1
 direction = Vector2(0, 0)
-gravity = Vector2(0, -90)
+gravity = Vector2(0, -70)
 angular_velocity_min = -20.0
 angular_velocity_max = 20.0
-damping_min = 6.931
-damping_max = 57.426
 angle_min = -180.0
 angle_max = 180.0
 scale_amount_min = 0.2
@@ -54,9 +53,29 @@ scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_qsp8v")
 color_ramp = SubResource("Gradient_qsp8v")
 
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="House/Toaster" unique_id=1090149204]
+z_as_relative = false
+position = Vector2(1640, -1016)
+emitting = false
+amount = 500
+texture = ExtResource("4_qsp8v")
+lifetime = 5.0
+randomness = 0.1
+emission_shape = 3
+emission_rect_extents = Vector2(1900, 100)
+direction = Vector2(0, 0)
+gravity = Vector2(0, 1)
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.2
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_qsp8v")
+
 [node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("53_ycjig")]
 z_index = 5
-position = Vector2(2138.0002, -132.99988)
+position = Vector2(1517.9999, -99.99994)
 
 [node name="GameCamera" type="Camera2D" parent="." unique_id=917904922]
 position = Vector2(2023, -450)

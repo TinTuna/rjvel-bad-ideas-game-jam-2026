@@ -65,13 +65,13 @@ func _ready() -> void:
 	# Create player A
 	player_a = AudioStreamPlayer.new()
 	player_a.bus = Constants.AUDIO_BUSES.MUSIC
-	player_a.volume_db = linear_to_db(0.0)  # Start silent
+	player_a.volume_db = -80.0  # Start silent
 	add_child(player_a)
 	
 	# Create player B
 	player_b = AudioStreamPlayer.new()
 	player_b.bus = Constants.AUDIO_BUSES.MUSIC
-	player_b.volume_db = linear_to_db(0.0)  # Start silent
+	player_b.volume_db = -80.0  # Start silent
 	add_child(player_b)
 	
 	# Connect to EventBus signals
@@ -282,6 +282,9 @@ func _crossfade_players(fade_out_player: AudioStreamPlayer, fade_in_player: Audi
 func play_intro_then_loop(intro_track: String, loop_track: String) -> void:
 	_load_music_stream(Constants.get_music(intro_track))
 	_load_music_stream(Constants.get_music(loop_track))
+
+	player_a.stop()
+	player_b.stop()
 
 	player_a.stream = music_cache[Constants.get_music(intro_track)]
 	player_a.volume_db = linear_to_db(master_volume)

@@ -58,7 +58,7 @@ const VOICEOVER_FOLDERS := {
 ## Format: "TRACK_NAME": "uid://track_uid_here"
 const MUSIC := {
     # Menu Music
-    "MAIN_MENU": "",
+    "MAIN_MENU": "uid://hlp0rjw7ll0h",
 
     # Game Music
     "GAME_BASE": "",

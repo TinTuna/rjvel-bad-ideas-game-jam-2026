@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgctxx0wbtaii"
+path="res://.godot/imported/Cat enters box.wav-4ede73eac2b8add3a55cc623dbcd31a8.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Sounds (equalised)/Cat enters box.wav"
+dest_files=["res://.godot/imported/Cat enters box.wav-4ede73eac2b8add3a55cc623dbcd31a8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
