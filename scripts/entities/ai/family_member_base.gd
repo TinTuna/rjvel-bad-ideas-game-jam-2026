@@ -147,16 +147,19 @@ func navigate_to_point(point_name: String) -> void:
 
 ## Navigate to a specific position
 func navigate_to_position(target_pos: Vector2, target_floor: int) -> void:
+	if target_floor == current_floor and global_position.distance_to(target_pos) <= 5.0:
+		return
+
 	current_path = navigation_graph.find_path(
 		global_position, current_floor,
 		target_pos, target_floor
 	)
-	
+
 	if current_path.is_empty():
 		print("[%s] No path found to target" % character_name)
 		current_state = State.IDLE
 		return
-	
+
 	current_path_index = 0
 	target_waypoint = current_path[0]
 	current_state = State.MOVING_TO_TARGET
