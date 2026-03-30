@@ -1,0 +1,24 @@
+Vocal name,Vocal text,Context,Code
+Mum,The neighbour's tomcat got run over last week. We need to be more careful with Boxie,Day 0,M_0_0
+Twins,What do you think Boxie dreams about?,Filler,T_F_0
+Girl,"Urgh, seriously, why lock the cat flap?",Day 1,G_1_0
+Girl,Who hides a cat flap key in her room? Can't we just keep it in a drawer? Mom is SO weird sometimes.,Day 1,G_1_1
+Twins,Do you think Boxie would really get hurt if we let him out? Mom worries too much,Filler,T_F_1
+Mum,BOYS! Have you seen my phone?,Day 3,M_3_0
+Mum,I don't remember where I put it...,Day 3,M_3_1
+Twins,"Mom always forgets her phone in her room, but she's always too lazy to go upstairs to check",Day 3,T_3_0
+Mum,"I need to leave soon, can't be late for work again...",Filler,M_F_0
+Mum,Look at this mess! ,Filler,M_F_1
+Mum,I'll have to go buy some new cat litter.,Filler,M_F_2
+Girl,"You're not allowed in my room anymore, Boxie. My pillow still smells like cat pee!",Filler,G_F_0
+Girl,Thank god I'm just back for reading week. I can't wait to leave.,Filler,G_F_1
+Twins,Hey Boxie! Let's play!,Filler,T_F_2
+Twins,Pspspspsps,Filler,T_F_3
+Twins,"Boxie obviously loves me more. Nope, he loves ME more.",Filler,T_F_4
+Mum,"No more catnip for you, Boxie. You go too wild.",Filler,M_F_3
+Girl,I hate having brothers. They always steal my biscuits.,Filler,G_F_2
+Mum,*sigh*,Filler,M_F_4
+Twins,Mum! Mia ate my biscuits again! ,Filler,T_F_5
+Twins,"My favourite animal is a giraffe. What about you, Boxie?",Filler,T_F_6
+Girl,Ugh. I wish I could have some peace and quiet around this place.,Filler,G_F_3
+Mum,Maybe we could have curry tonight.,Filler,M_F_5

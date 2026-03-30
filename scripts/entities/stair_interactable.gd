@@ -2,6 +2,8 @@ extends Interactable
 
 class_name StairInteractable
 
+const STAIRS_CREAK = preload("uid://4mge5phoffos")
+
 ## Midpoint marker at the top/bottom of the stair sprite itself.
 @export var stairs_marker: Marker2D
 
@@ -28,6 +30,13 @@ func interact() -> void:
     var cat = get_tree().get_first_node_in_group("cat")
     if not cat:
         return
+
+    var audio := AudioStreamPlayer.new()
+    audio.stream = STAIRS_CREAK
+    audio.bus = Constants.AUDIO_BUSES.SFX
+    add_child(audio)
+    audio.play()
+    audio.finished.connect(audio.queue_free)
 
     cat.z_index = starting_z_index
     cat.take_control()
