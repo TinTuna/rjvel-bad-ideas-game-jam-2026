@@ -84,11 +84,32 @@ size = Vector2(1078, 84)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gngue"]
 size = Vector2(612, 84)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgeqm"]
+size = Vector2(488, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3unfs"]
+size = Vector2(758, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1snp"]
+size = Vector2(918, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcdwk"]
+size = Vector2(488, 68)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klc0n"]
 size = Vector2(1654, 96)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54ptx"]
+size = Vector2(448, 116)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brbed"]
 size = Vector2(1846, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xp0uc"]
+size = Vector2(231, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucdoc"]
+size = Vector2(231, 44)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_floor"]
 normal = Vector2(0, 1)
@@ -349,9 +370,25 @@ centered = false
 texture = ExtResource("28_l5tq1")
 centered = false
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Entry/Table" unique_id=1377706871]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entry/Table/StaticBody2D" unique_id=539205668]
+position = Vector2(1602, 1512)
+shape = SubResource("RectangleShape2D_cgeqm")
+one_way_collision = true
+
 [node name="Cabinet" type="Sprite2D" parent="Entry" unique_id=761321285]
 texture = ExtResource("29_to1tt")
 centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Entry/Cabinet" unique_id=1892714134]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entry/Cabinet/StaticBody2D" unique_id=1585629396]
+position = Vector2(2879, 889)
+shape = SubResource("RectangleShape2D_3unfs")
+one_way_collision = true
 
 [node name="MumsBedroomRoom" type="Node2D" parent="." unique_id=945876171]
 position = Vector2(-857, -1080)
@@ -365,9 +402,25 @@ centered = false
 texture = ExtResource("31_f4p5i")
 centered = false
 
+[node name="StaticBody2D" type="StaticBody2D" parent="MumsBedroomRoom/Wardrobe" unique_id=853254794]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MumsBedroomRoom/Wardrobe/StaticBody2D" unique_id=501617474]
+position = Vector2(3175, 299)
+shape = SubResource("RectangleShape2D_c1snp")
+one_way_collision = true
+
 [node name="Shelf" type="Sprite2D" parent="MumsBedroomRoom" unique_id=781832796]
 texture = ExtResource("32_7fo0k")
 centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MumsBedroomRoom/Shelf" unique_id=915566500]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MumsBedroomRoom/Shelf/StaticBody2D" unique_id=1130021416]
+position = Vector2(2246, 620)
+shape = SubResource("RectangleShape2D_vcdwk")
+one_way_collision = true
 
 [node name="Bed" type="Sprite2D" parent="MumsBedroomRoom" unique_id=1600419562]
 texture = ExtResource("33_qwqy8")
@@ -388,6 +441,14 @@ centered = false
 [node name="Tabouret" type="Sprite2D" parent="MumsBedroomRoom" unique_id=1783691555]
 texture = ExtResource("35_w6ym2")
 centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MumsBedroomRoom/Tabouret" unique_id=1801234093]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MumsBedroomRoom/Tabouret/StaticBody2D" unique_id=515247633]
+position = Vector2(346, 1440)
+shape = SubResource("RectangleShape2D_54ptx")
+one_way_collision = true
 
 [node name="Photo" type="Sprite2D" parent="MumsBedroomRoom" unique_id=422361660]
 texture = ExtResource("36_73gfj")
@@ -453,6 +514,22 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoysRoom/Bed/StaticBody2D2" unique_id=1656471890]
 position = Vector2(2050.5, 912)
 shape = SubResource("RectangleShape2D_brbed")
+one_way_collision = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="BoysRoom/Bed" unique_id=1205409801]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoysRoom/Bed/StaticBody2D3" unique_id=235191596]
+position = Vector2(1310.5, 1412)
+shape = SubResource("RectangleShape2D_xp0uc")
+one_way_collision = true
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="BoysRoom/Bed" unique_id=1745246553]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoysRoom/Bed/StaticBody2D4" unique_id=697343092]
+position = Vector2(1310.5, 1172)
+shape = SubResource("RectangleShape2D_ucdoc")
 one_way_collision = true
 
 [node name="BedFrontFrames" type="Sprite2D" parent="BoysRoom" unique_id=767209295]
