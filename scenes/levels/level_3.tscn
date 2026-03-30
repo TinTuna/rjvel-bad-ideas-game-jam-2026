@@ -13,9 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b8k7mqh2wvn0y" path="res://scenes/entities/family_members/mother.tscn" id="57_taeav"]
 [ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="58_r74q2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y73h4"]
-size = Vector2(582.4375, 354.5)
-
 [node name="Level_3" type="Node2D" unique_id=-2094967295]
 script = ExtResource("1_apiyn")
 
@@ -93,13 +90,6 @@ z_index = 5
 position = Vector2(3948, -82)
 
 [node name="HUD" parent="." unique_id=412729266 instance=ExtResource("58_r74q2")]
-
-[node name="LevelEndTrigger" type="Area2D" parent="." unique_id=895254676]
-position = Vector2(-4272, -347)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger" unique_id=510100194]
-position = Vector2(5757.7813, 709.75)
-shape = SubResource("RectangleShape2D_y73h4")
 
 [node name="Toaster" parent="." unique_id=1809135083 instance=ExtResource("10_2bnyt")]
 position = Vector2(87, 960)

@@ -168,6 +168,7 @@ shape = SubResource("RectangleShape2D_vjklx")
 one_way_collision = true
 
 [node name="Counter" type="Sprite2D" parent="Kitchen" unique_id=514881402]
+z_index = 1
 texture = ExtResource("5_xp0uc")
 centered = false
 
@@ -210,6 +211,7 @@ shape = SubResource("RectangleShape2D_4x4ny")
 one_way_collision = true
 
 [node name="Chair1" type="Sprite2D" parent="Kitchen" unique_id=872726260]
+z_index = 1
 texture = ExtResource("9_mdkc2")
 centered = false
 
