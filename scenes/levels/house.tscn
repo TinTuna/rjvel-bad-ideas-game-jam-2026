@@ -135,10 +135,12 @@ size = Vector2(64, 476)
 script = ExtResource("1_54ptx")
 
 [node name="Outside_right" type="Sprite2D" parent="." unique_id=785945200]
+z_index = 1
 position = Vector2(6072, 540)
 texture = ExtResource("1_6w1ga")
 
 [node name="Outside_left" type="Sprite2D" parent="." unique_id=1535282563]
+z_index = 1
 position = Vector2(-312, 540)
 texture = ExtResource("1_6w1ga")
 
@@ -396,10 +398,12 @@ position = Vector2(-857, -1080)
 scale = Vector2(0.5, 0.5)
 
 [node name="FloorAndWall" type="Sprite2D" parent="MumsBedroomRoom" unique_id=884823845]
+z_index = 1
 texture = ExtResource("30_wlfmc")
 centered = false
 
 [node name="Wardrobe" type="Sprite2D" parent="MumsBedroomRoom" unique_id=1313192074]
+z_index = 1
 texture = ExtResource("31_f4p5i")
 centered = false
 
@@ -412,6 +416,7 @@ shape = SubResource("RectangleShape2D_c1snp")
 one_way_collision = true
 
 [node name="Shelf" type="Sprite2D" parent="MumsBedroomRoom" unique_id=781832796]
+z_index = 1
 texture = ExtResource("32_7fo0k")
 centered = false
 
@@ -424,6 +429,7 @@ shape = SubResource("RectangleShape2D_vcdwk")
 one_way_collision = true
 
 [node name="Bed" type="Sprite2D" parent="MumsBedroomRoom" unique_id=1600419562]
+z_index = 1
 texture = ExtResource("33_qwqy8")
 centered = false
 
@@ -436,10 +442,12 @@ shape = SubResource("RectangleShape2D_klc0n")
 one_way_collision = true
 
 [node name="Lamp" type="Sprite2D" parent="MumsBedroomRoom" unique_id=880927659]
+z_index = 1
 texture = ExtResource("34_tha68")
 centered = false
 
 [node name="Tabouret" type="Sprite2D" parent="MumsBedroomRoom" unique_id=1783691555]
+z_index = 1
 texture = ExtResource("35_w6ym2")
 centered = false
 
@@ -452,6 +460,7 @@ shape = SubResource("RectangleShape2D_54ptx")
 one_way_collision = true
 
 [node name="Photo" type="Sprite2D" parent="MumsBedroomRoom" unique_id=422361660]
+z_index = 1
 texture = ExtResource("36_73gfj")
 centered = false
 
