@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bx1plfvq4j6ic"
+path="res://.godot/imported/Human walking.wav-82db045013be0e414a212748d5f6ace9.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Sounds (equalised)/Human walking.wav"
+dest_files=["res://.godot/imported/Human walking.wav-82db045013be0e414a212748d5f6ace9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

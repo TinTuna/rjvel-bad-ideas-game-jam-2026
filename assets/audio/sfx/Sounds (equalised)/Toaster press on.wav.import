@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dahwhqc4a8jee"
+path="res://.godot/imported/Toaster press on.wav-ff604dc771c6e8a5a826a9b7ea759c39.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Sounds (equalised)/Toaster press on.wav"
+dest_files=["res://.godot/imported/Toaster press on.wav-ff604dc771c6e8a5a826a9b7ea759c39.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

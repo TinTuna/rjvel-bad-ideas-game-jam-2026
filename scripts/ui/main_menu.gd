@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready() -> void:
-    MusicManager.play_intro_then_loop("BOX1_INTRO", "BOX1_MAIN")
+    MusicManager.transition_to("MAIN_MENU")
 
 
 func _on_play_button_pressed() -> void:
