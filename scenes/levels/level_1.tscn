@@ -60,6 +60,24 @@
 [ext_resource type="Texture2D" uid="uid://bqmurm70nfjec" path="res://assets/sprites/environment/Boys_ Room/jim_s masterpieces.png" id="74_brart"]
 [ext_resource type="PackedScene" uid="uid://dno7pa2pbino4" path="res://scenes/entities/stair_interactable.tscn" id="80_stair"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjklx"]
+size = Vector2(1090, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kr1sg"]
+size = Vector2(1020, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2viwe"]
+size = Vector2(730, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x4ny"]
+size = Vector2(892, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlewy"]
+size = Vector2(244, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1ics"]
+size = Vector2(246, 58.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbbed"]
 size = Vector2(64, 476)
 
@@ -116,43 +134,91 @@ texture = ExtResource("2_yhfkw")
 [node name="Kitchen" type="Node2D" parent="." unique_id=183279515]
 scale = Vector2(0.5, 0.5)
 
-[node name="WallAndFloor" type="Sprite2D" parent="Kitchen" unique_id=1992976029]
+[node name="WallAndFloor" type="Sprite2D" parent="Kitchen" unique_id=813650099]
 texture = ExtResource("10_kw")
 centered = false
 
-[node name="Window1" type="Sprite2D" parent="Kitchen" unique_id=799681596]
+[node name="Window1" type="Sprite2D" parent="Kitchen" unique_id=1040089775]
 texture = ExtResource("16_kwin1")
 centered = false
 
-[node name="Window2" type="Sprite2D" parent="Kitchen" unique_id=615206392]
+[node name="Window2" type="Sprite2D" parent="Kitchen" unique_id=1602100379]
 texture = ExtResource("17_kwin2")
 centered = false
 
-[node name="Counter" type="Sprite2D" parent="Kitchen" unique_id=254552563]
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Window2" unique_id=1157717529]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Window2/StaticBody2D" unique_id=742646391]
+position = Vector2(2945, 1104)
+shape = SubResource("RectangleShape2D_vjklx")
+one_way_collision = true
+
+[node name="Counter" type="Sprite2D" parent="Kitchen" unique_id=2099841419]
 texture = ExtResource("11_kc")
 centered = false
 
-[node name="Fridge" type="Sprite2D" parent="Kitchen" unique_id=1730990863]
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Counter" unique_id=163312345]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Counter/StaticBody2D" unique_id=1673661437]
+position = Vector2(892, 1252)
+shape = SubResource("RectangleShape2D_kr1sg")
+one_way_collision = true
+
+[node name="Fridge" type="Sprite2D" parent="Kitchen" unique_id=648085087]
 texture = ExtResource("12_kf")
 centered = false
 
-[node name="Door" type="Sprite2D" parent="Kitchen" unique_id=365810873]
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Fridge" unique_id=223165963]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Fridge/StaticBody2D" unique_id=324366802]
+position = Vector2(1945, 398)
+shape = SubResource("RectangleShape2D_2viwe")
+one_way_collision = true
+
+[node name="Door" type="Sprite2D" parent="Kitchen" unique_id=511775411]
 texture = ExtResource("18_kd")
 centered = false
 
-[node name="Table" type="Sprite2D" parent="Kitchen" unique_id=244594909]
+[node name="Table" type="Sprite2D" parent="Kitchen" unique_id=1311442597]
 texture = ExtResource("13_kt")
 centered = false
 
-[node name="Chair1" type="Sprite2D" parent="Kitchen" unique_id=1616610087]
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Table" unique_id=477067224]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Table/StaticBody2D" unique_id=2092608100]
+position = Vector2(2924, 1383)
+shape = SubResource("RectangleShape2D_4x4ny")
+one_way_collision = true
+
+[node name="Chair1" type="Sprite2D" parent="Kitchen" unique_id=1620325072]
 texture = ExtResource("14_kch1")
 centered = false
 
-[node name="Chair2" type="Sprite2D" parent="Kitchen" unique_id=996936663]
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Chair1" unique_id=933410884]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Chair1/StaticBody2D" unique_id=1364913092]
+position = Vector2(2344, 1611)
+shape = SubResource("RectangleShape2D_nlewy")
+one_way_collision = true
+
+[node name="Chair2" type="Sprite2D" parent="Kitchen" unique_id=729905811]
 texture = ExtResource("15_kch2")
 centered = false
 
-[node name="Mug" type="Sprite2D" parent="Kitchen" unique_id=1372587775]
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Chair2" unique_id=1546070588]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Chair2/StaticBody2D" unique_id=75209724]
+position = Vector2(3391, 1614.75)
+shape = SubResource("RectangleShape2D_a1ics")
+one_way_collision = true
+
+[node name="Mug" type="Sprite2D" parent="Kitchen" unique_id=305257309]
 texture = ExtResource("19_km")
 centered = false
 
