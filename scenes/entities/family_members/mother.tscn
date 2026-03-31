@@ -284,6 +284,7 @@ sprite_frames = SubResource("SpriteFrames_vu8lt")
 animation = &"interacting"
 
 [node name="Label" type="Label" parent="." unique_id=349667500]
+visible = false
 offset_left = -30.0
 offset_top = -50.0
 offset_right = 30.0

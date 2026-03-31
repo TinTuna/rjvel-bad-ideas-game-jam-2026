@@ -354,6 +354,7 @@ shape = SubResource("RectangleShape2D_aab13")
 one_way_collision = true
 
 [node name="CoffeeTable" type="Sprite2D" parent="LivingRoom" unique_id=219107699]
+z_index = 3
 texture = ExtResource("21_jly5n")
 centered = false
 
