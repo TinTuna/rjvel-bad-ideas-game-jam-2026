@@ -141,7 +141,7 @@ func _on_music_transition_requested(track_name: String, crossfade_duration: floa
 	
 	# Configure new player
 	new_player.stream = stream
-	new_player.volume_db = linear_to_db(0.0)  # Start silent
+	new_player.volume_db = -80.0  # Start silent
 	new_player.play()
 	
 	# Crossfade
@@ -270,7 +270,7 @@ func _crossfade_players(fade_out_player: AudioStreamPlayer, fade_in_player: Audi
 	active_tween.tween_property(fade_out_player, "volume_db", -80.0, duration)
 	
 	# Fade in new player
-	var target_db := linear_to_db(master_volume)
+	var target_db := linear_to_db(master_volume) if master_volume > 0.0 else -80.0
 	active_tween.tween_property(fade_in_player, "volume_db", target_db, duration)
 
 

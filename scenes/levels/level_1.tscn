@@ -17,6 +17,7 @@ script = ExtResource("1_script")
 [node name="House" parent="." unique_id=509524014 instance=ExtResource("2_s8va5")]
 
 [node name="BoxUnderBed" parent="House" unique_id=1454723028 instance=ExtResource("39_y73h4")]
+z_index = 2
 position = Vector2(17, -131)
 scale = Vector2(0.5, 0.5)
 
@@ -64,11 +65,9 @@ position = Vector2(3943, -80)
 connections = Array[NodePath]([NodePath("../Landing")])
 
 [node name="Mother" parent="." unique_id=124666084 instance=ExtResource("3_mother")]
-z_index = 5
 position = Vector2(3948, -82)
 
 [node name="Twins" parent="." unique_id=1241958502 instance=ExtResource("10_qxy0u")]
-z_index = 5
 position = Vector2(2641, 1002)
 
 [node name="LevelEndTrigger" type="Area2D" parent="." unique_id=895254676]
