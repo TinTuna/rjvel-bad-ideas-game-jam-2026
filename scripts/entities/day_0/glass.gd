@@ -2,8 +2,8 @@ extends Interactable
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
-const MOVE_GLASS = preload("uid://dumvl4466ygiw")
-const GLASS_FALL = preload("uid://ci5q6vdsljtl8")
+const MOVE_GLASS = preload("uid://81qy1qohdupt")
+const GLASS_FALL = preload("uid://bw25kt8c63kew")
 
 var is_down: bool = false
 

@@ -2,7 +2,7 @@ extends Interactable
 
 class_name StairInteractable
 
-const STAIRS_CREAK = preload("uid://4mge5phoffos")
+const STAIRS_CREAK = preload("uid://cbuce7cixfsbs")
 
 ## Midpoint marker at the top/bottom of the stair sprite itself.
 @export var stairs_marker: Marker2D

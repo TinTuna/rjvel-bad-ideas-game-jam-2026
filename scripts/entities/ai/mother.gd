@@ -116,7 +116,7 @@ func react_to_event(event_name: String) -> void:
         _opening_window = true
         stop_navigation()
         play_voice_line("M_2_0", "*Cough* Let's let the room air out, I can't breathe in here!")
-        navigate_to_point("Kitchen")
+        navigate_to_point("Kitchen_Window")
 
     elif event_name == "pizza_delivered":
         # Day 3: Mom answers the door, comes back, drops pizza on table, resumes patrol
@@ -152,7 +152,7 @@ func on_destination_reached() -> void:
         await animated_sprite.animation_finished
         _playing_once_anim = false
         EventBus.window_open.emit()
-        current_state = State.IDLE
+        navigate_to_point("Mums_Bedroom")
         return
 
     if _pizza_step == 1:

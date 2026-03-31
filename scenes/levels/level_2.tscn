@@ -87,11 +87,15 @@ script = ExtResource("55_i0c7d")
 
 [node name="Kitchen" parent="NavigationGraph" unique_id=1829446312 instance=ExtResource("56_e6ups")]
 position = Vector2(960, 1000)
-connections = Array[NodePath]([NodePath("../Living_Room")])
+connections = Array[NodePath]([NodePath("../Kitchen_Window")])
+
+[node name="Kitchen_Window" parent="NavigationGraph" unique_id=1319418485 instance=ExtResource("56_e6ups")]
+position = Vector2(1463, 1000)
+connections = Array[NodePath]([NodePath("../Living_Room"), NodePath("../Kitchen")])
 
 [node name="Living_Room" parent="NavigationGraph" unique_id=1787618462 instance=ExtResource("56_e6ups")]
 position = Vector2(2880, 1000)
-connections = Array[NodePath]([NodePath("../Kitchen"), NodePath("../Entry")])
+connections = Array[NodePath]([NodePath("../Entry"), NodePath("../Kitchen_Window")])
 
 [node name="Entry" parent="NavigationGraph" unique_id=1135845908 instance=ExtResource("56_e6ups")]
 position = Vector2(4448, 1000)

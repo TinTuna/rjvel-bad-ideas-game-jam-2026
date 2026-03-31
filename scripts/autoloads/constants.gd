@@ -61,8 +61,8 @@ const MUSIC := {
     "MAIN_MENU": "uid://hlp0rjw7ll0h",
 
     # Game Music
-    "GAME_BASE": "",
-    "GAME_ACTION": "",
+    # "GAME_BASE": "",
+    # "GAME_ACTION": "",
 
     # Box 1 Music
     "BOX1_INTRO": "uid://dykanqblaqgur",
@@ -200,44 +200,23 @@ func get_voice_audio_path(character: String, code: String) -> String:
 
 
 func _parse_voiceover_csv() -> void:
-    var file := FileAccess.open(VOICEOVER_CSV_PATH, FileAccess.READ)
-    if not file:
-        push_error("[Constants] Failed to open voiceover CSV: %s" % VOICEOVER_CSV_PATH)
+    var csv = load(VOICEOVER_CSV_PATH)
+    if not csv:
+        push_error("[Constants] Failed to load voiceover CSV: %s" % VOICEOVER_CSV_PATH)
         return
-    file.get_line()  # skip header
-    while not file.eof_reached():
-        var line := file.get_line()
-        if line.strip_edges().is_empty():
+    for record: Dictionary in csv.records:
+        var character: String = record.get("Vocal name", "").strip_edges()
+        var text: String = record.get("Vocal text", "").strip_edges()
+        var context: String = record.get("Context", "").strip_edges()
+        var code: String = record.get("Code", "").strip_edges()
+        if character.is_empty() or code.is_empty():
             continue
-        var parts := _csv_split(line)
-        if parts.size() < 4:
-            continue
-        var character := parts[0].strip_edges()
-        var text     := parts[1].strip_edges()
-        var context  := parts[2].strip_edges()
-        var code     := parts[3].strip_edges()
         if not VOICEOVER_LINES.has(character):
             VOICEOVER_LINES[character] = {}
         if not VOICEOVER_LINES[character].has(context):
             VOICEOVER_LINES[character][context] = []
         VOICEOVER_LINES[character][context].append({"text": text, "code": code})
     print("[Constants] Voiceover lines loaded for: %s" % str(VOICEOVER_LINES.keys()))
-
-
-func _csv_split(line: String) -> Array[String]:
-    var result: Array[String] = []
-    var current := ""
-    var in_quotes := false
-    for ch in line:
-        if ch == '"':
-            in_quotes = not in_quotes
-        elif ch == ',' and not in_quotes:
-            result.append(current)
-            current = ""
-        else:
-            current += ch
-    result.append(current)
-    return result
 
 
 ## Get a music track UID by name
