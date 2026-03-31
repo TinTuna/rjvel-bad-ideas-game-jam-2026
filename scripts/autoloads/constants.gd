@@ -28,7 +28,8 @@ const SCENES := {
     "LEVEL_0": "uid://b0t4qvl2dtmwh",
     "LEVEL_1": "uid://cbuvoblyq65vv",
     "LEVEL_2": "uid://dptpgdeh6jtn6",
-    "LEVEL_3": "uid://cr41m00w4iscd"
+    "LEVEL_3": "uid://cr41m00w4iscd",
+    "LEVEL_4": "uid://cwvd5tqm016tq"
 
     # Special Scenes
     # "CREDITS": "",
