@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bnin23fg12e1d" path="res://assets/sprites/environment/key.png" id="1_nw3ff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a83xm"]
-size = Vector2(94, 178)
+size = Vector2(94, 58)
 
 [node name="Key" type="Area2D" unique_id=662770194]
 script = ExtResource("1_a83xm")
@@ -13,5 +13,4 @@ script = ExtResource("1_a83xm")
 texture = ExtResource("1_nw3ff")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=67027915]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_a83xm")

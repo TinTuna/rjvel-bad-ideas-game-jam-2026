@@ -5,11 +5,13 @@ extends Node2D
 ## First floor: Mum's Bedroom (left), Upstairs Corridor/Landing (centre), Boys' Room (right).
 
 @onready var nav_graph: NavigationGraph = $NavigationGraph
-@onready var level_end_trigger: Area2D = $LevelEndTrigger
+@onready var level_end_trigger: Area2D = $LevelEndTrigger2
+@onready var cat_flap_trigger: Area2D = $CatFlapTrigger
 
 func _ready() -> void:
     Constants.current_day = 1
-    level_end_trigger.area_entered.connect(_on_level_end_triggered)
+    level_end_trigger.body_entered.connect(_on_level_end_triggered)
+    cat_flap_trigger.area_entered.connect(_on_cat_flap_triggered)
 
     await get_tree().process_frame
     nav_graph.print_graph_info()
@@ -27,7 +29,14 @@ func _ready() -> void:
         push_warning("[Level1] Twins NPC not found — add twins.tscn to this level")
 
 
+func _on_cat_flap_triggered(area: Area2D) -> void:
+    if area.is_in_group("key"):
+        $House.front_door_state = 1  # CATFLAP_OPEN
+        EventBus.player_put_down_item.emit(area)
+        area.queue_free()
+
+
 func _on_level_end_triggered(body: Node2D) -> void:
-    if body.is_in_group("key"):
+    if body.is_in_group("cat") and $House.front_door_state == 1:
         EventBus.day_started.emit(2)
         SceneLoader.load_scene(Constants.SCENES["DAY_RECAP"])
