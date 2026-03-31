@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://7aleib8cwmtn" path="res://assets/sprites/environment/burn_ceiling.png" id="3_ov8fk"]
 [ext_resource type="Texture2D" uid="uid://bv4eq0tvyhkau" path="res://assets/sprites/environment/burn_wall.png" id="4_pmra4"]
 [ext_resource type="Texture2D" uid="uid://2pn1p4tjin3w" path="res://assets/sprites/environment/Boys_ Room/skylight OPEN.png" id="5_ov8fk"]
-[ext_resource type="Texture2D" uid="uid://uewpy6qpdt03" path="res://assets/sprites/environment/Boys_ Room/open pizza box.png" id="6_pmra4"]
 [ext_resource type="PackedScene" uid="uid://d25vdnwh7ugoy" path="res://scenes/entities/cat.tscn" id="6_vq5n0"]
 [ext_resource type="Script" uid="uid://b6ffmtyygvy4l" path="res://scripts/systems/game_camera.gd" id="7_xt2o7"]
 [ext_resource type="Script" uid="uid://cm24k76aypjk2" path="res://scripts/systems/navigation/navigation_graph.gd" id="8_beuva"]
@@ -15,9 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="12_lc5pf"]
 [ext_resource type="PackedScene" uid="uid://cu0820t6nyfgb" path="res://scenes/entities/day_2/toaster.tscn" id="13_0n65g"]
 [ext_resource type="PackedScene" uid="uid://cdefxwiw1571x" path="res://scenes/entities/day_4/portable_pizza.tscn" id="13_hsvsk"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsvsk"]
-size = Vector2(401, 238)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov8fk"]
 size = Vector2(401.5, 263.5)
@@ -48,13 +44,6 @@ z_index = 2
 position = Vector2(4371, -824)
 scale = Vector2(1.4857146, 1.493671)
 texture = ExtResource("5_ov8fk")
-
-[node name="OpenPizzaBox" type="Sprite2D" parent="House" unique_id=240507889]
-visible = false
-z_index = 2
-position = Vector2(4319, -160)
-scale = Vector2(0.40814194, 0.40814197)
-texture = ExtResource("6_pmra4")
 
 [node name="PortablePizza" parent="." unique_id=1151662136 instance=ExtResource("13_hsvsk")]
 z_index = 2
@@ -125,13 +114,6 @@ monitoring = false
 monitorable = false
 is_interactable = false
 
-[node name="TwinsPizzaTrigger" type="Area2D" parent="." unique_id=631607254]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TwinsPizzaTrigger" unique_id=1692422300]
-z_index = 2
-position = Vector2(3489, -230)
-shape = SubResource("RectangleShape2D_hsvsk")
-
 [node name="LevelEndTrigger" type="Area2D" parent="." unique_id=1530397477]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger" unique_id=1439855542]
@@ -139,5 +121,4 @@ z_index = 2
 position = Vector2(4368, -844)
 shape = SubResource("RectangleShape2D_ov8fk")
 
-[connection signal="area_entered" from="TwinsPizzaTrigger" to="." method="_on_twins_pizza_trigger_area_entered"]
 [connection signal="body_entered" from="LevelEndTrigger" to="." method="_on_level_end_trigger_body_entered"]
