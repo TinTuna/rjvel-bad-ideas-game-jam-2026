@@ -99,6 +99,9 @@ signal window_open()
 ## Emitted on day 3 when pizza is delivered
 signal pizza_delivered()
 
+## Emitted on day 4 when pizza is delivered
+signal twins_got_pizza()
+
 # ============================================================================
 # MUSIC EVENTS
 # ============================================================================
