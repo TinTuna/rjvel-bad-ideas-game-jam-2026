@@ -1,11 +1,16 @@
 extends Node2D
 
-@onready var living_room: Node2D = $LivingRoom
+@onready var house: Node2D = $House
+@onready var doorbell_player: AudioStreamPlayer2D = $DoorbellPlayer
+@onready var level_end_trigger: Area2D = $LevelEndTrigger
+@onready var entry_door: Sprite2D = $House/EntryDoor
+
 const PIZZA = preload("uid://d87k0lb4q6fx")
 
 func _ready() -> void:
     Constants.current_day = 3
     EventBus.pizza_delivered.connect(pizza_delivery)
+    level_end_trigger.body_entered.connect(_on_level_end_triggered)
 
     await get_tree().process_frame
 
@@ -24,8 +29,13 @@ func _ready() -> void:
 
 
 func pizza_delivery() -> void:
-    # TODO: doorbell sound
+    doorbell_player.play()
     var new_pizza = PIZZA.instantiate()
-    living_room.add_child(new_pizza)
-    new_pizza.position.x = 1516
-    new_pizza.position.y = 1150
+    house.add_child(new_pizza)
+    new_pizza.position.x = 2600
+    new_pizza.position.y = 650
+
+func _on_level_end_triggered(body: Node2D) -> void:
+    if entry_door.is_open and body.is_in_group("cat"):
+        EventBus.day_started.emit(4)
+        SceneLoader.load_scene(Constants.SCENES["DAY_RECAP"])
