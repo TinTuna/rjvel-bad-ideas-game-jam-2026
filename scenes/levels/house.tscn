@@ -14,14 +14,19 @@
 [ext_resource type="Texture2D" uid="uid://cb2dxmoc2iogw" path="res://assets/sprites/environment/Kitchen/chair 2.png" id="10_6u6pd"]
 [ext_resource type="Texture2D" uid="uid://c6xewyedq6v2l" path="res://assets/sprites/environment/Kitchen/mug.png" id="11_i4unv"]
 [ext_resource type="Texture2D" uid="uid://c506jmqby23nx" path="res://assets/sprites/environment/Living Room/wall and floor.png" id="12_3ow4w"]
-[ext_resource type="Texture2D" uid="uid://bh01718pmlvnc" path="res://assets/sprites/environment/Living Room/window.png" id="13_xrk64"]
 [ext_resource type="Texture2D" uid="uid://clni7gkp6ma4s" path="res://assets/sprites/environment/Living Room/photo 1.png" id="14_ju5ku"]
 [ext_resource type="Texture2D" uid="uid://cgdshpwm0sbgo" path="res://assets/sprites/environment/Living Room/photo 2.png" id="15_41xq7"]
+[ext_resource type="Texture2D" uid="uid://brihi6uho6xu6" path="res://assets/sprites/environment/Living Room/window/window without cat.png" id="15_ju5ku"]
+[ext_resource type="Texture2D" uid="uid://d07n4a28b2pgj" path="res://assets/sprites/environment/Living Room/window/cat state 1.png" id="16_41xq7"]
 [ext_resource type="Texture2D" uid="uid://bo4qi3seuuq2q" path="res://assets/sprites/environment/Living Room/bookshelf.png" id="16_s4byd"]
+[ext_resource type="Texture2D" uid="uid://d1latq8m3qyce" path="res://assets/sprites/environment/Living Room/window/cat state 2.png" id="17_s4byd"]
 [ext_resource type="Texture2D" uid="uid://1bnstdux1v2c" path="res://assets/sprites/environment/Living Room/books and bags.png" id="17_udbj0"]
+[ext_resource type="Texture2D" uid="uid://0c8cgk1ej6ng" path="res://assets/sprites/environment/Living Room/window/cat state 3.png" id="18_udbj0"]
 [ext_resource type="Texture2D" uid="uid://17666aoee7vj" path="res://assets/sprites/environment/Living Room/books.png" id="18_wye56"]
 [ext_resource type="Texture2D" uid="uid://bf7wc1leibvhi" path="res://assets/sprites/environment/Living Room/lamp.png" id="19_bivhc"]
+[ext_resource type="Texture2D" uid="uid://pd3fgsn6hnyj" path="res://assets/sprites/environment/Living Room/window/windowframe.png" id="19_wye56"]
 [ext_resource type="Texture2D" uid="uid://d4iadhjbfld8q" path="res://assets/sprites/environment/Living Room/couch.png" id="20_3iff8"]
+[ext_resource type="Texture2D" uid="uid://bvyxtobna26hh" path="res://assets/sprites/environment/Living Room/window/glass overlay effect.png" id="20_bivhc"]
 [ext_resource type="Texture2D" uid="uid://dh11871o2yuc" path="res://assets/sprites/environment/Living Room/coffee table.png" id="21_jly5n"]
 [ext_resource type="PackedScene" uid="uid://14y7r3dw0f6c" path="res://scenes/entities/box.tscn" id="22_q2qlk"]
 [ext_resource type="Texture2D" uid="uid://cu6mnpqcffmd7" path="res://assets/sprites/environment/Living Room/vase.png" id="23_4bbd5"]
@@ -81,6 +86,38 @@ size = Vector2(246, 58.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kux2"]
 size = Vector2(772, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iff8"]
+atlas = ExtResource("16_41xq7")
+region = Rect2(0, 0, 3840, 2160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jly5n"]
+atlas = ExtResource("17_s4byd")
+region = Rect2(0, 0, 3840, 2160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2qlk"]
+atlas = ExtResource("18_udbj0")
+region = Rect2(0, 0, 3840, 2160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bbd5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iff8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jly5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2qlk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jly5n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6miux"]
 size = Vector2(590, 46.5)
@@ -275,7 +312,7 @@ texture = ExtResource("12_3ow4w")
 centered = false
 
 [node name="Window" type="Sprite2D" parent="LivingRoom" unique_id=761135965]
-texture = ExtResource("13_xrk64")
+texture = ExtResource("15_ju5ku")
 centered = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="LivingRoom/Window" unique_id=306060937]
@@ -285,6 +322,20 @@ collision_layer = 2
 position = Vector2(2272, 948)
 shape = SubResource("RectangleShape2D_3kux2")
 one_way_collision = true
+
+[node name="TipCat" type="AnimatedSprite2D" parent="LivingRoom" unique_id=941455912]
+position = Vector2(1912, 1088)
+sprite_frames = SubResource("SpriteFrames_4bbd5")
+autoplay = "default"
+frame_progress = 0.41261268
+
+[node name="WindowFrame" type="Sprite2D" parent="LivingRoom" unique_id=1847101813]
+texture = ExtResource("19_wye56")
+centered = false
+
+[node name="WindowGlass" type="Sprite2D" parent="LivingRoom" unique_id=650648652]
+texture = ExtResource("20_bivhc")
+centered = false
 
 [node name="Photo1" type="Sprite2D" parent="LivingRoom" unique_id=471054041]
 texture = ExtResource("14_ju5ku")

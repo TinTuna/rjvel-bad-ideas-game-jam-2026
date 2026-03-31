@@ -98,8 +98,14 @@ const VOICE_PACKS := {
     4: "T",
 }
 
-## ID of a cat voice pack 
+## ID of a cat voice pack
 var is_settings_initialised: bool = false
+
+## Music volume (0.0 = silent, 1.0 = full)
+var music_volume: float = 1.0
+
+## SFX volume (0.0 = silent, 1.0 = full)
+var sfx_volume: float = 1.0
 
 # ============================================================================
 # DAY SYSTEM CONSTANTS
@@ -238,6 +244,22 @@ func get_music(track_name: String) -> String:
 ## @return bool - True if the track exists
 func has_music(track_name: String) -> bool:
     return MUSIC.has(track_name) and not MUSIC[track_name].is_empty()
+
+
+## Apply the current music_volume and sfx_volume values to their audio buses
+func apply_audio_settings() -> void:
+    var music_bus := AudioServer.get_bus_index(AUDIO_BUSES["MUSIC"])
+    var sfx_bus := AudioServer.get_bus_index(AUDIO_BUSES["SFX"])
+    if music_volume <= 0.0:
+        AudioServer.set_bus_mute(music_bus, true)
+    else:
+        AudioServer.set_bus_mute(music_bus, false)
+        AudioServer.set_bus_volume_db(music_bus, linear_to_db(music_volume))
+    if sfx_volume <= 0.0:
+        AudioServer.set_bus_mute(sfx_bus, true)
+    else:
+        AudioServer.set_bus_mute(sfx_bus, false)
+        AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(sfx_volume))
 
 
 ## Get all music track names

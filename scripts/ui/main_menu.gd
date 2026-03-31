@@ -1,5 +1,7 @@
 extends Control
 
+@onready var settings: Control = $Settings
+
 
 func _ready() -> void:
     MusicManager.transition_to("MAIN_MENU")
@@ -13,11 +15,7 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-    # Load settings menu
-    if Constants.has_scene("SETTINGS"):
-        SceneLoader.load_scene(Constants.SCENES.SETTINGS)
-    else:
-        push_warning("[MainMenu] SETTINGS scene not configured in Constants")
+    settings.show()
 
 
 func _on_quit_button_pressed() -> void:

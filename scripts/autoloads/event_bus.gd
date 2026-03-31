@@ -71,6 +71,9 @@ signal player_put_down_item(item: Node2D)
 ## @param level_name: String - Name of the loaded level
 signal level_loaded(level_name: String)
 
+## Emitted when the player completes a level
+signal level_completed()
+
 ## Emitted when transitioning to a new scene
 ## @param scene_path: String - Path to the scene
 signal scene_transition_requested(scene_path: String)

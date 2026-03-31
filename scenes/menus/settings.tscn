@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c3w6kfvi7yok8"]
+[gd_scene format=3 uid="uid://8rj8pvq8h0ka"]
 
 [ext_resource type="Script" uid="uid://64fag8hn1cyj" path="res://scripts/ui/settings.gd" id="1_erjg3"]
 [ext_resource type="Texture2D" uid="uid://bdll78eh3oada" path="res://assets/sprites/ui/menu.png" id="2_e7wif"]
@@ -20,6 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_erjg3")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1035479497]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,14 +69,26 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.1584723, 0.15847233, 0.1584723, 1)
 theme_override_font_sizes/font_size = 40
-text = "Voice"
+text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionsDropdown" type="OptionButton" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=271590780]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=388168509]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1579412557]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-selected = 1
+text = "Voice"
+
+[node name="OptionsDropdown" type="OptionButton" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=271590780]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 40
+selected = 0
 item_count = 5
 popup/item_0/text = "Jara"
 popup/item_0/id = 0
@@ -88,20 +101,66 @@ popup/item_3/id = 3
 popup/item_4/text = "Tuna"
 popup/item_4/id = 4
 
-[node name="ConfirmButton" type="Button" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1485468573]
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=289736804]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=295007914]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1103621033]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+max_value = 10.0
+value = 10.0
+tick_count = 10
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2971129]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=831840407]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "SFX"
+
+[node name="HSlider2" type="HSlider" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=113098532]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+max_value = 10.0
+value = 10.0
+tick_count = 10
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=161678266]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1608051259]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[node name="ConfirmButton" type="Button" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1485468573]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Confirm"
 
-[node name="RestartButton" type="Button" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1608051259]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-disabled = true
-text = "Restart day"
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=449432152]
 
-[connection signal="item_selected" from="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/OptionsDropdown" to="." method="_on_options_dropdown_item_selected"]
-[connection signal="pressed" from="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="item_selected" from="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsDropdown" to="." method="_on_options_dropdown_item_selected"]
+[connection signal="value_changed" from="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/HSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/HSlider2" to="." method="_on_sfx_slider_2_value_changed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]

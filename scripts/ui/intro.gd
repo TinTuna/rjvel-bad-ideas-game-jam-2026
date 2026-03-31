@@ -11,6 +11,8 @@ const SLIDES: Array[String] = [
     "res://assets/sprites/intro_sequence/All scenes/intro scene 2_1.png",
     "res://assets/sprites/intro_sequence/All scenes/intro scene 2_2.png",
     "res://assets/sprites/intro_sequence/All scenes/intro scene 3 1_1.png",
+    "res://assets/sprites/intro_sequence/All scenes/Instructions 1.png",
+    "res://assets/sprites/intro_sequence/All scenes/Instructions 2.png",
 ]
 
 var _current_slide: int = 0

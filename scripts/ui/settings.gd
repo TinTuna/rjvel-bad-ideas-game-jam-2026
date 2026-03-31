@@ -1,27 +1,43 @@
 extends Control
 
-@onready var options_dropdown: OptionButton = $HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/OptionsDropdown
+@onready var options_dropdown: OptionButton = $HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsDropdown
+@onready var music_slider: HSlider = $HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/HSlider
+@onready var sfx_slider: HSlider = $HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/HSlider2
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var restart_button: Button = $HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RestartButton
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-    if Constants.is_settings_initialised:
-        restart_button.disabled = false
+    options_dropdown.selected = Constants.voice_pack
+    music_slider.value = Constants.music_volume * 10.0
+    sfx_slider.value = Constants.sfx_volume * 10.0
 
 
 func _on_confirm_button_pressed() -> void:
     Constants.voice_pack = options_dropdown.get_selected_id()
+    Constants.music_volume = music_slider.value / 10.0
+    Constants.sfx_volume = sfx_slider.value / 10.0
     Constants.is_settings_initialised = true
+    Constants.apply_audio_settings()
+    hide()
+
 
 func _on_options_dropdown_item_selected(index: int) -> void:
     var voice_pack = Constants.VOICE_PACKS[index]
-    var audio_path = "res://assets/audio/sfx/Voiceover/Cat/" + voice_pack + "/miao_" + voice_pack + "_button_0.wav" 
+    var audio_path = "res://assets/audio/sfx/Voiceover/Cat/" + voice_pack + "/miao_" + voice_pack + "_button_0.wav"
     var audio_file = load(audio_path)
     audio_player.stream = audio_file
     audio_player.play()
 
 
-func _on_restart_button_pressed() -> void:
-    EventBus.day_started.emit(Constants.current_day)
-    SceneLoader.load_scene(Constants.SCENES["LEVEL_" + str(Constants.current_day)])
+func _on_music_slider_value_changed(value: float) -> void:
+    Constants.music_volume = value / 10.0
+    Constants.apply_audio_settings()
+
+
+func _on_sfx_slider_2_value_changed(value: float) -> void:
+    Constants.sfx_volume = value / 10.0
+    Constants.apply_audio_settings()
+
+
+func _on_back_button_pressed() -> void:
+    hide()

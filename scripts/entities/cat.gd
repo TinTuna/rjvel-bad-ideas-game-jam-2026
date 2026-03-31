@@ -35,6 +35,16 @@ func _ready() -> void:
     set_collision_mask_value(2, true)
 
 
+func _process(_delta: float) -> void:
+    if Input.is_action_just_pressed("drop"):
+        SfxManager.play_cat_voice("button")
+    
+    if Input.is_action_just_pressed("drop") and _is_movement_disabled == false:
+        if _is_carrying_item:
+            EventBus.player_put_down_item.emit(item_container.get_child(0))
+        else:
+            SfxManager.play_cat_voice("button")
+
 func _physics_process(delta: float) -> void:
     var pre_input_vx := velocity.x
     velocity.y += ProjectSettings.get_setting("physics/2d/default_gravity") * delta
@@ -74,9 +84,6 @@ func _physics_process(delta: float) -> void:
             if result["collider"] is Interactable:
                 result["collider"].interact()
                 break
-    
-    if Input.is_action_just_pressed("drop") and _is_carrying_item and _is_movement_disabled == false:
-        EventBus.player_put_down_item.emit(item_container.get_child(0))
 
 
 func _update_animation(pre_input_vx: float) -> void:
