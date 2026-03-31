@@ -57,7 +57,7 @@ func play_voice_line(code: String, text: String = "") -> void:
 
 func _filler_loop() -> void:
     while is_inside_tree():
-        await get_tree().create_timer(randf_range(20.0, 40.0)).timeout
+        await get_tree().create_timer(randf_range(10.0, 30.0)).timeout
         if not _voice_player.playing:
             var fillers: Array = Constants.get_voice_lines("Mum", "Filler")
             if not fillers.is_empty():
@@ -82,6 +82,7 @@ func speak_day_lines(day: int) -> void:
 var _resetting_glass: bool = false
 var _playing_once_anim: bool = false
 var _abandoned_patrol: bool = false
+var _opening_window: bool = false
 # Pizza delivery sequence: 0=inactive, 1=heading to door, 3=heading to table
 var _pizza_step: int = 0
 
@@ -110,10 +111,12 @@ func react_to_event(event_name: String) -> void:
             push_error("[Mother] Could not find glass node to navigate to")
 
     elif event_name == "toaster_burnt":
-        # Day 2: Mom stops patrolling and heads to her room
+        # Day 2: Mom plays a voice line then heads to the kitchen to open the window
         _abandoned_patrol = true
+        _opening_window = true
         stop_navigation()
-        navigate_to_point("Mums_Bedroom")
+        play_voice_line("M_2_0", "*Cough* Let's let the room air out, I can't breathe in here!")
+        navigate_to_point("Kitchen")
 
     elif event_name == "pizza_delivered":
         # Day 3: Mom answers the door, comes back, drops pizza on table, resumes patrol
@@ -140,6 +143,16 @@ func on_destination_reached() -> void:
         await animated_sprite.animation_finished
         _playing_once_anim = false
         super.on_destination_reached()
+        return
+
+    if _opening_window:
+        _opening_window = false
+        _playing_once_anim = true
+        animated_sprite.play("interacting")
+        await animated_sprite.animation_finished
+        _playing_once_anim = false
+        EventBus.window_open.emit()
+        current_state = State.IDLE
         return
 
     if _pizza_step == 1:

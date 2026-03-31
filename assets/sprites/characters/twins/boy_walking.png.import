@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctpq7t687vmfu"
-path="res://.godot/imported/entry preview.png-ed9d0a641cce4bb1dd4a2d9de02dabd1.ctex"
+uid="uid://ch5dyu3216ts4"
+path="res://.godot/imported/boy_walking.png-2816df95eaed15bf7519fbdbc4a91467.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/environment/Entry/z_old/entry preview.png"
-dest_files=["res://.godot/imported/entry preview.png-ed9d0a641cce4bb1dd4a2d9de02dabd1.ctex"]
+source_file="res://assets/sprites/characters/twins/boy_walking.png"
+dest_files=["res://.godot/imported/boy_walking.png-2816df95eaed15bf7519fbdbc4a91467.ctex"]
 
 [params]
 

@@ -18,7 +18,6 @@ func _ready() -> void:
     if mother:
         mother.start_for_day(0)
         EventBus.glass_knocked_down.connect(mother.react_to_event.bind("glass_knocked_down"))
-        mother.speak_day_lines(0)
     else:
         push_error("[Level0] Mother NPC not found")
 

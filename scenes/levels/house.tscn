@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://7vpo77wdl1q7" path="res://assets/sprites/environment/Kitchen/window 1.png" id="3_vcdwk"]
 [ext_resource type="Texture2D" uid="uid://bdjkpr86kel5q" path="res://assets/sprites/environment/Kitchen/window 2.png" id="4_c1snp"]
 [ext_resource type="Texture2D" uid="uid://bk5cosvm3itn" path="res://assets/sprites/environment/Kitchen/counter.png" id="5_xp0uc"]
+[ext_resource type="Texture2D" uid="uid://15aekovu53cq" path="res://assets/sprites/environment/Kitchen/window 2 OPEN.png" id="6_mdkc2"]
 [ext_resource type="Texture2D" uid="uid://f5b3pcvhhb47" path="res://assets/sprites/environment/Kitchen/fridge.png" id="6_ucdoc"]
 [ext_resource type="Texture2D" uid="uid://mwff81vabvyo" path="res://assets/sprites/environment/Kitchen/door.png" id="7_cgeqm"]
 [ext_resource type="Texture2D" uid="uid://btlessk6gx6h2" path="res://assets/sprites/environment/Kitchen/table.png" id="8_3unfs"]
@@ -37,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://bu48hqrn6iogn" path="res://assets/sprites/environment/Mum_s Bedroom/lamp.png" id="34_tha68"]
 [ext_resource type="Texture2D" uid="uid://433511kf3njh" path="res://assets/sprites/environment/Mum_s Bedroom/tabouret.png" id="35_w6ym2"]
 [ext_resource type="Texture2D" uid="uid://bptw5miwkj02e" path="res://assets/sprites/environment/Mum_s Bedroom/photo.png" id="36_73gfj"]
+[ext_resource type="Texture2D" uid="uid://ckyelgj2woutg" path="res://assets/sprites/environment/Entry/floor.png" id="37_3unfs"]
 [ext_resource type="Texture2D" uid="uid://bn0tgeddyhpk4" path="res://assets/sprites/environment/Upstairs corridor/wall and floor.png" id="38_xrgyh"]
 [ext_resource type="Texture2D" uid="uid://yx3brfxerwrt" path="res://assets/sprites/environment/Upstairs corridor/floor.png" id="39_wixft"]
 [ext_resource type="Texture2D" uid="uid://b0m0gbythg8w5" path="res://assets/sprites/environment/Upstairs corridor/stairs.png" id="40_acdcm"]
@@ -52,7 +54,6 @@
 [ext_resource type="PackedScene" uid="uid://dno7pa2pbino4" path="res://scenes/entities/stair_interactable.tscn" id="50_uwsms"]
 [ext_resource type="Script" uid="uid://byy1rhnseo0p" path="res://scripts/systems/window_hint.gd" id="51_5oywa"]
 [ext_resource type="Texture2D" uid="uid://ga5fwkjgujd2" path="res://assets/sprites/environment/Room_divider.png" id="52_jek6c"]
-[ext_resource type="Texture2D" uid="uid://c1r53dpk082tm" path="res://assets/sprites/environment/Entry/entry preview.png" id="53_entpr"]
 [ext_resource type="Texture2D" uid="uid://wnmqmb8occrm" path="res://assets/sprites/environment/Entry/boxes.png" id="54_boxes"]
 [ext_resource type="Texture2D" uid="uid://ck4aje7vovmje" path="res://assets/sprites/environment/Entry/mirror.png" id="55_mirro"]
 [ext_resource type="Texture2D" uid="uid://dmbruhqw3mt4o" path="res://assets/sprites/environment/Entry/vase.png" id="56_vasee"]
@@ -117,6 +118,9 @@ size = Vector2(231, 44)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucdoc"]
 size = Vector2(231, 44)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdkc2"]
+size = Vector2(2668, 74)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_floor"]
 normal = Vector2(0, 1)
 
@@ -163,14 +167,27 @@ z_index = 1
 texture = ExtResource("3_vcdwk")
 centered = false
 
-[node name="Window2" type="Sprite2D" parent="Kitchen" unique_id=362707983]
+[node name="Window2Closed" type="Sprite2D" parent="Kitchen" unique_id=362707983]
 texture = ExtResource("4_c1snp")
 centered = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Window2" unique_id=317456825]
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Window2Closed" unique_id=317456825]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Window2/StaticBody2D" unique_id=1746611533]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Window2Closed/StaticBody2D" unique_id=1746611533]
+position = Vector2(2945, 1104)
+shape = SubResource("RectangleShape2D_vjklx")
+one_way_collision = true
+
+[node name="Window2Open" type="Sprite2D" parent="Kitchen" unique_id=1503512360]
+visible = false
+texture = ExtResource("6_mdkc2")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Window2Open" unique_id=2098908730]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Window2Open/StaticBody2D" unique_id=451661491]
 position = Vector2(2945, 1104)
 shape = SubResource("RectangleShape2D_vjklx")
 one_way_collision = true
@@ -400,10 +417,6 @@ position = Vector2(2879, 889)
 shape = SubResource("RectangleShape2D_3unfs")
 one_way_collision = true
 
-[node name="EntryPreview" type="Sprite2D" parent="Entry" unique_id=1123456781]
-texture = ExtResource("53_entpr")
-centered = false
-
 [node name="Boxes" type="Sprite2D" parent="Entry" unique_id=1123456782]
 texture = ExtResource("54_boxes")
 centered = false
@@ -428,6 +441,11 @@ centered = false
 [node name="FrontDoorOpen" type="Sprite2D" parent="Entry" unique_id=1123456787]
 visible = false
 texture = ExtResource("59_fdop")
+centered = false
+
+[node name="Floor" type="Sprite2D" parent="Entry" unique_id=583517592]
+z_index = 2
+texture = ExtResource("37_3unfs")
 centered = false
 
 [node name="MumsBedroomRoom" type="Node2D" parent="." unique_id=945876171]
@@ -593,6 +611,13 @@ centered = false
 texture = ExtResource("49_0u12y")
 centered = false
 
+[node name="RightWall" type="StaticBody2D" parent="BoysRoom" unique_id=2114045168]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoysRoom/RightWall" unique_id=676325522]
+position = Vector2(2800, 456)
+rotation = 0.6457718
+shape = SubResource("RectangleShape2D_mdkc2")
+
 [node name="WorldBounds" type="StaticBody2D" parent="." unique_id=1908988761]
 
 [node name="Floor" type="CollisionShape2D" parent="WorldBounds" unique_id=1317909218]
@@ -609,7 +634,8 @@ position = Vector2(5769, -540)
 shape = SubResource("RectangleShape2D_rwall")
 
 [node name="RightWallUpstairs" type="CollisionShape2D" parent="WorldBounds" unique_id=650710084]
-position = Vector2(4913, -2000)
+z_index = 2
+position = Vector2(4836, -2000)
 shape = SubResource("RectangleShape2D_rwall")
 
 [node name="LeftWallUpstairs" type="CollisionShape2D" parent="WorldBounds" unique_id=1550197233]
