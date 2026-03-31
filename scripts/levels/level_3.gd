@@ -10,6 +10,7 @@ const PIZZA = preload("uid://d87k0lb4q6fx")
 func _ready() -> void:
     Constants.current_day = 3
     EventBus.pizza_delivered.connect(pizza_delivery)
+    EventBus.pizza_put_on_table.connect(spawn_pizza)
     level_end_trigger.body_entered.connect(_on_level_end_triggered)
 
     await get_tree().process_frame
@@ -30,6 +31,8 @@ func _ready() -> void:
 
 func pizza_delivery() -> void:
     doorbell_player.play()
+
+func spawn_pizza() -> void:
     var new_pizza = PIZZA.instantiate()
     house.add_child(new_pizza)
     new_pizza.position.x = 2600

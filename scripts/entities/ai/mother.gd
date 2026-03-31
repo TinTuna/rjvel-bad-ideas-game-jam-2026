@@ -128,9 +128,11 @@ func react_to_event(event_name: String) -> void:
 func _handle_pizza_at_entry() -> void:
     # Wait at the door for 4 seconds (simulating going outside and back)
     _pizza_step = 2
+    EventBus.mother_opens_door.emit()
     current_state = State.IDLE
     await get_tree().create_timer(4.0).timeout
     _pizza_step = 3
+    EventBus.mother_closes_door.emit()
     navigate_to_point("Living_Room")
 
 
@@ -167,6 +169,7 @@ func on_destination_reached() -> void:
         await animated_sprite.animation_finished
         _playing_once_anim = false
         _pizza_step = 0
+        EventBus.pizza_put_on_table.emit()
         # Resume patrol
         if patrol_points.size() > 0:
             patrol_index = 0

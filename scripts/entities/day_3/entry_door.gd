@@ -2,17 +2,15 @@ extends Sprite2D
 
 var is_open: bool = false
 
-@onready var timer: Timer = $Timer
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    EventBus.pizza_delivered.connect(open)
+    EventBus.mother_opens_door.connect(open)
+    EventBus.mother_closes_door.connect(close)
 
 func open() -> void:
     show()
     is_open = true
-    timer.start()
     
-func _on_timer_timeout() -> void:
+func close() -> void:
     hide()
     is_open = false

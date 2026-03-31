@@ -99,8 +99,14 @@ signal window_open()
 ## Emitted on day 3 when pizza is delivered
 signal pizza_delivered()
 
-## Emitted on day 4 when pizza is delivered
-signal twins_got_pizza()
+## Emitted on day 3 when pizza is put on table
+signal pizza_put_on_table()
+
+## Emitted on day 3 when mother opens entry door
+signal mother_opens_door()
+
+## Emitted on day 3 when mother closes entry door
+signal mother_closes_door()
 
 # ============================================================================
 # MUSIC EVENTS
