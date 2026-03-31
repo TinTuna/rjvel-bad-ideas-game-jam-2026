@@ -21,7 +21,8 @@ upstairs_enabled = false
 front_door_state = 1
 
 [node name="Glass" parent="House" unique_id=2087202024 instance=ExtResource("23_3kux2")]
-z_index = 2
+z_index = 4
+z_as_relative = false
 position = Vector2(2551, 753)
 scale = Vector2(0.5, 0.5)
 
