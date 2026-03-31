@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvtcnvyc8bbde" path="res://scripts/ui/main_menu.gd" id="1_main_menu"]
 [ext_resource type="Texture2D" uid="uid://bdll78eh3oada" path="res://assets/sprites/ui/menu.png" id="2_ovrgc"]
+[ext_resource type="PackedScene" uid="uid://8rj8pvq8h0ka" path="res://scenes/menus/settings.tscn" id="3_2o76q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o76q"]
 bg_color = Color(0.78664935, 0.8290078, 0.8187689, 1)
@@ -74,7 +75,6 @@ text = "Play"
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-disabled = true
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1485468573]
@@ -82,6 +82,10 @@ custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Quit"
+
+[node name="Settings" parent="." unique_id=1875410647 instance=ExtResource("3_2o76q")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

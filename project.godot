@@ -21,6 +21,7 @@ Constants="*res://scripts/autoloads/constants.gd"
 EventBus="*res://scripts/autoloads/event_bus.gd"
 SceneLoader="*res://scripts/autoloads/scene_loader.gd"
 MusicManager="*res://scripts/autoloads/music_manager.gd"
+SfxManager="*res://scripts/autoloads/sfx_manager.gd"
 StatsTracker="*res://scripts/autoloads/stats_tracker.gd"
 
 [display]
