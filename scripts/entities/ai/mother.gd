@@ -15,12 +15,8 @@ var _hide_token: int = 0
 func _ready() -> void:
     character_name = "Mother"
     movement_speed = 300.0
-
-    # Set default patrol route from Constants
-    var route = Constants.NPC_PATROL_ROUTES["MOTHER"]
-    patrol_points.assign(route)
     patrol_wait_time = 2.0
-    auto_start_patrol = true
+    auto_start_patrol = false  # Level scripts call start_for_day(day) to configure
 
     add_to_group("mother")
 
@@ -85,6 +81,9 @@ func speak_day_lines(day: int) -> void:
 
 var _resetting_glass: bool = false
 var _playing_once_anim: bool = false
+var _abandoned_patrol: bool = false
+# Pizza delivery sequence: 0=inactive, 1=heading to door, 3=heading to table
+var _pizza_step: int = 0
 
 
 func update_animation() -> void:
@@ -110,6 +109,27 @@ func react_to_event(event_name: String) -> void:
         else:
             push_error("[Mother] Could not find glass node to navigate to")
 
+    elif event_name == "toaster_burnt":
+        # Day 2: Mom stops patrolling and heads to her room
+        _abandoned_patrol = true
+        stop_navigation()
+        navigate_to_point("Mums_Bedroom")
+
+    elif event_name == "pizza_delivered":
+        # Day 3: Mom answers the door, comes back, drops pizza on table, resumes patrol
+        _pizza_step = 1
+        stop_navigation()
+        navigate_to_point("Entry")
+
+
+func _handle_pizza_at_entry() -> void:
+    # Wait at the door for 4 seconds (simulating going outside and back)
+    _pizza_step = 2
+    current_state = State.IDLE
+    await get_tree().create_timer(4.0).timeout
+    _pizza_step = 3
+    navigate_to_point("Living_Room")
+
 
 func on_destination_reached() -> void:
     if _resetting_glass:
@@ -119,5 +139,30 @@ func on_destination_reached() -> void:
         EventBus.glass_reset.emit()
         await animated_sprite.animation_finished
         _playing_once_anim = false
+        super.on_destination_reached()
+        return
+
+    if _pizza_step == 1:
+        _handle_pizza_at_entry()
+        return
+
+    if _pizza_step == 3:
+        # At the table — drop the pizza
+        _pizza_step = 4
+        _playing_once_anim = true
+        animated_sprite.play("interacting")
+        await animated_sprite.animation_finished
+        _playing_once_anim = false
+        _pizza_step = 0
+        # Resume patrol
+        if patrol_points.size() > 0:
+            patrol_index = 0
+            start_patrol()
+        return
+
+    if _abandoned_patrol:
+        # Stay in Mum's room, don't resume patrol
+        current_state = State.IDLE
+        return
 
     super.on_destination_reached()

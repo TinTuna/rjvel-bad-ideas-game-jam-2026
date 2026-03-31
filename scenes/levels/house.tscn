@@ -24,12 +24,12 @@
 [ext_resource type="Texture2D" uid="uid://dh11871o2yuc" path="res://assets/sprites/environment/Living Room/coffee table.png" id="21_jly5n"]
 [ext_resource type="PackedScene" uid="uid://14y7r3dw0f6c" path="res://scenes/entities/box.tscn" id="22_q2qlk"]
 [ext_resource type="Texture2D" uid="uid://cu6mnpqcffmd7" path="res://assets/sprites/environment/Living Room/vase.png" id="23_4bbd5"]
-[ext_resource type="Texture2D" uid="uid://d106ilucbulae" path="res://assets/sprites/environment/Entry/entry background.png" id="24_fll0y"]
-[ext_resource type="Texture2D" uid="uid://be5205iv01b54" path="res://assets/sprites/environment/Entry/stairs.png" id="25_88y54"]
-[ext_resource type="Texture2D" uid="uid://cw02gjmv5vnyq" path="res://assets/sprites/environment/Entry/picture frames.png" id="26_lkwim"]
-[ext_resource type="Texture2D" uid="uid://b0kg58xvs12vk" path="res://assets/sprites/environment/Entry/coats.png" id="27_ljvd5"]
-[ext_resource type="Texture2D" uid="uid://cqav5tkked88o" path="res://assets/sprites/environment/Entry/table.png" id="28_l5tq1"]
-[ext_resource type="Texture2D" uid="uid://bltdg5q5wfga7" path="res://assets/sprites/environment/Entry/cabinet.png" id="29_to1tt"]
+[ext_resource type="Texture2D" uid="uid://cblvw51j3tvui" path="res://assets/sprites/environment/Entry/floor and wall.png" id="24_fll0y"]
+[ext_resource type="Texture2D" uid="uid://cb7g14gjbp5cv" path="res://assets/sprites/environment/Entry/stairs.png" id="25_88y54"]
+[ext_resource type="Texture2D" uid="uid://bydxj4looa8m8" path="res://assets/sprites/environment/Entry/photos.png" id="26_lkwim"]
+[ext_resource type="Texture2D" uid="uid://cxbl2q14ua7cg" path="res://assets/sprites/environment/Entry/coats.png" id="27_ljvd5"]
+[ext_resource type="Texture2D" uid="uid://brpm3omsnwchi" path="res://assets/sprites/environment/Entry/table.png" id="28_l5tq1"]
+[ext_resource type="Texture2D" uid="uid://btlbyg271jfu" path="res://assets/sprites/environment/Entry/cabinet.png" id="29_to1tt"]
 [ext_resource type="Texture2D" uid="uid://c7l1jl4nwepu7" path="res://assets/sprites/environment/Mum_s Bedroom/floor and wall.png" id="30_wlfmc"]
 [ext_resource type="Texture2D" uid="uid://c42jneq6dnyxc" path="res://assets/sprites/environment/Mum_s Bedroom/wardrobe.png" id="31_f4p5i"]
 [ext_resource type="Texture2D" uid="uid://b6bcuksddaw54" path="res://assets/sprites/environment/Mum_s Bedroom/shelf.png" id="32_7fo0k"]
@@ -52,6 +52,13 @@
 [ext_resource type="PackedScene" uid="uid://dno7pa2pbino4" path="res://scenes/entities/stair_interactable.tscn" id="50_uwsms"]
 [ext_resource type="Script" uid="uid://byy1rhnseo0p" path="res://scripts/systems/window_hint.gd" id="51_5oywa"]
 [ext_resource type="Texture2D" uid="uid://ga5fwkjgujd2" path="res://assets/sprites/environment/Room_divider.png" id="52_jek6c"]
+[ext_resource type="Texture2D" uid="uid://c1r53dpk082tm" path="res://assets/sprites/environment/Entry/entry preview.png" id="53_entpr"]
+[ext_resource type="Texture2D" uid="uid://wnmqmb8occrm" path="res://assets/sprites/environment/Entry/boxes.png" id="54_boxes"]
+[ext_resource type="Texture2D" uid="uid://ck4aje7vovmje" path="res://assets/sprites/environment/Entry/mirror.png" id="55_mirro"]
+[ext_resource type="Texture2D" uid="uid://dmbruhqw3mt4o" path="res://assets/sprites/environment/Entry/vase.png" id="56_vasee"]
+[ext_resource type="Texture2D" uid="uid://de5fy763fl8tp" path="res://assets/sprites/environment/Entry/front door CLOSED cat flap CLOSED.png" id="57_fdcc"]
+[ext_resource type="Texture2D" uid="uid://dnsp526qujp7w" path="res://assets/sprites/environment/Entry/front door CLOSED cat flap OPEN.png" id="58_fdco"]
+[ext_resource type="Texture2D" uid="uid://dy1gdm3ycody" path="res://assets/sprites/environment/Entry/front door OPEN.png" id="59_fdop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjklx"]
 size = Vector2(1090, 40)
@@ -393,6 +400,36 @@ position = Vector2(2879, 889)
 shape = SubResource("RectangleShape2D_3unfs")
 one_way_collision = true
 
+[node name="EntryPreview" type="Sprite2D" parent="Entry" unique_id=1123456781]
+texture = ExtResource("53_entpr")
+centered = false
+
+[node name="Boxes" type="Sprite2D" parent="Entry" unique_id=1123456782]
+texture = ExtResource("54_boxes")
+centered = false
+
+[node name="Mirror" type="Sprite2D" parent="Entry" unique_id=1123456783]
+texture = ExtResource("55_mirro")
+centered = false
+
+[node name="Vase" type="Sprite2D" parent="Entry" unique_id=1123456784]
+texture = ExtResource("56_vasee")
+centered = false
+
+[node name="FrontDoor" type="Sprite2D" parent="Entry" unique_id=1123456785]
+texture = ExtResource("57_fdcc")
+centered = false
+
+[node name="FrontDoorFlapOpen" type="Sprite2D" parent="Entry" unique_id=1123456786]
+visible = false
+texture = ExtResource("58_fdco")
+centered = false
+
+[node name="FrontDoorOpen" type="Sprite2D" parent="Entry" unique_id=1123456787]
+visible = false
+texture = ExtResource("59_fdop")
+centered = false
+
 [node name="MumsBedroomRoom" type="Node2D" parent="." unique_id=945876171]
 position = Vector2(-857, -1080)
 scale = Vector2(0.5, 0.5)
@@ -602,7 +639,7 @@ position = Vector2(2311, -103)
 position = Vector2(4312, 1000)
 
 [node name="StairsBottom" parent="." unique_id=300000001 node_paths=PackedStringArray("stairs_marker", "destination_marker") instance=ExtResource("50_uwsms")]
-position = Vector2(4409, 904)
+position = Vector2(4399, 904)
 stairs_marker = NodePath("../StairsBottomWaypoint")
 destination_marker = NodePath("../LandingSpot")
 leg2_duration = 1.0

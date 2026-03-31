@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://po0ann4o0kex"]
+
+[ext_resource type="Script" uid="uid://bmiu5bybsnm03" path="res://scripts/entities/ai/twins.gd" id="1_twins"]
+[ext_resource type="Texture2D" uid="uid://djoqe70pl6tom" path="res://assets/sprites/characters/twins/test.png" id="2_twins"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_twins"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_twins")
+}],
+"loop": false,
+"name": &"interacting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_twins")
+}],
+"loop": true,
+"name": &"sitting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_twins")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_twins")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twins"]
+size = Vector2(164, 308)
+
+[node name="Twins" type="CharacterBody2D" unique_id=813177637]
+z_index = 5
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_twins")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=909171119]
+position = Vector2(0, -225)
+scale = Vector2(0.45, 0.45)
+sprite_frames = SubResource("SpriteFrames_twins")
+animation = &"standing"
+
+[node name="Label" type="Label" parent="." unique_id=710669998]
+offset_left = -30.0
+offset_top = -50.0
+offset_right = 30.0
+offset_bottom = -30.0
+text = "Twins"
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1894944747]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2000405337]
+position = Vector2(0, -154)
+shape = SubResource("RectangleShape2D_twins")

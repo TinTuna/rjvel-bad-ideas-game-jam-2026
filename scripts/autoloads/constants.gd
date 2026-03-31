@@ -123,11 +123,33 @@ const DAY_NAMES := {
 # NPC NAVIGATION CONSTANTS
 # ============================================================================
 
-## Default patrol routes for family members
-## Format: "NPC_NAME": [array of navigation point names]
+## Default patrol routes per family member per day.
+## Format: "NPC_NAME": { day_int: [nav point names, ...] }
+## A single-element array makes the NPC effectively static (navigates there and waits).
 const NPC_PATROL_ROUTES := {
-    "MOTHER": ["Entry"],
+    "MOTHER": {
+        0: ["Entry"],
+        1: ["Entry", "Mums_Bedroom"],
+        2: ["Kitchen"],
+        3: ["Entry", "Kitchen"],
+        4: ["Mums_Bedroom", "Kitchen"],
+    },
+    "TWINS": {
+        1: ["Living_Room"],
+        3: ["Boys_Room"],
+        4: ["Boys_Room"],
+    },
+    "DAUGHTER": {
+        2: ["Living_Room"],
+        4: ["Entry"],
+    },
 }
+
+
+## Returns the patrol route for an NPC on a given day. Returns [] if none defined.
+func get_patrol_route(npc_name: String, day: int) -> Array:
+    var npc_routes: Dictionary = NPC_PATROL_ROUTES.get(npc_name, {})
+    return npc_routes.get(day, [])
 
 # ============================================================================
 # HELPER METHODS - SCENES

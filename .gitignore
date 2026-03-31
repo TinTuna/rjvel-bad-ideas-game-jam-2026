@@ -22,3 +22,4 @@ mono_crash.*.json
 # other
 .env.local
 *.local
+/builds

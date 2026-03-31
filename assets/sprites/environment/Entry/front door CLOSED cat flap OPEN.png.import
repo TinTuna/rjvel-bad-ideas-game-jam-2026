@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw02gjmv5vnyq"
-path="res://.godot/imported/picture frames.png-ff2a8b0896684e2650c45191210f4126.ctex"
+uid="uid://dnsp526qujp7w"
+path="res://.godot/imported/front door CLOSED cat flap OPEN.png-ec5556c64bbd154a6e2c07cda220a439.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/environment/Entry/picture frames.png"
-dest_files=["res://.godot/imported/picture frames.png-ff2a8b0896684e2650c45191210f4126.ctex"]
+source_file="res://assets/sprites/environment/Entry/front door CLOSED cat flap OPEN.png"
+dest_files=["res://.godot/imported/front door CLOSED cat flap OPEN.png-ec5556c64bbd154a6e2c07cda220a439.ctex"]
 
 [params]
 

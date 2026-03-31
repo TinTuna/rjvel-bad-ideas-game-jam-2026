@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://7aleib8cwmtn" path="res://assets/sprites/environment/burn_ceiling.png" id="3_n6eey"]
 [ext_resource type="Texture2D" uid="uid://bv4eq0tvyhkau" path="res://assets/sprites/environment/burn_wall.png" id="4_qi5uv"]
 [ext_resource type="PackedScene" uid="uid://cu0820t6nyfgb" path="res://scenes/entities/day_2/toaster.tscn" id="10_2bnyt"]
+[ext_resource type="PackedScene" uid="uid://po0ann4o0kex" path="res://scenes/entities/family_members/twins.tscn" id="13_f6egh"]
 [ext_resource type="PackedScene" uid="uid://c6r65x0apfe6r" path="res://scenes/entities/day_3/phone.tscn" id="25_apiyn"]
 [ext_resource type="PackedScene" uid="uid://d25vdnwh7ugoy" path="res://scenes/entities/cat.tscn" id="53_l8gpt"]
 [ext_resource type="Script" uid="uid://b6ffmtyygvy4l" path="res://scripts/systems/game_camera.gd" id="54_2ssm5"]
@@ -40,7 +41,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("53_l8gpt")]
 z_index = 2
-position = Vector2(484.00037, 967.9999)
+position = Vector2(2872.9995, 986)
 MOVEMENT_SPEED = null
 ACCELERATION = null
 PUSH_SPEED = null
@@ -86,8 +87,10 @@ position = Vector2(3943, -80)
 connections = Array[NodePath]([NodePath("../Landing")])
 
 [node name="Mother" parent="." unique_id=124666084 instance=ExtResource("57_taeav")]
-z_index = 5
-position = Vector2(3948, -82)
+position = Vector2(959, 986)
+
+[node name="Twins" parent="." unique_id=813177637 instance=ExtResource("13_f6egh")]
+position = Vector2(3947, -87)
 
 [node name="HUD" parent="." unique_id=412729266 instance=ExtResource("58_r74q2")]
 

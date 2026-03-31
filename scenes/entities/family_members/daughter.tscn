@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dl7mc02mye2bi"]
+
+[ext_resource type="Script" uid="uid://uaa4s0egg7lj" path="res://scripts/entities/ai/daughter.gd" id="1_daughter"]
+[ext_resource type="Texture2D" uid="uid://duff41pnda1f4" path="res://assets/sprites/characters/daughter/test.png" id="2_daughter"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_daughter"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_daughter")
+}],
+"loop": false,
+"name": &"interacting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_daughter")
+}],
+"loop": true,
+"name": &"sitting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_daughter")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_daughter")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_daughter"]
+size = Vector2(164, 420)
+
+[node name="Daughter" type="CharacterBody2D" unique_id=461302055]
+z_index = 5
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_daughter")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1113283992]
+position = Vector2(0, -250)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_daughter")
+animation = &"walking"
+
+[node name="Label" type="Label" parent="." unique_id=2028404066]
+offset_left = -40.0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -30.0
+text = "Daughter"
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=228353544]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=603358739]
+position = Vector2(0, -210)
+shape = SubResource("RectangleShape2D_daughter")

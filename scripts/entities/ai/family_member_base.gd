@@ -288,6 +288,18 @@ func continue_patrol() -> void:
 	navigate_to_next_patrol_point()
 
 
+## Configure patrol route for a specific day and immediately start patrolling.
+## Looks up Constants.NPC_PATROL_ROUTES using the NPC's character_name (uppercased).
+func start_for_day(day: int) -> void:
+	var route: Array = Constants.get_patrol_route(character_name.to_upper(), day)
+	if route.is_empty():
+		push_warning("[%s] No patrol route defined for day %d" % [character_name, day])
+		return
+	patrol_points.assign(route)
+	patrol_index = 0
+	start_patrol()
+
+
 # ============================================================================
 # INTERACTION
 # ============================================================================
