@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dyw6fdsolwcim"]
 
 [ext_resource type="Script" uid="uid://bd6870bd7fiwg" path="res://scripts/ui/day_recap.gd" id="1_day_recap"]
+[ext_resource type="Texture2D" uid="uid://bawa68foy7u6b" path="res://assets/sprites/Interday/Level_end.png" id="2_gagyn"]
 
 [node name="DayRecap" type="Control" unique_id=1470214796]
 layout_mode = 3
@@ -22,15 +23,12 @@ color = Color(0, 0, 0, 1)
 
 [node name="DayImage" type="TextureRect" parent="." unique_id=1078728673]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.1
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_right = 300.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_gagyn")
 expand_mode = 1
 stretch_mode = 5
 
