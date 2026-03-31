@@ -17,11 +17,11 @@ func _ready() -> void:
     else:
         push_error("[Level2] Mother NPC not found")
 
-    var daughter: FamilyMemberBase = get_tree().get_first_node_in_group("daughter")
-    if daughter:
-        daughter.start_for_day(2)
+    var twins: FamilyMemberBase = get_tree().get_first_node_in_group("twins")
+    if twins:
+        twins.start_for_day(1)
     else:
-        push_warning("[Level2] Daughter NPC not found — add daughter.tscn to this level")
+        push_warning("[Level1] Twins NPC not found — add twins.tscn to this level")
 
 
 func window_opened() -> void:

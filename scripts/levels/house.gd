@@ -17,6 +17,12 @@ enum FrontDoorState { CLOSED, CATFLAP_OPEN, OPEN }
         if is_node_ready():
             _apply_front_door_state()
 
+@export var kitchen_window_open: bool = false:
+    set(value):
+        kitchen_window_open = value
+        if is_node_ready():
+            _apply_kitchen_window_state()
+
 @onready var _upstairs_rooms: Array[Node] = [
     $Landing,
     $BoysRoom,
@@ -29,11 +35,15 @@ enum FrontDoorState { CLOSED, CATFLAP_OPEN, OPEN }
 @onready var _front_door_closed: Sprite2D = $Entry/FrontDoor
 @onready var _front_door_flap_open: Sprite2D = $Entry/FrontDoorFlapOpen
 @onready var _front_door_open: Sprite2D = $Entry/FrontDoorOpen
+@onready var _window2_closed: Sprite2D = $Kitchen/Window2Closed
+@onready var _window2_open: Sprite2D = $Kitchen/Window2Open
 
 
 func _ready() -> void:
     _apply_upstairs_state()
     _apply_front_door_state()
+    _apply_kitchen_window_state()
+    EventBus.window_open.connect(func(): kitchen_window_open = true)
 
 
 func _apply_upstairs_state() -> void:
@@ -55,3 +65,8 @@ func _apply_front_door_state() -> void:
     _front_door_closed.visible = front_door_state == FrontDoorState.CLOSED
     _front_door_flap_open.visible = front_door_state == FrontDoorState.CATFLAP_OPEN
     _front_door_open.visible = front_door_state == FrontDoorState.OPEN
+
+
+func _apply_kitchen_window_state() -> void:
+    _window2_closed.visible = not kitchen_window_open
+    _window2_open.visible = kitchen_window_open

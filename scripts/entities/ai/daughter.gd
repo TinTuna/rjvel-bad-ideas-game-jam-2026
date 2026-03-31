@@ -25,6 +25,7 @@ func _ready() -> void:
     add_child(_speech_bubble)
 
     super._ready()
+    _filler_loop()
 
 
 func _on_voice_finished() -> void:
@@ -43,3 +44,22 @@ func play_voice_line(code: String, text: String = "") -> void:
     _voice_player.play()
     if not text.is_empty():
         _speech_bubble.show_text(text)
+
+
+func _filler_loop() -> void:
+    while is_inside_tree():
+        await get_tree().create_timer(randf_range(10.0, 30.0)).timeout
+        if not _voice_player.playing:
+            var fillers: Array = Constants.get_voice_lines("Girl", "Filler")
+            if not fillers.is_empty():
+                var line: Dictionary = fillers[randi() % fillers.size()]
+                play_voice_line(line["code"], line["text"])
+
+
+func speak_day_lines(day: int) -> void:
+    var lines: Array = Constants.get_voice_lines("Girl", "Day %d" % day)
+    for line_data: Dictionary in lines:
+        if _voice_player.playing:
+            await _voice_player.finished
+        play_voice_line(line_data["code"], line_data["text"])
+        await _voice_player.finished

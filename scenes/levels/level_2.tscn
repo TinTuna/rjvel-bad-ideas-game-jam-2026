@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://5d31cv7p7mqp" path="res://scripts/levels/level_2.gd" id="1_852cy"]
 [ext_resource type="PackedScene" uid="uid://dj6ag2enlk8v2" path="res://scenes/levels/house.tscn" id="2_8qukl"]
 [ext_resource type="Texture2D" uid="uid://b2ftihq4ff8bu" path="res://assets/sprites/environment/smoke.png" id="4_qsp8v"]
-[ext_resource type="PackedScene" uid="uid://dl7mc02mye2bi" path="res://scenes/entities/family_members/daughter.tscn" id="11_nt80m"]
+[ext_resource type="PackedScene" uid="uid://po0ann4o0kex" path="res://scenes/entities/family_members/twins.tscn" id="11_nt80m"]
 [ext_resource type="PackedScene" uid="uid://cu0820t6nyfgb" path="res://scenes/entities/day_2/toaster.tscn" id="12_852cy"]
 [ext_resource type="PackedScene" uid="uid://d25vdnwh7ugoy" path="res://scenes/entities/cat.tscn" id="53_ycjig"]
 [ext_resource type="Script" uid="uid://b6ffmtyygvy4l" path="res://scripts/systems/game_camera.gd" id="54_2ws51"]
@@ -129,5 +129,5 @@ position = Vector2(-4272, -347)
 position = Vector2(5757.7813, 709.75)
 shape = SubResource("RectangleShape2D_y73h4")
 
-[node name="Daughter" parent="." unique_id=742429779 instance=ExtResource("11_nt80m")]
-position = Vector2(2619, 1011)
+[node name="Twins" parent="." unique_id=813177637 instance=ExtResource("11_nt80m")]
+position = Vector2(2686, 992)

@@ -1,13 +1,53 @@
 [gd_scene format=3 uid="uid://po0ann4o0kex"]
 
 [ext_resource type="Script" uid="uid://bmiu5bybsnm03" path="res://scripts/entities/ai/twins.gd" id="1_twins"]
-[ext_resource type="Texture2D" uid="uid://djoqe70pl6tom" path="res://assets/sprites/characters/twins/test.png" id="2_twins"]
+[ext_resource type="Texture2D" uid="uid://ch5dyu3216ts4" path="res://assets/sprites/characters/twins/boy_walking.png" id="3_80rsk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yftyl"]
+atlas = ExtResource("3_80rsk")
+region = Rect2(800, 0, 800, 1067)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80rsk"]
+atlas = ExtResource("3_80rsk")
+region = Rect2(800, 0, 800, 1067)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4wad"]
+atlas = ExtResource("3_80rsk")
+region = Rect2(800, 0, 800, 1067)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adxmu"]
+atlas = ExtResource("3_80rsk")
+region = Rect2(0, 0, 800, 1067)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dst7y"]
+atlas = ExtResource("3_80rsk")
+region = Rect2(800, 0, 800, 1067)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coj3q"]
+atlas = ExtResource("3_80rsk")
+region = Rect2(1600, 0, 800, 1067)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js2vp"]
+atlas = ExtResource("3_80rsk")
+region = Rect2(0, 1067, 800, 1067)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbhya"]
+atlas = ExtResource("3_80rsk")
+region = Rect2(800, 1067, 800, 1067)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24r2g"]
+atlas = ExtResource("3_80rsk")
+region = Rect2(1600, 1067, 800, 1067)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eygkp"]
+atlas = ExtResource("3_80rsk")
+region = Rect2(1600, 2134, 800, 1067)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_twins"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_twins")
+"texture": SubResource("AtlasTexture_yftyl")
 }],
 "loop": false,
 "name": &"interacting",
@@ -15,7 +55,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_twins")
+"texture": SubResource("AtlasTexture_80rsk")
 }],
 "loop": true,
 "name": &"sitting",
@@ -23,7 +63,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_twins")
+"texture": SubResource("AtlasTexture_o4wad")
 }],
 "loop": true,
 "name": &"standing",
@@ -31,7 +71,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_twins")
+"texture": SubResource("AtlasTexture_adxmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dst7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coj3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js2vp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbhya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24r2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eygkp")
 }],
 "loop": true,
 "name": &"walking",
@@ -48,10 +106,10 @@ collision_mask = 0
 script = ExtResource("1_twins")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=909171119]
-position = Vector2(0, -225)
+position = Vector2(0, -185)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_twins")
-animation = &"standing"
+animation = &"sitting"
 
 [node name="Label" type="Label" parent="." unique_id=710669998]
 offset_left = -30.0

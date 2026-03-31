@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://7vpo77wdl1q7" path="res://assets/sprites/environment/Kitchen/window 1.png" id="3_vcdwk"]
 [ext_resource type="Texture2D" uid="uid://bdjkpr86kel5q" path="res://assets/sprites/environment/Kitchen/window 2.png" id="4_c1snp"]
 [ext_resource type="Texture2D" uid="uid://bk5cosvm3itn" path="res://assets/sprites/environment/Kitchen/counter.png" id="5_xp0uc"]
+[ext_resource type="Texture2D" uid="uid://15aekovu53cq" path="res://assets/sprites/environment/Kitchen/window 2 OPEN.png" id="6_mdkc2"]
 [ext_resource type="Texture2D" uid="uid://f5b3pcvhhb47" path="res://assets/sprites/environment/Kitchen/fridge.png" id="6_ucdoc"]
 [ext_resource type="Texture2D" uid="uid://mwff81vabvyo" path="res://assets/sprites/environment/Kitchen/door.png" id="7_cgeqm"]
 [ext_resource type="Texture2D" uid="uid://btlessk6gx6h2" path="res://assets/sprites/environment/Kitchen/table.png" id="8_3unfs"]
@@ -166,14 +167,27 @@ z_index = 1
 texture = ExtResource("3_vcdwk")
 centered = false
 
-[node name="Window2" type="Sprite2D" parent="Kitchen" unique_id=362707983]
+[node name="Window2Closed" type="Sprite2D" parent="Kitchen" unique_id=362707983]
 texture = ExtResource("4_c1snp")
 centered = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Window2" unique_id=317456825]
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Window2Closed" unique_id=317456825]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Window2/StaticBody2D" unique_id=1746611533]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Window2Closed/StaticBody2D" unique_id=1746611533]
+position = Vector2(2945, 1104)
+shape = SubResource("RectangleShape2D_vjklx")
+one_way_collision = true
+
+[node name="Window2Open" type="Sprite2D" parent="Kitchen" unique_id=1503512360]
+visible = false
+texture = ExtResource("6_mdkc2")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen/Window2Open" unique_id=2098908730]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/Window2Open/StaticBody2D" unique_id=451661491]
 position = Vector2(2945, 1104)
 shape = SubResource("RectangleShape2D_vjklx")
 one_way_collision = true

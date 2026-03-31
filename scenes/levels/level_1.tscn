@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="4_hud"]
 [ext_resource type="Script" uid="uid://cm24k76aypjk2" path="res://scripts/systems/navigation/navigation_graph.gd" id="5_navgraph"]
 [ext_resource type="PackedScene" uid="uid://c3v8yqj2wl0qt" path="res://scenes/systems/navigation/navigation_point.tscn" id="6_navpoint"]
-[ext_resource type="PackedScene" uid="uid://po0ann4o0kex" path="res://scenes/entities/family_members/twins.tscn" id="10_qxy0u"]
+[ext_resource type="PackedScene" uid="uid://dl7mc02mye2bi" path="res://scenes/entities/family_members/daughter.tscn" id="11_excbq"]
 [ext_resource type="PackedScene" uid="uid://cr64jwfjc7m4" path="res://scenes/entities/day_1/box_under_bed.tscn" id="39_y73h4"]
 [ext_resource type="Script" uid="uid://b6ffmtyygvy4l" path="res://scripts/systems/game_camera.gd" id="41_gamecam"]
 
@@ -78,9 +78,6 @@ connections = Array[NodePath]([NodePath("../Landing")])
 [node name="Mother" parent="." unique_id=124666084 instance=ExtResource("3_mother")]
 position = Vector2(104, -77)
 
-[node name="Twins" parent="." unique_id=1241958502 instance=ExtResource("10_qxy0u")]
-position = Vector2(2641, 1002)
-
 [node name="HUD" parent="." unique_id=412729266 instance=ExtResource("4_hud")]
 
 [node name="CatFlapTrigger" type="Area2D" parent="." unique_id=248489372]
@@ -96,3 +93,6 @@ position = Vector2(5670, 500)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger2" unique_id=336076236]
 position = Vector2(88, 0)
 shape = SubResource("RectangleShape2D_iav0o")
+
+[node name="Daughter" parent="." unique_id=461302055 instance=ExtResource("11_excbq")]
+position = Vector2(2659, 1011)

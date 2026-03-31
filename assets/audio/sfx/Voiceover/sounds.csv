@@ -22,9 +22,9 @@ Twins,Mum! Mia ate my biscuits again! ,Filler,T_F_5
 Twins,"My favourite animal is a giraffe. What about you, Boxie?",Filler,T_F_6
 Girl,Ugh. I wish I could have some peace and quiet around this place.,Filler,G_F_3
 Mum,Maybe we could have curry tonight.,Filler,M_F_5
-Phone,Thank you for your order at Snap Pizza. We will be with you A.S.A.P.! ,Day 3,Pizza
-Mum,"Huh, when did I order pizza?",Day 3,M_3_2
-Mum,"*Cough* Let's let the room air out, I can't breathe in here!",Day 2,M_2_0
+Phone,Thank you for your order at Snap Pizza. We will be with you A.S.A.P.! ,Day 3,pizza_phone
+Mum,"Huh, when did I order pizza?",Day 3,pizza_door
+Mum,"*Cough* Let's let the room air out, I can't breathe in here!",Day 2,fire
 Girl,"Boxie, I'm busy! Go play with the brats!",Day 4,G_4_0
 Twins,I'm dying of hunger! Is there anything to eat in the house?,Day 4,T_4_0
-Twins,"Aw, Pizza! Boxie! You're the best!",Day 4,T_4_1
+Twins,"Aw, Pizza! Boxie! You're the best!",Day 4,pizza
