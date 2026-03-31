@@ -2,18 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bmiu5bybsnm03" path="res://scripts/entities/ai/twins.gd" id="1_twins"]
 [ext_resource type="Texture2D" uid="uid://ch5dyu3216ts4" path="res://assets/sprites/characters/twins/boy_walking.png" id="3_80rsk"]
+[ext_resource type="Texture2D" uid="uid://5o1nnq58nn0h" path="res://assets/sprites/characters/twins/twins_sitting_sprites.png" id="3_adxmu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yftyl"]
-atlas = ExtResource("3_80rsk")
-region = Rect2(800, 0, 800, 1067)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cea2y"]
+atlas = ExtResource("3_adxmu")
+region = Rect2(0, 0, 800, 1100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_80rsk"]
-atlas = ExtResource("3_80rsk")
-region = Rect2(800, 0, 800, 1067)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o4wad"]
-atlas = ExtResource("3_80rsk")
-region = Rect2(800, 0, 800, 1067)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm4nd"]
+atlas = ExtResource("3_adxmu")
+region = Rect2(0, 1100, 800, 1100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_adxmu"]
 atlas = ExtResource("3_80rsk")
@@ -47,27 +44,36 @@ region = Rect2(1600, 2134, 800, 1067)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yftyl")
+"texture": SubResource("AtlasTexture_cea2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm4nd")
 }],
-"loop": false,
+"loop": true,
 "name": &"interacting",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_80rsk")
+"texture": SubResource("AtlasTexture_cea2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm4nd")
 }],
 "loop": true,
 "name": &"sitting",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o4wad")
+"texture": SubResource("AtlasTexture_cea2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm4nd")
 }],
 "loop": true,
 "name": &"standing",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -109,9 +115,10 @@ script = ExtResource("1_twins")
 position = Vector2(0, -185)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_twins")
-animation = &"sitting"
+animation = &"walking"
 
 [node name="Label" type="Label" parent="." unique_id=710669998]
+visible = false
 offset_left = -30.0
 offset_top = -50.0
 offset_right = 30.0

@@ -83,6 +83,7 @@ position = Vector2(2023, -450)
 script = ExtResource("54_2ws51")
 
 [node name="NavigationGraph" type="Node2D" parent="." unique_id=533732458]
+visible = false
 script = ExtResource("55_i0c7d")
 
 [node name="Kitchen" parent="NavigationGraph" unique_id=1829446312 instance=ExtResource("56_e6ups")]

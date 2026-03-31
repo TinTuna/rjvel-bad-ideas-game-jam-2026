@@ -1,37 +1,101 @@
 [gd_scene format=3 uid="uid://dl7mc02mye2bi"]
 
 [ext_resource type="Script" uid="uid://uaa4s0egg7lj" path="res://scripts/entities/ai/daughter.gd" id="1_daughter"]
-[ext_resource type="Texture2D" uid="uid://duff41pnda1f4" path="res://assets/sprites/characters/daughter/test.png" id="2_daughter"]
+[ext_resource type="Texture2D" uid="uid://dfvqruoonw1ln" path="res://assets/sprites/characters/daughter/daughter_sitting_sprites.png" id="2_p77ol"]
+[ext_resource type="Texture2D" uid="uid://du40yyr76h64i" path="res://assets/sprites/characters/daughter/girl walking.png" id="3_d81pg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rwo6"]
+atlas = ExtResource("2_p77ol")
+region = Rect2(0, 0, 800, 1100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aauii"]
+atlas = ExtResource("2_p77ol")
+region = Rect2(0, 1100, 800, 1100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43i3t"]
+atlas = ExtResource("3_d81pg")
+region = Rect2(1600, 0, 800, 1042)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vs4n"]
+atlas = ExtResource("3_d81pg")
+region = Rect2(800, 0, 800, 1042)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1do8"]
+atlas = ExtResource("3_d81pg")
+region = Rect2(0, 0, 800, 1042)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iee8"]
+atlas = ExtResource("3_d81pg")
+region = Rect2(1600, 1042, 800, 1042)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfy55"]
+atlas = ExtResource("3_d81pg")
+region = Rect2(800, 1042, 800, 1042)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo0q4"]
+atlas = ExtResource("3_d81pg")
+region = Rect2(0, 1042, 800, 1042)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilbwc"]
+atlas = ExtResource("3_d81pg")
+region = Rect2(1600, 2084, 800, 1042)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_daughter"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_daughter")
+"texture": SubResource("AtlasTexture_2rwo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aauii")
 }],
-"loop": false,
+"loop": true,
 "name": &"interacting",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_daughter")
+"texture": SubResource("AtlasTexture_aauii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rwo6")
 }],
 "loop": true,
 "name": &"sitting",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_daughter")
+"texture": SubResource("AtlasTexture_aauii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rwo6")
 }],
 "loop": true,
 "name": &"standing",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_daughter")
+"texture": SubResource("AtlasTexture_43i3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vs4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1do8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iee8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfy55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo0q4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilbwc")
 }],
 "loop": true,
 "name": &"walking",
@@ -42,7 +106,7 @@ animations = [{
 size = Vector2(164, 420)
 
 [node name="Daughter" type="CharacterBody2D" unique_id=461302055]
-z_index = 5
+z_index = 2
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_daughter")
@@ -51,9 +115,10 @@ script = ExtResource("1_daughter")
 position = Vector2(0, -250)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_daughter")
-animation = &"walking"
+animation = &"standing"
 
 [node name="Label" type="Label" parent="." unique_id=2028404066]
+visible = false
 offset_left = -40.0
 offset_top = -50.0
 offset_right = 40.0

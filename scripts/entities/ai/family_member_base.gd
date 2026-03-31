@@ -16,7 +16,7 @@ extends CharacterBody2D
 @export var auto_start_patrol: bool = true
 
 @export_group("Debug")
-@export var debug_draw: bool = true
+@export var debug_draw: bool = false
 
 # ============================================================================
 # NODES

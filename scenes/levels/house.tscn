@@ -152,7 +152,8 @@ texture = ExtResource("1_6w1ga")
 
 [node name="Outside_left" type="Sprite2D" parent="." unique_id=1535282563]
 z_index = 1
-position = Vector2(-312, 540)
+position = Vector2(-431.25, 540)
+scale = Vector2(1.382825, 1)
 texture = ExtResource("1_6w1ga")
 
 [node name="Kitchen" type="Node2D" parent="." unique_id=504531645]
@@ -354,6 +355,7 @@ shape = SubResource("RectangleShape2D_aab13")
 one_way_collision = true
 
 [node name="CoffeeTable" type="Sprite2D" parent="LivingRoom" unique_id=219107699]
+z_index = 3
 texture = ExtResource("21_jly5n")
 centered = false
 
