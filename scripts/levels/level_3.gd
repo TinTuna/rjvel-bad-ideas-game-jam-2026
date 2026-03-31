@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var house: Node2D = $House
-@onready var doorbell_player: AudioStreamPlayer2D = $DoorbellPlayer
+@onready var doorbell_player: AudioStreamPlayer = $DoorbellPlayer
 @onready var level_end_trigger: Area2D = $LevelEndTrigger
 @onready var entry_door: Sprite2D = $House/EntryDoor
 

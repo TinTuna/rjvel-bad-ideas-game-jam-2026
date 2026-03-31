@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bs360i7lnvu6x"
+path="res://.godot/imported/doorbell_loud.mp3-dec25e37a3e73ab8109f99b6d23528c3.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Sounds (equalised)/doorbell_loud.mp3"
+dest_files=["res://.godot/imported/doorbell_loud.mp3-dec25e37a3e73ab8109f99b6d23528c3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
