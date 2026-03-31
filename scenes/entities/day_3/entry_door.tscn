@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://np5vr6u5v1w0"]
+
+[ext_resource type="Texture2D" uid="uid://dy1gdm3ycody" path="res://assets/sprites/environment/Entry/front door OPEN.png" id="1_nqewi"]
+[ext_resource type="Script" uid="uid://bi23u4nw0wltv" path="res://scripts/entities/day_3/entry_door.gd" id="2_p08g6"]
+
+[node name="EntryDoor" type="Sprite2D" unique_id=846929000]
+visible = false
+texture = ExtResource("1_nqewi")
+script = ExtResource("2_p08g6")
+
+[node name="Timer" type="Timer" parent="." unique_id=414660913]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

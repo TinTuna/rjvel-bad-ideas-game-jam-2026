@@ -17,7 +17,14 @@ texture = ExtResource("2_hsdyq")
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_y6ni4")
 
-[node name="Timer" type="Timer" parent="." unique_id=510550634]
+[node name="PizzaTimer" type="Timer" parent="." unique_id=510550634]
+wait_time = 10.0
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="PhoneTimer" type="Timer" parent="." unique_id=56484497]
+wait_time = 15.0
+one_shot = true
+
+[connection signal="phone_reset" from="." to="." method="_on_phone_reset"]
+[connection signal="timeout" from="PizzaTimer" to="." method="_on_pizza_timer_timeout"]
+[connection signal="timeout" from="PhoneTimer" to="." method="_on_phone_timer_timeout"]
