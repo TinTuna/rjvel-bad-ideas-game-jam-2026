@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dj6ag2enlk8v2" path="res://scenes/levels/house.tscn" id="2_pimnq"]
 [ext_resource type="Texture2D" uid="uid://7aleib8cwmtn" path="res://assets/sprites/environment/burn_ceiling.png" id="3_n6eey"]
 [ext_resource type="Texture2D" uid="uid://bv4eq0tvyhkau" path="res://assets/sprites/environment/burn_wall.png" id="4_qi5uv"]
-[ext_resource type="PackedScene" uid="uid://np5vr6u5v1w0" path="res://scenes/entities/day_3/entry_door.tscn" id="5_apo5x"]
+[ext_resource type="PackedScene" path="res://scenes/entities/day_3/entry_door.tscn" id="5_apo5x"]
 [ext_resource type="PackedScene" uid="uid://cu0820t6nyfgb" path="res://scenes/entities/day_2/toaster.tscn" id="10_2bnyt"]
 [ext_resource type="PackedScene" uid="uid://po0ann4o0kex" path="res://scenes/entities/family_members/twins.tscn" id="13_f6egh"]
 [ext_resource type="AudioStream" uid="uid://bs360i7lnvu6x" path="res://assets/audio/sfx/Sounds (equalised)/doorbell_loud.mp3" id="15_apo5x"]
@@ -44,7 +44,6 @@ position = Vector2(4796, 542.00006)
 scale = Vector2(0.49976847, 0.49976847)
 
 [node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("53_l8gpt")]
-z_index = 2
 position = Vector2(3096, 972.99994)
 MOVEMENT_SPEED = null
 ACCELERATION = null

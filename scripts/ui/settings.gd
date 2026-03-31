@@ -1,8 +1,8 @@
 extends Control
 
-@onready var options_dropdown: OptionButton = $HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsDropdown
-@onready var music_slider: HSlider = $HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/HSlider
-@onready var sfx_slider: HSlider = $HBoxContainer/MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/HSlider2
+@onready var options_dropdown: OptionButton = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsDropdown
+@onready var music_slider: HSlider = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/HSlider
+@onready var sfx_slider: HSlider = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/HSlider2
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
