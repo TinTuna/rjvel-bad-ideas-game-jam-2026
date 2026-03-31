@@ -7,9 +7,3 @@
 visible = false
 texture = ExtResource("1_nqewi")
 script = ExtResource("2_p08g6")
-
-[node name="Timer" type="Timer" parent="." unique_id=414660913]
-wait_time = 10.0
-one_shot = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

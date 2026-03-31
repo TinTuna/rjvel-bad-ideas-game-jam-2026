@@ -6,6 +6,7 @@ const PHONE_ON = preload("uid://e6xfdbgrmeyd")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var pizza_timer: Timer = $PizzaTimer
 @onready var phone_timer: Timer = $PhoneTimer
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var _is_interactable = true
 
@@ -21,7 +22,8 @@ func interact() -> void:
         return
     _is_interactable = false
     sprite.texture = PHONE_ON
-    #TODO: Conversation on the phone
+    audio_player.play()
+    await get_tree().create_timer(6.6).timeout
     pizza_timer.start()
     phone_timer.start()
     sprite.texture = PHONE_OFF

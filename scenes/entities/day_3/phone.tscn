@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4bjp6jsyh7mm" path="res://scripts/entities/day_3/phone.gd" id="1_e4uf5"]
 [ext_resource type="Texture2D" uid="uid://d0io0ulk0xex7" path="res://assets/sprites/environment/Mum_s Bedroom/phone OFF.png" id="2_hsdyq"]
+[ext_resource type="AudioStream" uid="uid://byuel4hre00bm" path="res://assets/audio/sfx/Voiceover/Pizza/Pizza.wav" id="3_hsdyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6ni4"]
 size = Vector2(105, 135)
@@ -24,6 +25,9 @@ one_shot = true
 [node name="PhoneTimer" type="Timer" parent="." unique_id=56484497]
 wait_time = 15.0
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=997750540]
+stream = ExtResource("3_hsdyq")
 
 [connection signal="phone_reset" from="." to="." method="_on_phone_reset"]
 [connection signal="timeout" from="PizzaTimer" to="." method="_on_pizza_timer_timeout"]

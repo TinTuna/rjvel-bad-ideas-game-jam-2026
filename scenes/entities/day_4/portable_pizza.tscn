@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cdefxwiw1571x"]
+
+[ext_resource type="Script" uid="uid://fmpekhri4d2u" path="res://scripts/entities/day_4/portable_pizza.gd" id="1_1kww6"]
+[ext_resource type="Texture2D" uid="uid://dfid4f0xdtjr4" path="res://assets/sprites/environment/Living Room/pizza box.png" id="2_ycuqb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo235"]
+size = Vector2(563, 96)
+
+[node name="PortablePizza" type="Area2D" unique_id=1151662136]
+script = ExtResource("1_1kww6")
+metadata/_custom_type_script = "uid://ckdebxl7oflen"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1099178777]
+texture = ExtResource("2_ycuqb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786700145]
+position = Vector2(-6.5, -17)
+shape = SubResource("RectangleShape2D_bo235")
