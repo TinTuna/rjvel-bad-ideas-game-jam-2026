@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="58_r74q2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_apo5x"]
-size = Vector2(475.25, 566.75)
+size = Vector2(153.25, 352.75)
 
 [node name="Level_3" type="Node2D" unique_id=-2094967295]
 script = ExtResource("1_apiyn")
@@ -118,5 +118,5 @@ stream = ExtResource("15_apo5x")
 [node name="LevelEndTrigger" type="Area2D" parent="." unique_id=1964341074]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger" unique_id=85117695]
-position = Vector2(5526.625, 722.375)
+position = Vector2(5687.625, 829.375)
 shape = SubResource("RectangleShape2D_apo5x")
