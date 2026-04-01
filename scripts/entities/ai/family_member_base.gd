@@ -2,6 +2,8 @@ class_name FamilyMemberBase
 extends CharacterBody2D
 ## Base class for all family member NPCs with navigation
 
+const SFX_HUMAN_WALKING = preload("uid://bx1plfvq4j6ic")
+
 # ============================================================================
 # EXPORTS
 # ============================================================================
@@ -24,6 +26,9 @@ extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _interaction_area: Area2D = $Area2D
+
+var _walk_player: AudioStreamPlayer
+var _was_walking: bool = false
 
 # ============================================================================
 # STATE
@@ -57,6 +62,15 @@ var wait_timer: float = 0.0
 func _ready() -> void:
     add_to_group("family_members")
     current_floor = starting_floor
+
+    _walk_player = AudioStreamPlayer.new()
+    _walk_player.stream = SFX_HUMAN_WALKING
+    _walk_player.bus = Constants.AUDIO_BUSES.SFX
+    _walk_player.finished.connect(func():
+        if _was_walking:
+            _walk_player.play()
+    )
+    add_child(_walk_player)
 
     # Wire Area2D to detect the cat
     var area: Area2D = $Area2D
@@ -321,23 +335,30 @@ func on_cat_touched(cat: Node2D) -> void:
 func update_animation() -> void:
     if not animated_sprite:
         return
-    
+
+    var is_walking := current_state == State.MOVING_TO_TARGET
+    if is_walking and not _was_walking:
+        _walk_player.play()
+    elif not is_walking and _was_walking:
+        _walk_player.stop()
+    _was_walking = is_walking
+
     match current_state:
         State.IDLE:
             animated_sprite.play("standing")
-        
+
         State.MOVING_TO_TARGET:
             animated_sprite.play("walking")
             # Flip sprite based on horizontal movement direction
             if velocity.x != 0:
                 animated_sprite.flip_h = velocity.x > 0
-        
+
         State.WAITING:
             animated_sprite.play("standing")
-        
+
         State.INTERACTING_SITTING:
             animated_sprite.play("sitting")
-        
+
         State.INTERACTING_STANDING:
             animated_sprite.play("interacting")
 

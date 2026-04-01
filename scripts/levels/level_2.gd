@@ -30,5 +30,6 @@ func window_opened() -> void:
 
 func _on_level_end_triggered(body: Node2D) -> void:
     if _is_window_opened and body.is_in_group("cat"):
+        EventBus.level_completed.emit()
         EventBus.day_started.emit(3)
         SceneLoader.load_scene(Constants.SCENES["DAY_RECAP"])

@@ -1,5 +1,7 @@
 extends Node2D
 
+const SFX_DOOR_LOCKED = preload("uid://c5vix37l05o73")
+
 @onready var house: Node2D = $House
 @onready var doorbell_player: AudioStreamPlayer = $DoorbellPlayer
 @onready var level_end_trigger: Area2D = $LevelEndTrigger
@@ -39,6 +41,20 @@ func spawn_pizza() -> void:
     new_pizza.position.y = 650
 
 func _on_level_end_triggered(body: Node2D) -> void:
-    if entry_door.is_open and body.is_in_group("cat"):
+    if not body.is_in_group("cat"):
+        return
+    if entry_door.is_open:
+        EventBus.level_completed.emit()
         EventBus.day_started.emit(4)
         SceneLoader.load_scene(Constants.SCENES["DAY_RECAP"])
+    else:
+        _play_one_shot(SFX_DOOR_LOCKED)
+
+
+func _play_one_shot(stream: AudioStream) -> void:
+    var player := AudioStreamPlayer.new()
+    player.stream = stream
+    player.bus = Constants.AUDIO_BUSES.SFX
+    add_child(player)
+    player.play()
+    player.finished.connect(player.queue_free)
