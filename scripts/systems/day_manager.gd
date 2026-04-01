@@ -31,8 +31,6 @@ var used_exits: Array[String] = []
 # ============================================================================
 
 func _ready() -> void:
-	print("[DayManager] Initialized - Current day: %s" % get_current_day_name())
-	
 	# Emit initial day started event
 	EventBus.day_started.emit(current_day)
 
@@ -46,8 +44,6 @@ func _ready() -> void:
 func set_current_day(day: int) -> void:
 	current_day = clamp(day, 0, 6)
 	EventBus.day_started.emit(current_day)
-	print("[DayManager] Current day set to: %s" % get_current_day_name())
-
 
 ## Advance to the next day
 ## @return int - The new current day
@@ -60,7 +56,6 @@ func advance_day() -> int:
 		current_day = 6  # Cap at Sunday
 	
 	EventBus.day_started.emit(current_day)
-	print("[DayManager] Advanced to: %s (Day %d completed)" % [get_current_day_name(), days_completed])
 	
 	return current_day
 
@@ -91,8 +86,6 @@ func get_day_name(day: int) -> String:
 func mark_exit_used(exit_name: String) -> void:
 	if not used_exits.has(exit_name):
 		used_exits.append(exit_name)
-		print("[DayManager] Exit '%s' permanently closed" % exit_name)
-
 
 ## Check if an exit has been used
 ## @param exit_name: String - Name of the exit to check
@@ -110,8 +103,6 @@ func get_used_exits() -> Array[String]:
 ## Reset exit tracking (for new game)
 func reset_exits() -> void:
 	used_exits.clear()
-	print("[DayManager] All exits reset")
-
 
 # ============================================================================
 # PROGRESSION QUERIES
@@ -168,9 +159,6 @@ func load_save_data(data: Dictionary) -> void:
 	if data.has("used_exits"):
 		used_exits = data["used_exits"].duplicate()
 	
-	print("[DayManager] Loaded save data - Day: %s, Completed: %d, Exits used: %d" % 
-		[get_current_day_name(), days_completed, used_exits.size()])
-	
 	# Emit day started event
 	EventBus.day_started.emit(current_day)
 
@@ -181,8 +169,6 @@ func reset_to_new_game() -> void:
 	days_completed = 0
 	used_exits.clear()
 	EventBus.day_started.emit(current_day)
-	print("[DayManager] Reset to new game - Starting Monday")
-
 
 # ============================================================================
 # DEBUG / TESTING

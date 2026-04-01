@@ -52,8 +52,6 @@ func _ready() -> void:
 	EventBus.window_open.connect(func(): _play_env(SFX_WINDOW_OPEN))
 	EventBus.toaster_burnt.connect(func(): _play_env(SFX_TOASTER_FINISH))
 
-	print("[SfxManager] Initialized")
-
 
 ## Play a cat voice line for the given event ("box", "collide", "end", "button").
 func play_cat_voice(event: String) -> void:

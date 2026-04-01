@@ -77,8 +77,6 @@ func get_all() -> Array[Dictionary]:
 func reset() -> void:
 	for key in STAT_DEFINITIONS:
 		_stats[key] = 0
-	print("[StatsTracker] Stats reset")
-
 
 # ============================================================================
 # AUTO-TRACKING (EventBus connections)
@@ -126,4 +124,3 @@ func _ready() -> void:
 		_stats[key] = STAT_DEFINITIONS[key]["value"]
 
 	_connect_events()
-	print("[StatsTracker] Initialized")

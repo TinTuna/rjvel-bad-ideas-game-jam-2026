@@ -47,7 +47,6 @@ var use_sub_threads: bool = true
 func _ready() -> void:
         # Initially disable processing until we start loading
         set_process(false)
-        print("[SceneLoader] Initialized")
 
 
 func _process(_delta: float) -> void:
@@ -92,9 +91,7 @@ func load_scene(_scene_uid: String) -> void:
     
     # Update the scene UID
     scene_uid = _scene_uid
-    
-    print("[SceneLoader] Loading scene: " + scene_uid)
-    
+        
     # Create a new loading screen instance
     var new_load_screen := loading_screen.instantiate()
     add_child(new_load_screen)

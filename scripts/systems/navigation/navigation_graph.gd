@@ -37,9 +37,6 @@ func _ready() -> void:
     
     if auto_build_from_children:
         build_from_children()
-    
-    print("[NavigationGraph] Initialized with %d points" % astar.get_point_count())
-
 
 func _draw() -> void:
     if not debug_draw_enabled or not OS.is_debug_build():
@@ -84,7 +81,6 @@ func add_navigation_point(point_name: String, position: Vector2, floor: int = 0)
     
     queue_redraw()
     
-    print("[NavigationGraph] Added point '%s' (ID: %d) at %v on floor %d" % [point_name, id, position, floor])
     return id
 
 
@@ -125,8 +121,6 @@ func connect_points_by_name(from_name: String, to_name: String, bidirectional: b
     astar.connect_points(from_id, to_id, bidirectional)
     queue_redraw()
     
-    print("[NavigationGraph] Connected '%s' <-> '%s'" % [from_name, to_name])
-
 
 ## Connect two points by ID
 func connect_points_by_id(from_id: int, to_id: int, bidirectional: bool = true) -> void:
@@ -250,8 +244,6 @@ func has_point(point_name: String) -> bool:
 
 ## Build navigation graph from NavigationPoint children
 func build_from_children() -> void:
-    print("[NavigationGraph] Building graph from NavigationPoint children...")
-    
     # Step 1: Find all NavigationPoint children and assign IDs
     var nav_points: Array[NavigationPoint] = []
     for child in get_children():
@@ -259,7 +251,6 @@ func build_from_children() -> void:
             nav_points.append(child)
     
     if nav_points.is_empty():
-        print("[NavigationGraph] No NavigationPoint children found")
         return
     
     # Step 2: Add each point to AStar graph
@@ -278,9 +269,7 @@ func build_from_children() -> void:
         point_floors[id] = 0  # TODO: Add floor detection later
         point_ids[point.name] = id
         point_nodes[id] = point
-        
-        print("[NavigationGraph]   Added '%s' (ID: %d) at %v" % [point.name, id, global_pos])
-    
+            
     # Step 3: Build connections based on NodePath references
     for point in nav_points:
         var from_id = point.point_id
@@ -301,7 +290,5 @@ func build_from_children() -> void:
             # Connect bidirectionally
             if not astar.are_points_connected(from_id, to_id):
                 astar.connect_points(from_id, to_id, true)
-                print("[NavigationGraph]   Connected '%s' <-> '%s'" % [point.name, connected_node.name])
     
     queue_redraw()
-    print("[NavigationGraph] Graph build complete!")

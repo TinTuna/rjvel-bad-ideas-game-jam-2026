@@ -12,7 +12,7 @@ func _ready() -> void:
     level_end_trigger.body_entered.connect(_on_level_end_triggered)
 
     await get_tree().process_frame
-    nav_graph.print_graph_info()
+    # nav_graph.print_graph_info()
 
     var mother: FamilyMemberBase = get_tree().get_first_node_in_group("mother")
     if mother:

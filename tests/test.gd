@@ -9,10 +9,10 @@ func _ready() -> void:
     await get_tree().process_frame
     
     # Print navigation graph info
-    nav_graph.print_graph_info()
+    # nav_graph.print_graph_info()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     if Input.is_action_just_pressed("interact") and glass.has_overlapping_bodies():
         glass.interact()

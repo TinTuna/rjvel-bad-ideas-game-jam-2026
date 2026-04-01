@@ -29,9 +29,6 @@ func _ready() -> void:
 
 	# Initialize display
 	update_day_display()
-	
-	print("[HUD] Initialized")
-
 
 # ============================================================================
 # DAY DISPLAY
@@ -62,4 +59,3 @@ func get_day_name() -> String:
 ## Handle day started event
 func _on_day_started(day_number: int) -> void:
 	set_day(day_number)
-	print("[HUD] Day started: %s" % get_day_name())

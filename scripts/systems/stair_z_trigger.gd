@@ -19,17 +19,11 @@ extends Area2D
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("[StairZTrigger] %s entered '%s' | velocity.y=%.1f | threshold=%.1f" % [body.name, name, body.velocity.y, velocity_threshold])
 
 	if not (body.is_in_group("cat") or body.is_in_group("family_members")):
-		print("[StairZTrigger] -> ignored (not cat or family_member)")
 		return
 
 	if body.velocity.y > velocity_threshold:
-		print("[StairZTrigger] -> going DOWN — z_index %d -> %d" % [body.z_index, z_going_down])
 		body.z_index = z_going_down
 	elif body.velocity.y < -velocity_threshold:
-		print("[StairZTrigger] -> going UP — z_index %d -> %d" % [body.z_index, z_going_up])
 		body.z_index = z_going_up
-	else:
-		print("[StairZTrigger] -> velocity below threshold, no z_index change")

@@ -177,7 +177,6 @@ func pick_up_item(item: Node2D) -> void:
     _is_carrying_item = true
 
 func put_down_item(item: Node2D) -> void:
-    print("Put down item")
     _is_carrying_item = false
     item.position.x = 0
     item.reparent(self.get_parent())

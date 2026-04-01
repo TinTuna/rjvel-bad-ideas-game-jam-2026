@@ -4,15 +4,13 @@ extends Node2D
 @onready var nav_graph: NavigationGraph = $NavigationGraph
 @onready var mother: FamilyMemberBase = $Mother
 
-func _ready() -> void:
-    print("=== Navigation Test Scene ===")
-    
+func _ready() -> void:   
     # Navigation graph auto-builds from NavigationPoint children
     # Wait one frame for graph to be ready
     await get_tree().process_frame
     
     # Print graph info
-    nav_graph.print_graph_info()
+    # nav_graph.print_graph_info()
     
     # Setup mother's patrol
     setup_mother_patrol()

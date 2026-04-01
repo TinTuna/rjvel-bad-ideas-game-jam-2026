@@ -85,8 +85,6 @@ func _ready() -> void:
         push_error("[%s] No NavigationGraph found!" % character_name)
         return
 
-    print("[%s] Initialized on floor %d" % [character_name, current_floor])
-
     # Start patrol if enabled
     if auto_start_patrol and patrol_points.size() > 0:
         call_deferred("start_patrol")
@@ -170,7 +168,6 @@ func navigate_to_position(target_pos: Vector2, target_floor: int) -> void:
     )
 
     if current_path.is_empty():
-        print("[%s] No path found to target" % character_name)
         current_state = State.IDLE
         return
 
@@ -178,8 +175,6 @@ func navigate_to_position(target_pos: Vector2, target_floor: int) -> void:
     target_waypoint = current_path[0]
     current_state = State.MOVING_TO_TARGET
     
-    print("[%s] Starting navigation with %d waypoints" % [character_name, current_path.size()])
-
 
 ## Stop current navigation
 func stop_navigation() -> void:
@@ -226,9 +221,7 @@ func arrive_at_destination() -> void:
     velocity = Vector2.ZERO
     current_path.clear()
     target_waypoint = {}
-    
-    print("[%s] Arrived at destination" % character_name)
-    
+        
     on_destination_reached()
 
 
@@ -256,9 +249,7 @@ func _on_waypoint_reached(waypoint: Dictionary, waypoint_index: int) -> void:
 
     _interaction_area.monitoring = not on_stairs
     _interaction_area.monitorable = not on_stairs
-    print("[%s] Reached '%s' → next '%s' → z_index %d -> %d | collision %s" % [
-        character_name, wname, next_name, z_index, new_z, "OFF" if on_stairs else "ON"
-    ])
+
     z_index = new_z
 
 
@@ -286,8 +277,6 @@ func start_patrol() -> void:
     
     patrol_index = 0
     navigate_to_next_patrol_point()
-    print("[%s] Started patrol with %d points" % [character_name, patrol_points.size()])
-
 
 func navigate_to_next_patrol_point() -> void:
     if patrol_points.is_empty():
@@ -324,7 +313,6 @@ func _on_area_body_entered(body: Node2D) -> void:
 
 
 func on_cat_touched(cat: Node2D) -> void:
-    print("Cat touched!")
     cat.push_back(global_position)
 
 

@@ -81,8 +81,6 @@ func _ready() -> void:
 	EventBus.music_resume_requested.connect(_on_resume_requested)
 	EventBus.music_volume_changed.connect(_on_volume_changed)
 	
-	print("[MusicManager] Initialized with seamless crossfading")
-
 
 # ============================================================================
 # MUSIC LOADING
@@ -102,7 +100,6 @@ func _load_music_stream(music_uid: String) -> AudioStream:
 	
 	if stream:
 		music_cache[music_uid] = stream
-		print("[MusicManager] Cached music: %s" % music_uid)
 	else:
 		push_error("[MusicManager] Failed to load music: %s" % music_uid)
 	
@@ -121,7 +118,6 @@ func _on_music_transition_requested(track_name: String, crossfade_duration: floa
 	
 	# If already playing this track, don't restart
 	if current_track == track_name and is_playing:
-		print("[MusicManager] Already playing: %s" % track_name)
 		return
 	
 	# Get track UID
@@ -163,8 +159,6 @@ func _on_music_transition_requested(track_name: String, crossfade_duration: floa
 	current_track = track_name
 	is_playing = true
 	is_paused = false
-	
-	print("[MusicManager] Transitioning to: %s (crossfade: %.1fs)" % [track_name, crossfade_duration])
 
 
 ## Stop current music
@@ -187,8 +181,6 @@ func _on_music_stop_requested(fade_duration: float) -> void:
 	current_track = ""
 	is_playing = false
 	
-	print("[MusicManager] Stopped music (fade: %.1fs)" % fade_duration)
-
 
 # ============================================================================
 # PAUSE/RESUME
@@ -203,8 +195,6 @@ func _on_pause_requested() -> void:
 	current_player.stream_paused = true
 	is_paused = true
 	
-	print("[MusicManager] Paused")
-
 
 ## Resume music
 func _on_resume_requested() -> void:
@@ -215,8 +205,6 @@ func _on_resume_requested() -> void:
 	current_player.stream_paused = false
 	is_paused = false
 	
-	print("[MusicManager] Resumed")
-
 
 # ============================================================================
 # VOLUME CONTROL
@@ -230,8 +218,6 @@ func _on_volume_changed(volume: float) -> void:
 	if is_playing:
 		var current_player := player_a if active_is_a else player_b
 		current_player.volume_db = linear_to_db(master_volume)
-	
-	print("[MusicManager] Volume changed to %.0f%%" % (master_volume * 100))
 
 
 # ============================================================================
@@ -293,7 +279,6 @@ func play_intro_then_loop(intro_track: String, loop_track: String) -> void:
 	current_track = intro_track
 	is_playing = true
 	is_paused = false
-	print("[MusicManager] Playing intro: %s" % intro_track)
 
 	await player_a.finished
 
@@ -302,7 +287,6 @@ func play_intro_then_loop(intro_track: String, loop_track: String) -> void:
 	player_b.play()
 	active_is_a = false
 	current_track = loop_track
-	print("[MusicManager] Switching to main: %s" % loop_track)
 
 
 ## Transition to a track directly

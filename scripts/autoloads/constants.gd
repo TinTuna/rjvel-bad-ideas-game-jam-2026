@@ -223,7 +223,6 @@ func _parse_voiceover_csv() -> void:
         if not VOICEOVER_LINES[character].has(context):
             VOICEOVER_LINES[character][context] = []
         VOICEOVER_LINES[character][context].append({"text": text, "code": code})
-    print("[Constants] Voiceover lines loaded for: %s" % str(VOICEOVER_LINES.keys()))
 
 
 ## Get a music track UID by name
@@ -276,7 +275,6 @@ func get_all_music_tracks() -> Array[String]:
 # ============================================================================
 
 func _ready() -> void:
-    print("[Constants] Initialized")
     _parse_voiceover_csv()
     
     # Validate that all scenes have UIDs assigned

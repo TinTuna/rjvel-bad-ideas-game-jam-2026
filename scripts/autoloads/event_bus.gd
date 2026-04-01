@@ -136,11 +136,3 @@ signal music_resume_requested()
 ## Emitted when music volume should change
 ## @param volume: float - Volume multiplier (0.0 to 1.0)
 signal music_volume_changed(volume: float)
-
-
-# ============================================================================
-# LIFECYCLE
-# ============================================================================
-
-func _ready() -> void:
-    print("[EventBus] Initialized")

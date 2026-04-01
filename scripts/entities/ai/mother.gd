@@ -101,7 +101,6 @@ func on_cat_touched(cat: Node2D) -> void:
 
 
 func react_to_event(event_name: String) -> void:
-    print("[%s] Reacting to event: %s" % [character_name, event_name])
     if event_name == "glass_knocked_down":
         var glass: Node2D = get_tree().get_first_node_in_group("glass")
         if glass:
