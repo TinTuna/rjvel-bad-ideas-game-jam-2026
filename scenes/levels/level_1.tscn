@@ -33,7 +33,6 @@ position = Vector2(17, -131)
 scale = Vector2(0.5, 0.5)
 
 [node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("2_cat")]
-z_index = 5
 position = Vector2(2280.0002, 943.9999)
 
 [node name="GameCamera" type="Camera2D" parent="." unique_id=917904922]

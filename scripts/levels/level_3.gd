@@ -40,5 +40,6 @@ func spawn_pizza() -> void:
 
 func _on_level_end_triggered(body: Node2D) -> void:
     if entry_door.is_open and body.is_in_group("cat"):
+        EventBus.level_completed.emit()
         EventBus.day_started.emit(4)
         SceneLoader.load_scene(Constants.SCENES["DAY_RECAP"])

@@ -11,7 +11,7 @@ extends Node
 ##   SfxManager.play_cat_voice("button")
 
 # How many button variants exist per voice pack letter
-const BUTTON_VARIANT_COUNTS := {"E": 3, "J": 4, "L": 3, "V": 3, "T": 3}
+const BUTTON_VARIANT_COUNTS := {"E": 3, "J": 4, "L": 3, "V": 3, "T": 1}
 
 ## Pitch variation applied each play (± this amount around 1.0)
 const PITCH_VARIATION: float = 0.18

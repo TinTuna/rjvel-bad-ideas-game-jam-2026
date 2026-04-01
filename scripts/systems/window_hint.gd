@@ -2,32 +2,39 @@ extends Node2D
 ## WindowHint — Cinematic hint trigger at the living room window.
 ##
 ## When the cat reaches the windowsill the camera pans and zooms to the window
-## and shows a message from the outside cat. Resets when the cat leaves.
+## and shows a tip sprite for the current day, cycling through all available
+## hints each visit. Resets when the cat leaves.
 
-@export var hint_text: String = "Glass?"
 @export var zoom_in_duration: float = 1.0
 @export var zoom_out_duration: float = 1.0
 @export var target_zoom: Vector2 = Vector2(2.5, 2.5)
 @export var trigger_delay: float = 0.25
 
 @onready var trigger: Area2D = $Trigger
-@onready var hint_label: Label = $"../HintOverlay/HintLabel"
+@onready var tip_sprite: Sprite2D = $WindowTip
 
 var _camera: Camera2D
 var _is_showing: bool = false
 var _cat_in_trigger: bool = false
 var _cat: CharacterBody2D
+var _hints: Array[Texture2D] = []
+var _hint_index: int = 0
 
 
 func _ready() -> void:
-    hint_label.visible = false
-    hint_label.text = hint_text
+    tip_sprite.visible = false
     trigger.collision_mask = 1
     trigger.body_entered.connect(_on_trigger_entered)
     trigger.body_exited.connect(_on_trigger_exited)
 
     await get_tree().process_frame
     _camera = get_tree().get_first_node_in_group("game_camera")
+    var day := Constants.current_day
+    for i in range(1, 4):
+        var path := "res://assets/sprites/environment/Living Room/Hints on window/T%d%d.png" % [day, i]
+        var texture := load(path)
+        if texture:
+            _hints.append(texture)
 
 
 func _on_trigger_entered(body: Node2D) -> void:
@@ -45,8 +52,9 @@ func _on_trigger_entered(body: Node2D) -> void:
     _is_showing = true
     _camera.enter_cinematic($CinematicCamera.global_position, target_zoom, zoom_in_duration)
     await get_tree().create_timer(zoom_in_duration).timeout
-    if _is_showing:
-        hint_label.visible = true
+    if _is_showing and not _hints.is_empty():
+        tip_sprite.texture = _hints[_hint_index]
+        tip_sprite.visible = true
 
 
 func _on_trigger_exited(body: Node2D) -> void:
@@ -56,5 +64,6 @@ func _on_trigger_exited(body: Node2D) -> void:
     if not _is_showing:
         return
     _is_showing = false
-    hint_label.visible = false
+    tip_sprite.visible = false
+    _hint_index = (_hint_index + 1) % _hints.size() if not _hints.is_empty() else 0
     _camera.exit_cinematic(zoom_out_duration)

@@ -735,7 +735,6 @@ face_right = true
 starting_z_index = 0
 
 [node name="WindowHint" type="Node2D" parent="." unique_id=1115846995]
-visible = false
 script = ExtResource("51_5oywa")
 
 [node name="Trigger" type="Area2D" parent="WindowHint" unique_id=616802392]
@@ -750,6 +749,12 @@ position = Vector2(3056, 275)
 enabled = false
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
+
+[node name="WindowTip" type="Sprite2D" parent="WindowHint" unique_id=1115846996]
+z_index = 2
+position = Vector2(1920, 0)
+scale = Vector2(0.5, 0.5)
+centered = false
 
 [node name="Dividers" type="Node2D" parent="." unique_id=630662692]
 
@@ -836,21 +841,3 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dividers/Divider_Kitchen_LivingRoom/StaticBody2D" unique_id=508142725]
 position = Vector2(242, 232)
 shape = SubResource("RectangleShape2D_mbbed")
-
-[node name="HintOverlay" type="CanvasLayer" parent="." unique_id=1853797584]
-
-[node name="HintLabel" type="Label" parent="HintOverlay" unique_id=56508859]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -40.0
-offset_right = 300.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Psst! Come outside and play!"
-horizontal_alignment = 1

@@ -38,5 +38,6 @@ func _on_cat_flap_triggered(area: Area2D) -> void:
 
 func _on_level_end_triggered(body: Node2D) -> void:
     if body.is_in_group("cat") and $House.front_door_state == 1:
+        EventBus.level_completed.emit()
         EventBus.day_started.emit(2)
         SceneLoader.load_scene(Constants.SCENES["DAY_RECAP"])

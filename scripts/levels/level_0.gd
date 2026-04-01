@@ -24,5 +24,6 @@ func _ready() -> void:
 
 func _on_level_end_triggered(body: Node2D) -> void:
     if body.is_in_group("cat"):
+        EventBus.level_completed.emit()
         EventBus.day_started.emit(1)
         SceneLoader.load_scene(Constants.SCENES["DAY_RECAP"])

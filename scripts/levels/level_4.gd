@@ -9,4 +9,5 @@ func _process(delta: float) -> void:
 
 func _on_level_end_trigger_body_entered(body: Node2D) -> void:
     if body.is_in_group("cat"):
+        EventBus.level_completed.emit()
         SceneLoader.load_scene(Constants.SCENES["OUTRO"])

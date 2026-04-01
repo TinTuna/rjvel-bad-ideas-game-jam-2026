@@ -21,7 +21,7 @@ upstairs_enabled = false
 front_door_state = 1
 
 [node name="Glass" parent="House" unique_id=2087202024 instance=ExtResource("23_3kux2")]
-z_index = 4
+z_index = 5
 z_as_relative = false
 position = Vector2(2551, 753)
 scale = Vector2(0.5, 0.5)
@@ -33,7 +33,6 @@ position = Vector2(5670, 500)
 shape = SubResource("RectangleShape2D_levelend")
 
 [node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("2_cat")]
-z_index = 4
 position = Vector2(3167, 980.00006)
 
 [node name="GameCamera" type="Camera2D" parent="." unique_id=917904922]

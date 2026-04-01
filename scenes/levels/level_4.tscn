@@ -1,27 +1,27 @@
-[gd_scene format=3 uid="uid://cwvd5tqm016tq"]
+[gd_scene format=3 uid="uid://onqkqyg3j5ty"]
 
-[ext_resource type="Script" uid="uid://cedx4ixwxf3ne" path="res://scripts/levels/level_4.gd" id="1_hsvsk"]
-[ext_resource type="PackedScene" uid="uid://dj6ag2enlk8v2" path="res://scenes/levels/house.tscn" id="2_fcb7b"]
-[ext_resource type="Texture2D" uid="uid://7aleib8cwmtn" path="res://assets/sprites/environment/burn_ceiling.png" id="3_ov8fk"]
-[ext_resource type="Texture2D" uid="uid://bv4eq0tvyhkau" path="res://assets/sprites/environment/burn_wall.png" id="4_pmra4"]
-[ext_resource type="Texture2D" uid="uid://2pn1p4tjin3w" path="res://assets/sprites/environment/Boys_ Room/skylight OPEN.png" id="5_ov8fk"]
-[ext_resource type="PackedScene" uid="uid://d25vdnwh7ugoy" path="res://scenes/entities/cat.tscn" id="6_vq5n0"]
-[ext_resource type="Script" uid="uid://b6ffmtyygvy4l" path="res://scripts/systems/game_camera.gd" id="7_xt2o7"]
-[ext_resource type="Script" uid="uid://cm24k76aypjk2" path="res://scripts/systems/navigation/navigation_graph.gd" id="8_beuva"]
-[ext_resource type="PackedScene" uid="uid://c3v8yqj2wl0qt" path="res://scenes/systems/navigation/navigation_point.tscn" id="9_05se8"]
-[ext_resource type="PackedScene" uid="uid://b8k7mqh2wvn0y" path="res://scenes/entities/family_members/mother.tscn" id="10_12cdj"]
-[ext_resource type="PackedScene" uid="uid://po0ann4o0kex" path="res://scenes/entities/family_members/twins.tscn" id="11_r3huh"]
-[ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="12_lc5pf"]
-[ext_resource type="PackedScene" uid="uid://cu0820t6nyfgb" path="res://scenes/entities/day_2/toaster.tscn" id="13_0n65g"]
-[ext_resource type="PackedScene" uid="uid://cdefxwiw1571x" path="res://scenes/entities/day_4/portable_pizza.tscn" id="13_hsvsk"]
+[ext_resource type="Script" uid="uid://cedx4ixwxf3ne" path="res://scripts/levels/level_4.gd" id="1_j14br"]
+[ext_resource type="PackedScene" uid="uid://dj6ag2enlk8v2" path="res://scenes/levels/house.tscn" id="2_0y7y4"]
+[ext_resource type="Texture2D" uid="uid://7aleib8cwmtn" path="res://assets/sprites/environment/burn_ceiling.png" id="3_gruok"]
+[ext_resource type="Texture2D" uid="uid://bv4eq0tvyhkau" path="res://assets/sprites/environment/burn_wall.png" id="4_h717f"]
+[ext_resource type="Texture2D" uid="uid://2pn1p4tjin3w" path="res://assets/sprites/environment/Boys_ Room/skylight OPEN.png" id="5_l8eod"]
+[ext_resource type="PackedScene" uid="uid://cdefxwiw1571x" path="res://scenes/entities/day_4/portable_pizza.tscn" id="6_sfnul"]
+[ext_resource type="PackedScene" uid="uid://d25vdnwh7ugoy" path="res://scenes/entities/cat.tscn" id="7_fea5r"]
+[ext_resource type="Script" uid="uid://b6ffmtyygvy4l" path="res://scripts/systems/game_camera.gd" id="8_vm1kt"]
+[ext_resource type="Script" uid="uid://cm24k76aypjk2" path="res://scripts/systems/navigation/navigation_graph.gd" id="9_wnnhf"]
+[ext_resource type="PackedScene" uid="uid://c3v8yqj2wl0qt" path="res://scenes/systems/navigation/navigation_point.tscn" id="10_ahsud"]
+[ext_resource type="PackedScene" uid="uid://b8k7mqh2wvn0y" path="res://scenes/entities/family_members/mother.tscn" id="11_iu1q5"]
+[ext_resource type="PackedScene" uid="uid://po0ann4o0kex" path="res://scenes/entities/family_members/twins.tscn" id="12_orjhg"]
+[ext_resource type="PackedScene" uid="uid://cfrqw8duyb8vk" path="res://scenes/ui/hud.tscn" id="13_3j2bn"]
+[ext_resource type="PackedScene" uid="uid://cu0820t6nyfgb" path="res://scenes/entities/day_2/toaster.tscn" id="14_lolfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov8fk"]
 size = Vector2(401.5, 263.5)
 
 [node name="Level_4" type="Node2D" unique_id=-2094967295]
-script = ExtResource("1_hsvsk")
+script = ExtResource("1_j14br")
 
-[node name="House" parent="." unique_id=509524014 instance=ExtResource("2_fcb7b")]
+[node name="House" parent="." unique_id=509524014 instance=ExtResource("2_0y7y4")]
 position = Vector2(-14, -3)
 
 [node name="burn_ceil" type="TextureRect" parent="House" unique_id=31086203]
@@ -29,28 +29,28 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 1910.0
 offset_bottom = 438.0
-texture = ExtResource("3_ov8fk")
+texture = ExtResource("3_gruok")
 
 [node name="burn_wall" type="TextureRect" parent="House" unique_id=1473256348]
 offset_left = -25.0
 offset_top = 144.0
 offset_right = 290.0
 offset_bottom = 587.0
-texture = ExtResource("4_pmra4")
+texture = ExtResource("4_h717f")
 expand_mode = 1
 
 [node name="Skylight" type="Sprite2D" parent="House" unique_id=659737428]
 z_index = 2
 position = Vector2(4371, -824)
 scale = Vector2(1.4857146, 1.493671)
-texture = ExtResource("5_ov8fk")
+texture = ExtResource("5_l8eod")
 
-[node name="PortablePizza" parent="." unique_id=1151662136 instance=ExtResource("13_hsvsk")]
+[node name="PortablePizza" parent="." unique_id=1151662136 instance=ExtResource("6_sfnul")]
 z_index = 2
 position = Vector2(2668.0002, 784.00006)
 scale = Vector2(0.65, 0.65)
 
-[node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("6_vq5n0")]
+[node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("7_fea5r")]
 z_index = 2
 position = Vector2(2872.9995, 986)
 MOVEMENT_SPEED = null
@@ -60,52 +60,53 @@ PUSH_DURATION = null
 
 [node name="GameCamera" type="Camera2D" parent="." unique_id=917904922]
 position = Vector2(2023, -450)
-script = ExtResource("7_xt2o7")
+script = ExtResource("8_vm1kt")
 
 [node name="NavigationGraph" type="Node2D" parent="." unique_id=533732458]
-script = ExtResource("8_beuva")
+visible = false
+script = ExtResource("9_wnnhf")
 
-[node name="Kitchen" parent="NavigationGraph" unique_id=1829446312 instance=ExtResource("9_05se8")]
+[node name="Kitchen" parent="NavigationGraph" unique_id=1829446312 instance=ExtResource("10_ahsud")]
 position = Vector2(960, 1000)
 connections = Array[NodePath]([NodePath("../Living_Room")])
 
-[node name="Living_Room" parent="NavigationGraph" unique_id=1787618462 instance=ExtResource("9_05se8")]
+[node name="Living_Room" parent="NavigationGraph" unique_id=1787618462 instance=ExtResource("10_ahsud")]
 position = Vector2(2880, 1000)
 connections = Array[NodePath]([NodePath("../Kitchen"), NodePath("../Entry")])
 
-[node name="Entry" parent="NavigationGraph" unique_id=1135845908 instance=ExtResource("9_05se8")]
+[node name="Entry" parent="NavigationGraph" unique_id=1135845908 instance=ExtResource("10_ahsud")]
 position = Vector2(4448, 1000)
 connections = Array[NodePath]([NodePath("../Living_Room"), NodePath("../Stairs_bottom")])
 
-[node name="Stairs_bottom" parent="NavigationGraph" unique_id=1393101538 instance=ExtResource("9_05se8")]
+[node name="Stairs_bottom" parent="NavigationGraph" unique_id=1393101538 instance=ExtResource("10_ahsud")]
 position = Vector2(4312, 1000)
 connections = Array[NodePath]([NodePath("../Entry"), NodePath("../Stairs_top")])
 
-[node name="Mums_Bedroom" parent="NavigationGraph" unique_id=-2094967226 instance=ExtResource("9_05se8")]
+[node name="Mums_Bedroom" parent="NavigationGraph" unique_id=-2094967226 instance=ExtResource("10_ahsud")]
 position = Vector2(103, -80)
 connections = Array[NodePath]([NodePath("../Landing")])
 
-[node name="Landing" parent="NavigationGraph" unique_id=-2094967225 instance=ExtResource("9_05se8")]
+[node name="Landing" parent="NavigationGraph" unique_id=-2094967225 instance=ExtResource("10_ahsud")]
 position = Vector2(2311, -80)
 connections = Array[NodePath]([NodePath("../Mums_Bedroom"), NodePath("../Boys_Room"), NodePath("../Stairs_top")])
 
-[node name="Stairs_top" parent="NavigationGraph" unique_id=1559314795 instance=ExtResource("9_05se8")]
+[node name="Stairs_top" parent="NavigationGraph" unique_id=1559314795 instance=ExtResource("10_ahsud")]
 position = Vector2(2655, -80)
 connections = Array[NodePath]([NodePath("../Landing"), NodePath("../Stairs_bottom")])
 
-[node name="Boys_Room" parent="NavigationGraph" unique_id=-2094967224 instance=ExtResource("9_05se8")]
+[node name="Boys_Room" parent="NavigationGraph" unique_id=-2094967224 instance=ExtResource("10_ahsud")]
 position = Vector2(3943, -80)
 connections = Array[NodePath]([NodePath("../Landing")])
 
-[node name="Mother" parent="." unique_id=124666084 instance=ExtResource("10_12cdj")]
+[node name="Mother" parent="." unique_id=124666084 instance=ExtResource("11_iu1q5")]
 position = Vector2(959, 986)
 
-[node name="Twins" parent="." unique_id=813177637 instance=ExtResource("11_r3huh")]
+[node name="Twins" parent="." unique_id=813177637 instance=ExtResource("12_orjhg")]
 position = Vector2(3623, -108)
 
-[node name="HUD" parent="." unique_id=412729266 instance=ExtResource("12_lc5pf")]
+[node name="HUD" parent="." unique_id=412729266 instance=ExtResource("13_3j2bn")]
 
-[node name="Toaster" parent="." unique_id=1809135083 instance=ExtResource("13_0n65g")]
+[node name="Toaster" parent="." unique_id=1809135083 instance=ExtResource("14_lolfx")]
 z_index = 1
 position = Vector2(122, 955.00006)
 rotation = 3.3754668
