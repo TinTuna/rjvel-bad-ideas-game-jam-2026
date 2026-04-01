@@ -188,12 +188,12 @@ func reset_to_new_game() -> void:
 # DEBUG / TESTING
 # ============================================================================
 
-## Print current state to console
-func print_status() -> void:
-	print("=== DayManager Status ===")
-	print("Current Day: %s (%d)" % [get_current_day_name(), current_day])
-	print("Days Completed: %d / 6" % days_completed)
-	print("Progress: %.0f%%" % (get_progress() * 100.0))
-	print("Used Exits: %s" % str(used_exits))
-	print("Game Complete: %s" % ("Yes" if is_game_complete() else "No"))
-	print("========================")
+# ## Print current state to console
+# func print_status() -> void:
+# 	print("=== DayManager Status ===")
+# 	print("Current Day: %s (%d)" % [get_current_day_name(), current_day])
+# 	print("Days Completed: %d / 6" % days_completed)
+# 	print("Progress: %.0f%%" % (get_progress() * 100.0))
+# 	print("Used Exits: %s" % str(used_exits))
+# 	print("Game Complete: %s" % ("Yes" if is_game_complete() else "No"))
+# 	print("========================")

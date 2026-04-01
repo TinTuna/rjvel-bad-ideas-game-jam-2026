@@ -123,7 +123,7 @@ func react_to_event(event_name: String) -> void:
         # Day 3: Mom answers the door, comes back, drops pizza on table, resumes patrol
         _pizza_step = 1
         stop_navigation()
-        navigate_to_point("Entry")
+        navigate_to_point("Door")
 
 
 func _handle_pizza_at_entry() -> void:
@@ -131,9 +131,15 @@ func _handle_pizza_at_entry() -> void:
     _pizza_step = 2
     EventBus.mother_opens_door.emit()
     current_state = State.IDLE
-    await get_tree().create_timer(4.0).timeout
+    await get_tree().create_timer(2.0).timeout
     _pizza_step = 3
+    navigate_to_point("Outside")
+    await get_tree().create_timer(4.0).timeout
+    _pizza_step = 4
+    navigate_to_point("Entry")
+    _pizza_step = 5
     EventBus.mother_closes_door.emit()
+    await get_tree().create_timer(2.0).timeout
     navigate_to_point("Living_Room")
 
 
@@ -162,9 +168,9 @@ func on_destination_reached() -> void:
         _handle_pizza_at_entry()
         return
 
-    if _pizza_step == 3:
+    if _pizza_step == 5:
         # At the table — drop the pizza
-        _pizza_step = 4
+        _pizza_step = 6
         _playing_once_anim = true
         animated_sprite.play("interacting")
         await animated_sprite.animation_finished

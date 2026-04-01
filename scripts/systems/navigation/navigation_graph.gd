@@ -234,14 +234,14 @@ func has_point(point_name: String) -> bool:
 # DEBUG
 # ============================================================================
 
-func print_graph_info() -> void:
-    print("=== Navigation Graph Info ===")
-    print("Total points: %d" % astar.get_point_count())
-    for id in astar.get_point_ids():
-        var connections = astar.get_point_connections(id)
-        print("  %s (ID: %d, Floor: %d) -> %d connections" % 
-            [point_names[id], id, point_floors[id], connections.size()])
-    print("============================")
+# func print_graph_info() -> void:
+#     print("=== Navigation Graph Info ===")
+#     print("Total points: %d" % astar.get_point_count())
+#     for id in astar.get_point_ids():
+#         var connections = astar.get_point_connections(id)
+#         print("  %s (ID: %d, Floor: %d) -> %d connections" % 
+#             [point_names[id], id, point_floors[id], connections.size()])
+#     print("============================")
 
 
 # ============================================================================

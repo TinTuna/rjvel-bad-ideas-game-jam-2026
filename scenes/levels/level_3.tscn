@@ -68,7 +68,15 @@ connections = Array[NodePath]([NodePath("../Kitchen"), NodePath("../Entry")])
 
 [node name="Entry" parent="NavigationGraph" unique_id=1135845908 instance=ExtResource("56_731o7")]
 position = Vector2(4448, 1000)
-connections = Array[NodePath]([NodePath("../Living_Room"), NodePath("../Stairs_bottom")])
+connections = Array[NodePath]([NodePath("../Living_Room"), NodePath("../Stairs_bottom"), NodePath("../Door")])
+
+[node name="Door" parent="NavigationGraph" unique_id=971437557 instance=ExtResource("56_731o7")]
+position = Vector2(5616, 1000)
+connections = Array[NodePath]([NodePath("../Entry"), NodePath("../Outside")])
+
+[node name="Outside" parent="NavigationGraph" unique_id=590629040 instance=ExtResource("56_731o7")]
+position = Vector2(6136, 1000)
+connections = Array[NodePath]([NodePath("../Door")])
 
 [node name="Stairs_bottom" parent="NavigationGraph" unique_id=1393101538 instance=ExtResource("56_731o7")]
 position = Vector2(4312, 1000)

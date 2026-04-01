@@ -27,7 +27,7 @@ const SFX_HUMAN_WALKING = preload("uid://bx1plfvq4j6ic")
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _interaction_area: Area2D = $Area2D
 
-var _walk_player: AudioStreamPlayer
+# var _walk_player: AudioStreamPlayer
 var _was_walking: bool = false
 
 # ============================================================================
@@ -63,14 +63,14 @@ func _ready() -> void:
     add_to_group("family_members")
     current_floor = starting_floor
 
-    _walk_player = AudioStreamPlayer.new()
-    _walk_player.stream = SFX_HUMAN_WALKING
-    _walk_player.bus = Constants.AUDIO_BUSES.SFX
-    _walk_player.finished.connect(func():
-        if _was_walking:
-            _walk_player.play()
-    )
-    add_child(_walk_player)
+    # _walk_player = AudioStreamPlayer.new()
+    # _walk_player.stream = SFX_HUMAN_WALKING
+    # _walk_player.bus = Constants.AUDIO_BUSES.SFX
+    # _walk_player.finished.connect(func():
+    #     if _was_walking:
+    #         _walk_player.play()
+    # )
+    # add_child(_walk_player)
 
     # Wire Area2D to detect the cat
     var area: Area2D = $Area2D
@@ -337,10 +337,10 @@ func update_animation() -> void:
         return
 
     var is_walking := current_state == State.MOVING_TO_TARGET
-    if is_walking and not _was_walking:
-        _walk_player.play()
-    elif not is_walking and _was_walking:
-        _walk_player.stop()
+    # if is_walking and not _was_walking:
+    #     _walk_player.play()
+    # elif not is_walking and _was_walking:
+    #     _walk_player.stop()
     _was_walking = is_walking
 
     match current_state:
@@ -367,12 +367,12 @@ func update_animation() -> void:
 # DEBUG
 # ============================================================================
 
-func _input(event: InputEvent) -> void:
-    if not OS.is_debug_build():
-        return
+# func _input(event: InputEvent) -> void:
+#     if not OS.is_debug_build():
+#         return
     
-    # Toggle debug draw with D key
-    if event is InputEventKey and event.pressed and event.keycode == KEY_G:
-        debug_draw = not debug_draw
-        queue_redraw()
-        print("[%s] Debug draw: %s" % [character_name, "ON" if debug_draw else "OFF"])
+#     # Toggle debug draw with D key
+#     if event is InputEventKey and event.pressed and event.keycode == KEY_G:
+#         debug_draw = not debug_draw
+#         queue_redraw()
+#         print("[%s] Debug draw: %s" % [character_name, "ON" if debug_draw else "OFF"])
