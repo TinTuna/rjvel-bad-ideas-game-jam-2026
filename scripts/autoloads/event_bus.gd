@@ -111,6 +111,9 @@ signal mother_opens_door()
 ## Emitted on day 3 when mother closes entry door
 signal mother_closes_door()
 
+## Emitted on day 4 when twins get pizza
+signal twins_feasted()
+
 # ============================================================================
 # MUSIC EVENTS
 # ============================================================================

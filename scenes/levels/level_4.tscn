@@ -45,14 +45,9 @@ position = Vector2(4371, -824)
 scale = Vector2(1.4857146, 1.493671)
 texture = ExtResource("5_ov8fk")
 
-[node name="PortablePizza" parent="." unique_id=1151662136 instance=ExtResource("13_hsvsk")]
-z_index = 2
-position = Vector2(2668.0002, 784.00006)
-scale = Vector2(0.65, 0.65)
-
 [node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("6_vq5n0")]
 z_index = 2
-position = Vector2(2872.9995, 986)
+position = Vector2(3089, 961.99994)
 MOVEMENT_SPEED = null
 ACCELERATION = null
 PUSH_SPEED = null
@@ -63,6 +58,7 @@ position = Vector2(2023, -450)
 script = ExtResource("7_xt2o7")
 
 [node name="NavigationGraph" type="Node2D" parent="." unique_id=533732458]
+visible = false
 script = ExtResource("8_beuva")
 
 [node name="Kitchen" parent="NavigationGraph" unique_id=1829446312 instance=ExtResource("9_05se8")]
@@ -113,6 +109,11 @@ scale = Vector2(0.5, 0.5)
 monitoring = false
 monitorable = false
 is_interactable = false
+
+[node name="PortablePizza" parent="." unique_id=1151662136 instance=ExtResource("13_hsvsk")]
+z_index = 6
+position = Vector2(2668.0002, 784.00006)
+scale = Vector2(0.65, 0.65)
 
 [node name="LevelEndTrigger" type="Area2D" parent="." unique_id=1530397477]
 

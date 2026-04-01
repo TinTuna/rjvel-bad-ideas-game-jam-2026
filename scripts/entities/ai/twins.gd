@@ -107,7 +107,7 @@ func on_cat_touched(cat: Node2D) -> void:
 
 func _trigger_pizza_feast() -> void:
     _feast_triggered = true
-
+    EventBus.twins_feasted.emit()
     # Play a voice line if one exists for this context
     var lines: Array = Constants.get_voice_lines("Twins", "Pizza")
     if not lines.is_empty():
