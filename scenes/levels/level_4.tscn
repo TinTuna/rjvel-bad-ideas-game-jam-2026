@@ -46,14 +46,9 @@ scale = Vector2(1.4857146, 1.493671)
 texture = ExtResource("5_l8eod")
 
 
-[node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("6_vq5n0")]
+[node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("7_fea5r")]
 z_index = 2
 position = Vector2(3089, 961.99994)
-
-MOVEMENT_SPEED = null
-ACCELERATION = null
-PUSH_SPEED = null
-PUSH_DURATION = null
 
 [node name="GameCamera" type="Camera2D" parent="." unique_id=917904922]
 position = Vector2(2023, -450)
@@ -62,7 +57,7 @@ script = ExtResource("8_vm1kt")
 [node name="NavigationGraph" type="Node2D" parent="." unique_id=533732458]
 visible = false
 
-script = ExtResource("8_beuva")
+script = ExtResource("9_wnnhf")
 
 
 [node name="Kitchen" parent="NavigationGraph" unique_id=1829446312 instance=ExtResource("10_ahsud")]
@@ -114,7 +109,7 @@ monitoring = false
 monitorable = false
 is_interactable = false
 
-[node name="PortablePizza" parent="." unique_id=1151662136 instance=ExtResource("13_hsvsk")]
+[node name="PortablePizza" parent="." unique_id=1151662136 instance=ExtResource("6_sfnul")]
 z_index = 6
 position = Vector2(2668.0002, 784.00006)
 scale = Vector2(0.65, 0.65)
