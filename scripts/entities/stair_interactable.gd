@@ -24,7 +24,7 @@ const STAIRS_CREAK = preload("uid://cbuce7cixfsbs")
 @export var starting_z_index: int = 2
 
 ## Z-index applied to the cat on arrival. Should be 3 to be in front of NPCs, 2 for default.
-@export var destination_z_index: int = 2
+@export var destination_z_index: int = 5
 
 func interact() -> void:
     var cat = get_tree().get_first_node_in_group("cat")

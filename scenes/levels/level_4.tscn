@@ -51,7 +51,6 @@ position = Vector2(2668.0002, 784.00006)
 scale = Vector2(0.65, 0.65)
 
 [node name="Cat" parent="." unique_id=1154809526 instance=ExtResource("7_fea5r")]
-z_index = 2
 position = Vector2(2872.9995, 986)
 MOVEMENT_SPEED = null
 ACCELERATION = null

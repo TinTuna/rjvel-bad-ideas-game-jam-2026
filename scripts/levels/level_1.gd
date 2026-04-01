@@ -4,6 +4,9 @@ extends Node2D
 ## Ground floor: Kitchen, Living Room, Entry.
 ## First floor: Mum's Bedroom (left), Upstairs Corridor/Landing (centre), Boys' Room (right).
 
+const SFX_CATFLAP_EXIT    = preload("uid://b4psqb56v8582")
+const SFX_FLAP_NOT_OPENING = preload("uid://e418yd2kkx4p")
+
 @onready var nav_graph: NavigationGraph = $NavigationGraph
 @onready var level_end_trigger: Area2D = $LevelEndTrigger2
 @onready var cat_flap_trigger: Area2D = $CatFlapTrigger
@@ -37,7 +40,21 @@ func _on_cat_flap_triggered(area: Area2D) -> void:
 
 
 func _on_level_end_triggered(body: Node2D) -> void:
-    if body.is_in_group("cat") and $House.front_door_state == 1:
+    if not body.is_in_group("cat"):
+        return
+    if $House.front_door_state == 1:
+        _play_one_shot(SFX_CATFLAP_EXIT)
         EventBus.level_completed.emit()
         EventBus.day_started.emit(2)
         SceneLoader.load_scene(Constants.SCENES["DAY_RECAP"])
+    else:
+        _play_one_shot(SFX_FLAP_NOT_OPENING)
+
+
+func _play_one_shot(stream: AudioStream) -> void:
+    var player := AudioStreamPlayer.new()
+    player.stream = stream
+    player.bus = Constants.AUDIO_BUSES.SFX
+    add_child(player)
+    player.play()
+    player.finished.connect(player.queue_free)
