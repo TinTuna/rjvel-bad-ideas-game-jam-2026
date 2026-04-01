@@ -83,6 +83,7 @@ var _resetting_glass: bool = false
 var _playing_once_anim: bool = false
 var _abandoned_patrol: bool = false
 var _opening_window: bool = false
+var _resetting_toaster: bool = false
 # Pizza delivery sequence: 0=inactive, 1=heading to door, 3=heading to table
 var _pizza_step: int = 0
 
@@ -177,8 +178,24 @@ func on_destination_reached() -> void:
         return
 
     if _abandoned_patrol:
-        # Stay in Mum's room, don't resume patrol
+        # Wait in Mum's room for the smoke to clear, then go back to reset the toaster
+        _abandoned_patrol = false
+        _resetting_toaster = true
         current_state = State.IDLE
+        await get_tree().create_timer(4.0).timeout
+        navigate_to_point("Kitchen")
+        return
+
+    if _resetting_toaster:
+        _resetting_toaster = false
+        _playing_once_anim = true
+        animated_sprite.play("interacting")
+        await animated_sprite.animation_finished
+        _playing_once_anim = false
+        EventBus.toaster_reset.emit()
+        if patrol_points.size() > 0:
+            patrol_index = 0
+            start_patrol()
         return
 
     super.on_destination_reached()

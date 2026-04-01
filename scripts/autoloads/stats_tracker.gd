@@ -16,13 +16,14 @@ extends Node
 ## All tracked statistics with their initial values and display labels.
 ## Add new entries here to track new things.
 const STAT_DEFINITIONS := {
-	"times_jumped":         { "label": "Times Jumped",              "value": 0 },
-	"glasses_knocked_over": { "label": "Glasses Knocked Over",      "value": 0 },
-	"times_caught":         { "label": "Times Caught by a Human",   "value": 0 },
-	"times_rested":         { "label": "Naps Taken in the Cat Box", "value": 0 },
-	"treats_eaten":         { "label": "Treats Eaten",              "value": 0 },
-	"days_completed":       { "label": "Days Snuck Out",            "value": 0 },
-	"times_pushed_back":    { "label": "Times Yeeted by an NPC",    "value": 0 },
+	"times_jumped":         { "label": "Times Jumped",                          "value": 0 },
+	"glasses_knocked_over": { "label": "Glasses Knocked Over",                  "value": 0 },
+	"times_rested":         { "label": "Times Hidden in the Cat Box",           "value": 0 },
+	"treats_eaten":         { "label": "Treats Eaten",                          "value": 0 },
+	"days_completed":       { "label": "Days Snuck Out",                        "value": 0 },
+	"times_pushed_back":    { "label": "Times Yeeted by a family member",       "value": 0 },
+	"items_stolen":         { "label": "Items Liberated from Humans",           "value": 0 },
+	"toasters_ruined":      { "label": "Times the Kitchen Almost Burned Down",  "value": 0 },
 }
 
 ## Live stat values (populated from STAT_DEFINITIONS on ready)
@@ -88,6 +89,9 @@ func _connect_events() -> void:
 	EventBus.day_started.connect(_on_day_started)
 	EventBus.cat_jumped.connect(_on_cat_jumped)
 	EventBus.cat_pushed_back.connect(_on_cat_pushed_back)
+	EventBus.player_entered_box.connect(_on_player_entered_box)
+	EventBus.player_picked_up_item.connect(_on_player_picked_up_item)
+	EventBus.toaster_burnt.connect(_on_toaster_burnt)
 
 
 func _on_glass_knocked_down() -> void:
@@ -101,6 +105,15 @@ func _on_cat_jumped() -> void:
 
 func _on_cat_pushed_back() -> void:
 	increment("times_pushed_back")
+
+func _on_player_entered_box() -> void:
+	increment("times_rested")
+
+func _on_player_picked_up_item(_item: Node2D) -> void:
+	increment("items_stolen")
+
+func _on_toaster_burnt() -> void:
+	increment("toasters_ruined")
 
 
 # ============================================================================
