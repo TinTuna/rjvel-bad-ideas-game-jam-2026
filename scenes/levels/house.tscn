@@ -49,7 +49,6 @@
 [ext_resource type="Texture2D" uid="uid://b0m0gbythg8w5" path="res://assets/sprites/environment/Upstairs corridor/stairs.png" id="40_acdcm"]
 [ext_resource type="Texture2D" uid="uid://dxgiv22mfsh3u" path="res://assets/sprites/environment/Upstairs corridor/door 1.png" id="41_w0jij"]
 [ext_resource type="Texture2D" uid="uid://isi8affd2fbj" path="res://assets/sprites/environment/Upstairs corridor/door 2.png" id="42_5fwry"]
-[ext_resource type="Texture2D" uid="uid://bqkivkvft6n6q" path="res://assets/sprites/environment/Upstairs corridor/boxie_s toys.png" id="43_3xamh"]
 [ext_resource type="Texture2D" uid="uid://c01tcrel0yva0" path="res://assets/sprites/environment/Boys_ Room/wall, floor, door.png" id="44_3mxon"]
 [ext_resource type="Texture2D" uid="uid://bq5f3twvkrtvt" path="res://assets/sprites/environment/Boys_ Room/bed with all add ons.png" id="45_qgeq8"]
 [ext_resource type="Texture2D" uid="uid://bumiq0ju04uvn" path="res://assets/sprites/environment/Boys_ Room/bed front.png" id="46_igs8p"]
@@ -61,6 +60,7 @@
 [ext_resource type="Texture2D" uid="uid://ga5fwkjgujd2" path="res://assets/sprites/environment/Room_divider.png" id="52_jek6c"]
 [ext_resource type="Texture2D" uid="uid://wnmqmb8occrm" path="res://assets/sprites/environment/Entry/boxes.png" id="54_boxes"]
 [ext_resource type="Texture2D" uid="uid://ck4aje7vovmje" path="res://assets/sprites/environment/Entry/mirror.png" id="55_mirro"]
+[ext_resource type="Texture2D" uid="uid://duh1pgadspir2" path="res://assets/sprites/environment/Upstairs corridor/boxie's toys small.png" id="56_ju5ku"]
 [ext_resource type="Texture2D" uid="uid://dmbruhqw3mt4o" path="res://assets/sprites/environment/Entry/vase.png" id="56_vasee"]
 [ext_resource type="Texture2D" uid="uid://de5fy763fl8tp" path="res://assets/sprites/environment/Entry/front door CLOSED cat flap CLOSED.png" id="57_fdcc"]
 [ext_resource type="Texture2D" uid="uid://dnsp526qujp7w" path="res://assets/sprites/environment/Entry/front door CLOSED cat flap OPEN.png" id="58_fdco"]
@@ -598,9 +598,11 @@ centered = false
 texture = ExtResource("42_5fwry")
 centered = false
 
-[node name="BoxiesToys" type="Sprite2D" parent="Landing" unique_id=1314218148]
-texture = ExtResource("43_3xamh")
-centered = false
+[node name="Box" parent="Landing" unique_id=1490214754 instance=ExtResource("22_q2qlk")]
+position = Vector2(810, 1744)
+
+[node name="Sprite2D" parent="Landing/Box" index="0" unique_id=2057102172]
+texture = ExtResource("56_ju5ku")
 
 [node name="BoysRoom" type="Node2D" parent="." unique_id=1165506514]
 z_index = 2
@@ -854,3 +856,5 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Psst! Come outside and play!"
 horizontal_alignment = 1
+
+[editable path="Landing/Box"]
